@@ -2,3 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+    .header-logo{
+        content:"";
+        @apply bg-no-repeat bg-contain bg-center;
+
+        .gatsby-image-wrapper div:nth-child(2){
+            background-color: transparent !important;
+        }
+    }
+    &.dark .header-logo{
+        .logo-light-light{
+            display: block;
+            opacity: 100%;
+        }
+        .logo-light-dark{
+            display: none;
+            opacity: 0%;
+        }
+    }
+    &.light .header-logo{
+        .logo-light-light{
+            display: none;
+            opacity: 0%;
+        }
+        .logo-light-dark{
+            display: block;
+            opacity: 100%;
+        }
+    }
+}
+
+*{
+    @apply transition-all ease-in-out duration-200;
+}
+

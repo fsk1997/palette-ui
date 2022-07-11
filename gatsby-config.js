@@ -25,7 +25,24 @@ module.exports = {
     `gatsby-plugin-netlify`,
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `avif`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [576, 768, 922, 1140, 1400],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        }
+      }
+    },
     "gatsby-transformer-sharp",
     'gatsby-plugin-postcss',
     {

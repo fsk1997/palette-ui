@@ -8,7 +8,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Switzer", 'serif'],
+        sans: ["Switzer", "serif"],
+      },
+      screens: {
+        sm: "576px",
+        md: "768px",
+        lg: "922px",
+        xl: "1140px",
+        "2xl": "1400px",
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+        },
       },
     },
   },
