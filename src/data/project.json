@@ -1,0 +1,83 @@
+
+[
+  {
+    "title": "Draggable Dialogue",
+    "slug": "draggable-dialogue",
+    "description": "Minimal recreation of Figma's comment component.",
+    "created_at": "18th June 2022",
+    "last_updated": "19th June 2022",
+    "status": "beta",
+    "version": "v0.3",
+    "mode": "desktop"
+  },
+  {
+    "title": "Animated Gradient SVG Button",
+    "slug": "animated-gradient-svg-button",
+    "description": "Animate SVG button with fading gradient.Beautiful and subtle micro-interaction inspired by dating app TanTan's bottom tab navigator's button icon.",
+    "created_at": "15th June 2022",
+    "last_updated": "15th June 2022",
+    "status": "production",
+    "version": "v1.0",
+    "mode": "desktop"
+  },
+  {
+    "title": "Dialog Height Transition",
+    "slug": "dialog-height-transition",
+    "description": "Change dialog height based on content. Inspired by About This Mac tabbed dialogue.",
+    "created_at": "28th May 2022",
+    "last_updated": "28th May 2022",
+    "status": "alpha",
+    "version": "v0.1",
+    "mode": "desktop"
+  },
+  {
+    "title": "Sticky Header Links",
+    "slug": "sticky-header-links",
+    "description": "Make a portion of hero section sticky when scrolled.",
+    "created_at": "21st May 2022",
+    "last_updated": "21st May 2022",
+    "status": "production",
+    "version": "v1.0",
+    "mode": "desktop"
+  },
+  {
+    "title": "Graduated Frosty Overlay",
+    "slug": "graduated-frosty-overlay",
+    "description": "Graduated frosty overlay on images. Inspired by AppleTV app.",
+    "created_at": "13th May 2022",
+    "last_updated": "13th May 2022",
+    "status": "production",
+    "version": "v1.0",
+    "mode": "desktop"
+  },
+  {
+    "title": "Loaded Image Transition",
+    "slug": "loaded-image-transition",
+    "description": "Transition from plain background colour to image using image tag onload event.",
+    "created_at": "1st May 2022",
+    "last_updated": "1st May 2022",
+    "status": "production",
+    "version": "v1.0",
+    "mode": "desktop"
+  },
+  {
+    "title": "Bottom Tab Navigator",
+    "slug": "bottom-tab-navigator",
+    "description": "A simple tab bar on the bottom of the screen that lets you switch between different routes.",
+    "created_at": "7th April 2022",
+    "last_updated": "7th April 2022",
+    "status": "alpha",
+    "version": "v0.1",
+    "mode": "mobile"
+  },
+  {
+    "title": "iOS Header",
+    "slug": "ios-header",
+    "description": "Large collapsible animated title just like native iOS apps, implemented using React Hooks and CSS.",
+    "created_at": "26th March 2022",
+    "last_updated": "26th March 2022",
+    "status": "beta",
+    "version": "v0.1",
+    "mode": "mobile"
+  }
+]
