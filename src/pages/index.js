@@ -7,7 +7,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo />
-      <p>this is some content</p>
+      <section className="container">
+        <p>this is some content</p>
+      </section>
     </Layout>
   );
 };
