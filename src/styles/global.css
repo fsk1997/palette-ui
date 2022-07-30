@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 
+@layer utilities {
+    .transition-mid{
+        @apply  transition-all ease-in-out duration-200;
+    }
+}
+
 .newBody{
+    @apply transition-mid;
     .header-logo{
         content:"";
         @apply bg-no-repeat bg-contain bg-center;
@@ -34,17 +41,52 @@
     }
 }
 
-/* *{
-    @apply transition-all ease-in-out duration-200;
-} */
-
-.ol{
-    outline: 1px solid rgba(255,0,0,0.6);
+.bg-hero{
+    @apply bg-gradient-to-tr from-plum-4 to-plum-1 transition-mid;
 }
 
+.bg-ring-wrapper{
+    mask-image: linear-gradient(to top, black, transparent);
+    .bg-ring{
+        @apply transition-mid absolute -top-5 rounded-full h-[120rem] w-[120rem];
+        background-size: 100% 100%;
+        background-position: 50% 50%;
+        &:nth-child(1){
+            @apply right-[0rem];
+        }
+        &:nth-child(2){
+            @apply right-[6rem];
+        }
+        &:nth-child(3){
+            @apply right-[12rem];
+        }
+    }
+}
+.newBody{
+    .bg-ring{
+        background: radial-gradient(circle at center, transparent 70.4%, #CF91D8 30%);
+    }
+    &.dark{
+        .bg-ring{
+            background: radial-gradient(circle at center, transparent 70.4%, #883894 30%);
+        }
+    }
+}
+
+
+/* *{
+    outline: 1px solid rgba(255,0,0,0.6);
+} */
+
 .btn {
-    @apply rounded-lg px-4 py-3 font-semibold; 
+    @apply rounded-lg px-5 py-3 font-semibold transition-mid;
+    &:hover{
+        @apply brightness-125;
+    } 
     &.btn-plum{
-        @apply bg-plum-8 text-slate-1;
+        @apply bg-plum-10 text-slate-1 hover:bg-plum-11;
+        &.btn-outline{
+            @apply bg-transparent border-2 border-plum-8 text-plum-11 hover:border-plum-8;
+        }
     }
 }
