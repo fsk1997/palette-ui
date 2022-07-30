@@ -53,20 +53,20 @@ const Layout = ({ children }) => {
       <main>
         <section className="bg-hero bg-plum-4 -mt-28 pt-32 lg:pt-28 pb-10 lg:pb-20">
           <div className="container flex flex-col lg:flex-row items-center">
-            <div className="w-full lg:w-1/2 relative z-[1] mt-6">
-              <h1 className="text-slate-8 mix-blend-luminosity text-[3.875rem] tracking-[-0.05rem] leading-[110%] font-medium whitespace-nowrap">
+            <div className="mix-blend-luminosity w-full lg:w-1/2 relative z-[1] mt-6">
+              <h1 className="text-slate-8 dark:brightness-150 text-[3.5rem] lg:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[110%] font-medium lg:whitespace-nowrap drop-shadow-2xl shadow-plum-8">
                 <span className="inline-block">Open Source,</span>
                 <br/>
                 <span className="inline-block ml-[9.5rem]">Plug-and-Play</span>
                 <br/>
                 <span className="inline-block ml-12">React UI Components</span>
               </h1>
-              <div className="">
+              <div className="mix-blend-normal">
                 <p className="lg:text-xl my-6">
                   Experimental React UI Components with Plain CSS
                 </p>
                 <div className="flex items-center justify-start gap-4">
-                  <button>button 1</button>
+                  <button className="btn btn-plum">button 1</button>
                   <button>button 2</button>
                 </div>
               </div>

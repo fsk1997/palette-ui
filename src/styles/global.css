@@ -34,10 +34,17 @@
     }
 }
 
-*{
+/* *{
     @apply transition-all ease-in-out duration-200;
-}
+} */
 
 .ol{
     outline: 1px solid rgba(255,0,0,0.6);
+}
+
+.btn {
+    @apply rounded-lg px-4 py-3 font-semibold; 
+    &.btn-plum{
+        @apply bg-plum-8 text-slate-1;
+    }
 }
