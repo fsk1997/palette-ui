@@ -306,11 +306,11 @@
      --font-blackitalic: 'Switzer-BlackItalic', var(--font-fallback);
 }
 
-@layer base {
-     html {
-          font-family: var(--font-regular);
+/* @layer base { */
+     body {
+          font-family: 'Switzer-Regular', var(--font-fallback);
      }
-}
+/* } */
 
 @layer utilities {
      .font-thin {

@@ -21,7 +21,7 @@ module.exports = {
     //     trackingId: "",
     //   },
     // },
-    `gatsby-plugin-dark-mode`,
+    // `gatsby-plugin-dark-mode`,
     `gatsby-plugin-netlify`,
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",

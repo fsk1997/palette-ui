@@ -7,9 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Switzer", "serif"],
+      colors: {
+        'brand': {
+          magenta: "EC61EC",
+        },
       },
+      // fontFamily: {
+      //   sans: ["Switzer", "serif"],
+      // },
       screens: {
         sm: "576px",
         md: "768px",

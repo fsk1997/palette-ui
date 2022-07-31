@@ -15,15 +15,33 @@ const IndexPage = () => {
   const ref3 = useRef(null);
 
   const [image, setImage] = useState("image1");
-  // const { scrollY } = useScroll()
-
-  // const isInView1 = useInView(ref1)
-  // const isInView2 = useInView(ref1)
-  // const isInView3 = useInView(ref1)
-
-  // useEffect(()=>{
-  //     console.log("Element is in view", isInView1)
-  // },[isInView1])
+  
+  const sectionHow = [
+    {
+      id:1,
+      title:"Check dependencies on each project",
+      description:"Some projects might require dependencies for better code and performance optimisation. Be sure to check them at the bottom of each project page.",
+      image:"https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif",
+    },
+    {
+      id:2,
+      title:"Visit the repository folder on Github",
+      description:"On each project’s repository, you will find a index.js file and index.module.css.",
+      image:"https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif",
+    },
+    {
+      id:3,
+      title:"Copy and paste the code",
+      description:"After installing the necessary dependencies, copy the React code and its corresponding stylesheet to your own project. Extend or further optimise the code if needed.",
+      image:"https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif",
+    },
+    {
+      id:4,
+      title:"Modify your CSS",
+      description:"PaletteUI borrows the idea of HeadlessUI. Every project are written in plain CSS so you can adapt it to any preferred CSS frameworks or design system. ",
+      image:"https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif",
+    },
+  ]
 
   return (
     <Layout>
@@ -132,49 +150,46 @@ const IndexPage = () => {
         </Swiper>
       </Section>
       <Section container={false} id={"How To use"} className="py-24">
-        <SectionHeading
-          headingText={"How To use"}
-          headingDescription={[
-            `Palette UI is infinitely customisable and extendable. Start integrating components with these few steps.`,
-          ]}
-        />
+        <Section className="py-24">
+          <SectionHeading
+            headingText={"How To use"}
+            headingDescription={[
+              `Palette UI is infinitely customisable and extendable. Start integrating components with these few steps.`,
+            ]}
+          />
+        </Section>
         <div className="flex flex-row space-x-8 relative">
           <div className="w-1/2 h-full">
-            <div className="flex items-center h-screen bg-plum-3">
-              <motion.div
-                className="h-auto bg-plum-8"
-                onViewportEnter={() => setImage("image1")}
-              >
-                item 1
-              </motion.div>
-            </div>
-            <div className="flex items-center h-screen bg-plum-5">
-              <motion.div
-                className="h-auto bg-plum-8"
-                onViewportEnter={() => setImage("image2")}
-              >
-                item 1
-              </motion.div>
-            </div>
+            {sectionHow.map((item)=>{return(
+              <div key={item.id} className="p-8 flex items-center h-screen">
+                <motion.div
+                  className="flex flex-row space-x-4 h-auto"
+                  onViewportEnter={() => setImage(item.id)}
+                >
+                  <div className="font-semibold text-sm h-8 w-8 rounded-full bg-slate-1 border border-plum-9 text-plum-9 flex items-center justify-center leading-tight">
+                    {item.id}
+                  </div>
+                  <div className="flex flex-col w-full space-y-1">
+                    <h4 className="text-2xl text-plum-12 font-medium">{item.title}</h4>
+                    <p className="text-slate-11">{item.description}</p>
+                  </div>
+                </motion.div>
+              </div>
+            )})}
           </div>
           <div className="sticky top-0 w-1/2 h-screen h-min-screen py-12">
-            <div className="h-full w-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-xl flex items-center justify-center">
-              {image == "image1" ? (
-                <img
-                  className=""
-                  src="https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif"
-                />
-              ) : (
-                ""
-              )}
-              {image == "image2" ? (
-                <img
-                  className="w-full"
-                  src="https://i.pinimg.com/originals/b7/fb/80/b7fb80122cf46d0e584f3a0768aef282.gif"
-                />
-              ) : (
-                ""
-              )}
+            <div className="aspect-square bg-gradient-to-t from-plum-11 to-plum-12 rounded-l-xl overflow-hidden how-image-wrapper-shadow">
+              {sectionHow.map((item)=>{return(
+                image === item.id  ? (
+                  <img
+                    className="aspect-square pl-12 pt-12 rounded-tl-xl overflow-hidden how-image-shadow"
+                    key={item.id}
+                    src={item.image}
+                  />
+                ) : (
+                  null
+                )
+              )})}
             </div>
           </div>
         </div>

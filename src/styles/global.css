@@ -78,6 +78,15 @@ html {
     @apply antialiased scroll-smooth;
 }
 
+.how-image-wrapper-shadow::before, .how-image-shadow::before{
+    content:""
+    @apply absolute top-0 left-0 h-full w-full;
+
+}
+.how-image-wrapper-shadow::before{
+    @apply -translate-x-12 -translate-y-12 rounded-full bg-brand-magenta opacity-[15];
+}
+
 
 /* *{
     outline: 1px solid rgba(255,0,0,0.6);
