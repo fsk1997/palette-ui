@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 
-const NotFound = () => {
+const Project = () => {
     return (
         <Layout>
             <Seo/>
@@ -11,4 +11,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default Project

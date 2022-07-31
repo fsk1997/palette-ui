@@ -88,6 +88,19 @@ html {
 }
 
 
+.newsletter-items-wrapper{
+    mask-image: linear-gradient(to right, black, transparent);
+}
+
+.footer-newsletter-wrapper{
+    @apply relative;
+
+    &::before{
+        content:"";
+        @apply absolute left-0 right-0 bottom-0 w-full h-1/2 bg-slate-3;
+    }
+}
+
 /* *{
     outline: 1px solid rgba(255,0,0,0.6);
 } */
