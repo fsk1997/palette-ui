@@ -48,17 +48,18 @@
 .bg-ring-wrapper{
     mask-image: linear-gradient(to top, black, transparent);
     .bg-ring{
-        @apply transition-mid absolute -top-5 rounded-full h-[120rem] w-[120rem];
+        @apply transition-mid absolute -top-5 rounded-full h-[150vw] w-[150vw];
         background-size: 100% 100%;
         background-position: 50% 50%;
+        /* filter: blur(3px); */
         &:nth-child(1){
             @apply right-[0rem];
         }
         &:nth-child(2){
-            @apply right-[6rem];
+            @apply right-[10rem];
         }
         &:nth-child(3){
-            @apply right-[12rem];
+            @apply right-[20rem];
         }
     }
 }
@@ -71,6 +72,10 @@
             background: radial-gradient(circle at center, transparent 70.4%, #883894 30%);
         }
     }
+}
+
+html {
+    @apply antialiased scroll-smooth;
 }
 
 
