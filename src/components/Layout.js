@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import ThemeSwitch from "./ThemeSwitch";
 import { LogoLink } from "./Logo";
 import { useLocation } from "@reach/router";
 import { Link } from "gatsby";
-import { ThemeToggler } from "gatsby-plugin-dark-mode";
 import { Sun, Coffee, SmileySticker, Sparkle, InstagramLogo, LinkedinLogo, GithubLogo, TwitterLogo, Envelope } from "phosphor-react";
 import Tippy from "@tippyjs/react";
 import { useRecoilState } from "recoil";
