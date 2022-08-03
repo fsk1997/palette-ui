@@ -1,13 +1,13 @@
 import React from 'react'
-import Layout from "../components/Layout";
+import HomeLayout from "../components/HomeLayout";
 import Seo from "../components/Seo";
 
 const NotFound = () => {
     return (
-        <Layout>
+        <HomeLayout>
             <Seo/>
             <div>hello</div>
-        </Layout>
+        </HomeLayout>
     )
 }
 

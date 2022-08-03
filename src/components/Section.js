@@ -21,7 +21,7 @@ export const SectionHeading = ({ headingText, headingDescription }) => {
   return (
     <div className="flex flex-col space-y-1">
       <div className="flex flex-row items-center space-x-2">
-        <hr className="w-6 border-2 border-t border-plum-11" />
+        <hr className="w-6 border-t-2 border-plum-11" />
         <h2 className="uppercase tracking-wider font-semibold text-plum-11">
           {headingText}
         </h2>

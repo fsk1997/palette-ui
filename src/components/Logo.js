@@ -6,7 +6,7 @@ const imageConfig = {
   alt: "PaletteUI Logo",
   loading: "eager",
   backgroundColor: "transparent",
-  draggable: false,
+  draggable: false
 };
 
 export const LogoLightLight = () => {
@@ -27,16 +27,48 @@ export const LogoLightDark = () => {
     />
   );
 };
-
-export const LogoLink = ({className, sizeClassName}) => {
+export const LogoLightIcon = () => {
+  return (
+    <StaticImage
+      {...imageConfig}
+      src="../images/logo/icon-light.png"
+      className="logo-light-icon object-fit"
+    />
+  );
+};
+export const LogoDarkIcon = () => {
+  return (
+    <StaticImage
+      {...imageConfig}
+      src="../images/logo/icon-dark.png"
+      className="logo-dark-icon object-fit"
+    />
+  );
+};
+export const LogoLink = ({ className, type }) => {
   return (
     <Link
       to="/"
       title="Home - PaletteUI"
-      className={`header-logo flex items-center justify-start ${className} ${sizeClassName ? sizeClassName : "h-10 w-32"}`}
+      className={`
+        header-logo flex items-center justify-start ${className} 
+        ${type === "full" && "h-10 w-32"} 
+        ${type === "icon" && "h-[1.875rem] w-[1.875rem]"}`}
     >
-      <LogoLightDark />
-      <LogoLightLight />
+      {type === "full" && (
+        <>
+          <LogoLightDark />
+          <LogoLightLight />
+        </>
+      )}
+      {type === "icon" && (
+        <>
+          <LogoLightIcon />
+        </>
+      )}
     </Link>
   );
+};
+LogoLink.defaultProps = {
+  type: "full",
 };
