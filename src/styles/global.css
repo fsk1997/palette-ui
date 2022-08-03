@@ -115,5 +115,8 @@ html {
         &.btn-outline{
             @apply bg-transparent border-2 border-plum-8 text-plum-11 hover:border-plum-8;
         }
+        &.btn-dark{
+            @apply bg-plum-12 hover:bg-plum-11;
+        }
     }
 }
