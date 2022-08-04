@@ -1,29 +1,46 @@
 import React, { useEffect, useState, useRef } from "react";
 import { LogoLink } from "./Logo";
 import { Link } from "gatsby";
-import { Sun, Moon, Coffee, SmileySticker, Sparkle, InstagramLogo, LinkedinLogo, GithubLogo, TwitterLogo, Envelope } from "phosphor-react";
+import {
+  Sun,
+  Moon,
+  Coffee,
+  SmileySticker,
+  Sparkle,
+  InstagramLogo,
+  LinkedinLogo,
+  GithubLogo,
+  TwitterLogo,
+  Envelope
+} from "phosphor-react";
 import Tippy from "@tippyjs/react";
 import { useRecoilState } from "recoil";
-import darkModeState from "../hooks/darkModeState"
+import darkModeState from "../hooks/darkModeState";
 import { StaticImage } from "gatsby-plugin-image";
-import { Section, SectionHeading } from "./Section"
+import { Section, SectionHeading } from "./Section";
 
-const Layout = ({ children, heroFirstLine, heroSecondLine, heroThirdLine, heroDescription, heroButtonElement  }) => {
+const Layout = ({
+  children,
+  heroFirstLine,
+  heroSecondLine,
+  heroThirdLine,
+  heroDescription,
+  heroButtonElement
+}) => {
+  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+  const [compactHeader, setCompactHeader] = useState(false);
 
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState)
-  const [compactHeader, setCompactHeader] = useState(false)
+  const sectionHero = useRef(null);
 
-  const sectionHero = useRef(null)
-
-  useEffect(()=>{
-    document.addEventListener('scroll', ()=>{
-      if(window.scrollY >= sectionHero.current.clientHeight){
-        setCompactHeader(true) 
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      if (window.scrollY >= sectionHero.current.clientHeight) {
+        setCompactHeader(true);
       } else {
-        setCompactHeader(false) 
+        setCompactHeader(false);
       }
-    })
-  },[])
+    });
+  }, []);
 
   const navIconConfig = {
     size: 20,
@@ -67,23 +84,43 @@ const Layout = ({ children, heroFirstLine, heroSecondLine, heroThirdLine, heroDe
       title: "Email",
       url: "mailto:saykiat.fong@gmail.com",
       icon: <Envelope size={24} />
-    },
-  ]
+    }
+  ];
 
   return (
-    <div className={`${darkMode ? 'dark' : 'light'} newBody bg-slate-1 text-slate-12 relative min-h-screen`}>
-      
-      <header className={`${compactHeader ? "opacity-60 py-5" : "lg:py-9 backdrop-blur-none bg-transparent shadow-none"} py-4 fixed top-0 left-0 right-0 z-[5] transition-mid`}>
+    <div
+      className={`${
+        darkMode ? "dark" : "light"
+      } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
+    >
+      <header
+        className={`${
+          compactHeader
+            ? "opacity-60 py-5"
+            : "lg:py-9 backdrop-blur-none bg-transparent shadow-none"
+        } py-4 fixed top-0 left-0 right-0 z-[5] transition-mid`}
+      >
         <nav className="container flex item-center justify-between">
-          <LogoLink type={compactHeader ? "icon" : "full"}/>
+          <LogoLink type={compactHeader ? "icon" : "full"} />
           <div className="flex items-center space-x-4">
             <Tippy content={darkMode ? "Light Mode" : "Dark Mode"}>
-              <button className="outline-none bg-transparent" onClick={() => setDarkMode(!darkMode)}>
-                {darkMode ? <Sun {...navIconConfig} /> : <Moon {...navIconConfig} />}
+              <button
+                className="outline-none bg-transparent"
+                onClick={() => setDarkMode(!darkMode)}
+              >
+                {darkMode ? (
+                  <Sun {...navIconConfig} />
+                ) : (
+                  <Moon {...navIconConfig} />
+                )}
               </button>
             </Tippy>
             <Tippy content="Github Repository">
-              <a href="https://github.com/fsk1997/palette-ui" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/fsk1997/palette-ui"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <GithubLogo {...navIconConfig} />
               </a>
             </Tippy>
@@ -94,21 +131,27 @@ const Layout = ({ children, heroFirstLine, heroSecondLine, heroThirdLine, heroDe
       <main>
         <section ref={sectionHero} className="bg-hero relative pt-32 pb-20">
           <div className="bg-ring-wrapper">
-            {[...Array(3)].map((e, i) => {return <div className="bg-ring"></div>})}
+            {[...Array(3)].map((e, i) => {
+              return <div className="bg-ring"></div>;
+            })}
           </div>
 
           <div className="container flex flex-col lg:flex-row items-center">
             <div className="mix-blend-luminosity w-full lg:w-1/2 relative z-[1] lg:-mt-14 mb-6 xl:mb-0">
               <h1 className="flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[60%] font-medium lg:whitespace-nowrap transition-mid dark:brightness-150">
-                <span className="inline-block -ml-[10rem] lg:ml-0">{heroFirstLine}</span>
-                <br/>
-                <span className="inline-block ml-[3rem] sm:ml-[9.5rem]">{heroSecondLine}</span>
-                <br/>
+                <span className="inline-block -ml-[10rem] lg:ml-0">
+                  {heroFirstLine}
+                </span>
+                <br />
+                <span className="inline-block ml-[3rem] sm:ml-[9.5rem]">
+                  {heroSecondLine}
+                </span>
+                <br />
                 <span className="inline-block ml-12">{heroThirdLine}</span>
               </h1>
             </div>
             <div className="w-full lg:w-1/2 relative z-0">
-              <StaticImage src="../images/hero-image.png" className="w-full"/>
+              <StaticImage src="../images/hero-image.png" className="w-full" />
             </div>
           </div>
           <div className="container relative z-[1] lg:-mt-32">
@@ -122,48 +165,72 @@ const Layout = ({ children, heroFirstLine, heroSecondLine, heroThirdLine, heroDe
             </div>
           </div>
         </section>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </main>
 
       <footer className="">
-        <div className="footer-newsletter-wrapper">
-          <Section id={"Newsletter"}>
-            <div className="flex items-center justify-end rounded-xl overflow-hidden bg-plum-3 relative px-16 py-[144px]">
-              <div className="lg:w-1/2 relative z-[2]">
-                  <SectionHeading
-                  headingText={"Newsletter"}
-                  headingDescription={[`Get updates straight to your inbox.`]}
-                />
+        <Section id={"Newsletter"} className="relative z-[1]">
+          <div className="flex items-center lg:justify-end rounded-3xl relative overflow-hidden bg-plum-3 relative px-16 py-[144px]">
+            <div className="absolute z-0 top-0 left-8 md:left-16 h-full w-full mix-blend-luminosity opacity-[15%] dark:opacity-100">
+              <div className="h-full w-full relative text-5xl flex flex-col text-slate-8 font-medium">
+                {[...Array(2)].map((e, i) => {
+                  return (
+                    <div className="newsletter-textgroup flex flex-col space-y-6 py-[0.58rem]">
+                      <p>Major Release</p>
+                      <p>Project Enhancements</p>
+                      <p>Community Featuring</p>
+                      <p>Creative Use Cases</p>
+                      <p>Announcement</p>
+                      <p>New components</p>
+                    </div>
+                  );
+                })}
               </div>
-              <div className="newsletter-textgroup-wrapper absolute z-[1] top-0 left-16 text-5xl flex flex-col space-y-6 text-slate-8 font-medium mix-blend-luminosity newsletter-items-wrapper">
-                {[...Array(2)].map((e, i) => {return (
-                  <div className="newsletter-textgroup flex flex-col space-y-6">
-                    <p>Major Release</p>
-                    <p>Project Enhancements</p>
-                    <p>Community Featuring</p>
-                    <p>Creative Use Cases</p>
-                    <p>Announcement</p>
-                    <p>New components</p>
-                  </div>
-                )})}
-              </div>
+            </div>
+            <div className="absolute z-0 top-12 left-0 w-[75vw] h-[75vw] mix-blend-color-burn rounded-full blur-3xl bg-brand-magenta"></div>
+            <div className="absolute z-0 -top-24 -right-24 w-[40vw] h-[40vw] opacity-40 rounded-full blur-3xl bg-plum-2"></div>
+
+            <div className="lg:w-2/5 xl:w-1/3 relative z-[1]">
+              <SectionHeading
+                headingText={"Newsletter"}
+                headingDescription={[`Get updates straight to your inbox.`]}
+              />
+            </div>
           </div>
         </Section>
-        </div>
-        <div className="bg-slate-3">
-          <div className="container py-24">
-            <p className="text-center text-slate-9 mb-2">Designed and developed by <span className="font-semibold">SayKiat</span></p>
-            <nav className="flex flex-row items-center justify-center space-x-5">
-              {footerNav.map((item)=>{return(
-                <Tippy key={item.id} content={item.title}>
-                  <a href={item.url} target="_blank" className="text-slate-11 hover:text-slate-12">
-                    {item.icon}
-                  </a>
-                </Tippy>
-              )})}
-            </nav>
+        
+        <div className="relative z-0 -mt-40 border-t border-slate-4">
+          <div className="absolute w-full h-full top-0 left-0 footer-navlinks-section">
+            <StaticImage src="../images/bg-gradient-light.png"  className="h-full bg-gradient-light" alt="background image"/>
+            <StaticImage src="../images/bg-gradient-dark.png"  className="h-full bg-gradient-dark" alt="background image"/>
+          </div>
+          <div className="relative z-0 container pt-80 pb-24">
+            <div className="relative mx-auto flex flex-col w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3">
+              <div className="absolute -top-28 md:-top-24 left-0 right-0 mx-auto w-full h-full">
+                <StaticImage src="../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
+              </div>
+
+              <p className="relative text-center text-slate-9 mb-2">
+                Designed and developed by{" "}
+                <span className="font-semibold">SayKiat</span>
+              </p>
+              <nav className="relative flex flex-row items-center justify-center space-x-5">
+                {footerNav.map(item => {
+                  return (
+                    <Tippy key={item.id} content={item.title}>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        className="text-slate-11 hover:text-slate-12"
+                      >
+                        {item.icon}
+                      </a>
+                    </Tippy>
+                  );
+                })}
+              </nav>
+            
+            </div>
           </div>
         </div>
       </footer>

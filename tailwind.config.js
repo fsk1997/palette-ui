@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         'brand': {
-          magenta: "EC61EC",
+          magenta: "#EC61EC",
         },
       },
       // fontFamily: {

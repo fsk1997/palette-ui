@@ -5,7 +5,8 @@
 
 @layer utilities {
     .transition-mid{
-        @apply  transition-all ease-in-out duration-200;
+        @apply  transition-all duration-200;
+        transition-timing-function: cubic-bezier(.75,0,.51,.99);
     }
 }
 
@@ -26,24 +27,40 @@ html {
             background-color: transparent !important;
         }
     }
-    &.dark .header-logo{
-        .logo-light-light{
-            display: block;
-            opacity: 100%;
+    &.dark {
+        .header-logo{
+            .logo-light-light{
+                display: block;
+            }
+            .logo-light-dark{
+                display: none;
+            }
         }
-        .logo-light-dark{
-            display: none;
-            opacity: 0%;
+        .footer-navlinks-section {
+            .bg-gradient-light{
+                display: none;
+            }
+            .bg-gradient-dark{
+                display: block;
+            }
         }
     }
-    &.light .header-logo{
-        .logo-light-light{
-            display: none;
-            opacity: 0%;
+    &.light {
+        .header-logo{
+            .logo-light-light{
+                display: none;
+            }
+            .logo-light-dark{
+                display: block;
+            }
         }
-        .logo-light-dark{
-            display: block;
-            opacity: 100%;
+        .footer-navlinks-section {
+            .bg-gradient-light{
+                display: block;
+            }
+            .bg-gradient-dark{
+                display: none;
+            }
         }
     }
 }
@@ -96,35 +113,21 @@ html {
 
 
 /* Newsletter Section */
-.newsletter-items-wrapper{
-    mask-image: linear-gradient(to right, black, transparent);
-}
 
-.footer-newsletter-wrapper{
+/* .footer-newsletter-wrapper{
     @apply relative;
 
     &::before{
         content:"";
         @apply absolute left-0 right-0 bottom-0 w-full h-1/2 bg-slate-3;
     }
-}
+} */
 
-.newsletter-textgroup-wrapper{
-    .newsletter-textgroup:nth-child(1){
-        animation: newsletter-textgroup-animate-1 10s linear infinite;
-        @apply transform;
-    }
-    .newsletter-textgroup:nth-child(2){
-        animation: newsletter-textgroup-animate-2 10s linear infinite;
-        @apply transform;
-    }
-    .newsletter-textgroup:nth-child(3){
-        animation: newsletter-textgroup-animate-3 10s linear infinite;
-        @apply transform;
-    }
+.newsletter-textgroup{
+    user-select: none;
+    animation: newsletter-textgroup-animate 10s linear infinite;
 }
-
-@keyframes "newsletter-textgroup-animate-1" {
+@keyframes "newsletter-textgroup-animate" {
     0% {
         transform: translateY(0%);
     }
@@ -132,14 +135,7 @@ html {
         transform: translateY(-100%);
     }
 }
-@keyframes "newsletter-textgroup-animate-2" {
-    0% {
-        transform: translateY(100%);
-    }
-    100%{
-        transform: translateY(-100%);
-    }
-}
+
 
 /* Utiliy */
 .btn {

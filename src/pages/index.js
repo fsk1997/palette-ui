@@ -48,7 +48,8 @@ const IndexPage = () => {
       heroSecondLine={"Plug-and-Play "} 
       heroThirdLine={"React UI Components"} 
       heroDescription={"Experimental React UI Components with Plain CSS"} 
-      heroButtonElement={<Link className="btn btn-plum" title="Explore All Projects">Explore All Projects</Link>}
+      heroButtonElement={<Link className="btn btn-plum" to="/project" title="Explore All Projects">Explore All Projects</Link>}
+      // TODO: To dynamically point the link to latest project
       >
 
       <Seo />
@@ -101,9 +102,10 @@ const IndexPage = () => {
                     style={{ paddingTop: "52.5%" }}
                   >
                     <StaticImage
-                      className="absolute top-0 left-0 bottom-0 right-0 w-full h-full"
+                      className="top-0 left-0 bottom-0 right-0 w-full h-full"
                       src="../images/project-card-placeholder.png"
                       alt="img"
+                      style={{position:"absolute"}}
                     />
                   </div>
                   <div className="flex flex-col space-y-3">
@@ -165,14 +167,14 @@ const IndexPage = () => {
         </Section>
         <div className="flex flex-row space-x-8 relative">
           <div className="relative w-2/5 h-full">
-            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-white via-white to-transparent"></div>
+            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-white via-white dark:from-slate-2 dark:via-slate-2 to-transparent"></div>
             {sectionHow.map((item)=>{return(
               <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
                 <motion.div
                   className="flex flex-row space-x-4 h-auto"
                   onViewportEnter={() => setImage(item.id)}
                 >
-                  <div className="font-semibold text-sm h-8 w-8 rounded-full bg-slate-1 border border-plum-9 text-plum-9 flex items-center justify-center leading-tight">
+                  <div className="font-semibold text-sm h-8 w-8 rounded-full bg-slate-2 border border-plum-9 text-plum-9 flex items-center justify-center leading-tight">
                     {item.id}
                   </div>
                   <div className="flex flex-col w-full space-y-1">
