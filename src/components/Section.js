@@ -17,7 +17,7 @@ Section.defaultProps = {
   container: true,
 };
 
-export const SectionHeading = ({ headingText, headingDescription }) => {
+export const SectionHeading = ({ headingText, headingDescription, headingDescriptionClassName }) => {
   return (
     <div className="flex flex-col space-y-1">
       <div className="flex flex-row items-center space-x-2">
@@ -26,9 +26,11 @@ export const SectionHeading = ({ headingText, headingDescription }) => {
           {headingText}
         </h2>
       </div>
-      <p className="lg:w-10/12 xl:w-7/12 text-2xl lg:text-3xl font-medium leading-9 lg:leading-10">
-        {headingDescription}
-      </p>
+      {headingDescription && 
+        <div className={`${headingDescriptionClassName} text-2xl lg:text-3xl font-medium leading-9 lg:leading-10`}>
+          {headingDescription}
+        </div>
+      }
     </div>
   );
 };

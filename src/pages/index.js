@@ -50,17 +50,20 @@ const IndexPage = () => {
       heroDescription={"Experimental React UI Components with Plain CSS"} 
       heroButtonElement={<Link className="btn btn-plum" title="Explore All Projects">Explore All Projects</Link>}
       >
+
       <Seo />
-      <Section id={"About"} className="pt-24 pb-12">
+
+      <Section id={"About"} className="pt-24 pb-16">
         <SectionHeading
           headingText={"About"}
           headingDescription={[`Palette UI is an `, <span className="text-plum-11">experimental UI component library</span>,` referencing unique design patterns on existing user interface. Build your next web application with our boilerplate React code and customise the CSS to your own need.`]}
+          headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 "}
         />
       </Section>
       <Section
         id={"Recent Projects"}
         container={false}
-        className="relative pt-12 pb-24 overflow-x-hidden"
+        className="relative overflow-x-hidden pb-12"
       >
         <div
           className="absolute h-full w-full top-0 left-0 bg-gradient-to-t from-plum-3 to-transparent"
@@ -148,19 +151,23 @@ const IndexPage = () => {
           })}
         </Swiper>
       </Section>
-      <Section container={false} id={"How To use"} className="py-24">
-        <Section className="py-24">
+      
+
+      <Section id={"How To use"} className="py-24">
+        <Section className="pb-12">
           <SectionHeading
             headingText={"How To use"}
             headingDescription={[
-              `Palette UI is infinitely customisable and extendable. Start integrating components with these few steps.`,
+              `Palette UI is customisable and extendable. Start integrating components with these few steps.`,
             ]}
+            headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 "}
           />
         </Section>
         <div className="flex flex-row space-x-8 relative">
-          <div className="w-1/2 h-full">
+          <div className="relative w-2/5 h-full">
+            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-white via-white to-transparent"></div>
             {sectionHow.map((item)=>{return(
-              <div key={item.id} className="p-8 flex items-center h-screen max-h-[42rem]">
+              <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
                 <motion.div
                   className="flex flex-row space-x-4 h-auto"
                   onViewportEnter={() => setImage(item.id)}
@@ -169,18 +176,18 @@ const IndexPage = () => {
                     {item.id}
                   </div>
                   <div className="flex flex-col w-full space-y-1">
-                    <h4 className="text-2xl text-plum-12 font-medium">{item.title}</h4>
+                    <h4 className="text-2xl text-plum-12 font-medium leading-tight">{item.title}</h4>
                     <p className="text-slate-11">{item.description}</p>
                   </div>
                 </motion.div>
               </div>
             )})}
           </div>
-          <div className="sticky top-0 bottom-0 right-0 w-1/2 h-full py-12">
-            <div className="flex items-end h-full bg-gradient-to-t pl-12 pt-12 from-plum-11 to-plum-12 rounded-l-xl overflow-hidden how-image-wrapper-shadow">
+          <div className="sticky top-0 w-3/5 h-full py-24">
+            <div className="flex items-end h-full bg-gradient-to-t pt-12 pl-12 from-plum-11 to-plum-12 rounded-3xl overflow-hidden how-image-wrapper-shadow">
               {sectionHow.map((item)=>{return(
                 image === item.id  ? (
-                  <div className="aspect-square w-full rounded-tl-lg overflow-hidden how-image-shadow">
+                  <div className="w-full rounded-tl-2xl overflow-hidden how-image-shadow">
                    {item.image}
                   </div>
                 ) : (
