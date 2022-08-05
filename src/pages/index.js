@@ -167,7 +167,7 @@ const IndexPage = () => {
         </Section>
         <div className="flex flex-row space-x-8 relative">
           <div className="relative w-2/5 h-full">
-            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-white via-white dark:from-slate-2 dark:via-slate-2 to-transparent"></div>
+            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-slate-2 via-slate-2 to-transparent"></div>
             {sectionHow.map((item)=>{return(
               <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
                 <motion.div

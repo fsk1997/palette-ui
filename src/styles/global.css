@@ -72,19 +72,28 @@ html {
 }
 
 .bg-ring-wrapper{
-    @apply  absolute z-0 top-0 left-0 w-full h-full overflow-hidden opacity-20 lg:opacity-100;
-    mask-image: linear-gradient(to top, black, transparent);
+    @apply  absolute z-0 top-0 left-0 w-full h-full overflow-hidden opacity-20 lg:opacity-90;
+    mask-image: linear-gradient(to top, black, black, transparent);
     .bg-ring{
         @apply transition-mid absolute -top-5 rounded-full h-[250vw] w-[250vw] lg:h-[150vw] lg:w-[150vw];
         background-size: 100% 100%;
         background-position: 50% 50%;
         &:nth-child(1){
-            @apply right-[0rem];
+            @apply right-[-20rem];
         }
         &:nth-child(2){
-            @apply right-[10rem];
+            @apply right-[-14rem];
         }
         &:nth-child(3){
+            @apply right-[-7rem];
+        }
+        &:nth-child(4){
+            @apply right-[0rem];
+        }
+        &:nth-child(5){
+            @apply right-[8rem];
+        }
+        &:nth-child(6){
             @apply right-[20rem];
         }
     }
