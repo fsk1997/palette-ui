@@ -116,10 +116,7 @@ html {
         }
         &:nth-child(5){
             @apply right-[8rem];
-        }
-        &:nth-child(6){
-            @apply right-[20rem];
-        }
+        } 
     }
 }
 .newBody{

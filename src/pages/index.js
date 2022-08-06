@@ -167,33 +167,57 @@ const IndexPage = () => {
           />
         </Section>
         <div className="flex flex-row space-x-8 relative">
-          <div className="relative w-2/5 h-full">
-            <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-slate-2 via-slate-2 to-transparent"></div>
+          <div className="relative w-full lg:w-2/5 h-full">
+            <div className="hidden lg:block sticky top-0 z-[2] w-full h-36 bg-gradient-to-b from-slate-2 via-slate-2 to-transparent"></div>
             {/* <div className={`${showImage ? "opacity-100" : "opacity-0"} transition-[opacity] duration-300 ease-in z-[-1] sticky top-0 left-0`}>
                 <Blur colorClassName="bg-plum-3"
                 />
             </div> */}
             {sectionHow.map((item)=>{return(
-              <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
-                <motion.div
-                  className="flex flex-row space-x-4 h-auto"
-                  onViewportEnter={() => {setImage(item.id)}}
-                >
-                  <div className="font-semibold text-sm h-8 w-8 rounded-full bg-slate-2 border border-plum-9 text-plum-9 flex items-center justify-center leading-tight">
-                    {item.id}
+              <div className="px-4 lg:px-0 flex flex-col space-y-6 pb-16 lg:pb-0">
+                <div key={item.id} className="lg:p-8 flex items-center lg:h-screen max-h-[42rem]">
+                  <motion.div
+                    className="flex flex-row space-x-4 h-auto"
+                    onViewportEnter={() => {setImage(item.id)}}
+                  >
+                    <div className="flex flex-col space-y-4 py-1 relative">
+                      <div className={`relative z-[1] font-semibold text-sm h-6 w-6 rounded-full bg-slate-2 border-2 border-plum-9 ring-4 ring-slate-2 text-plum-9 flex items-center justify-center leading-tight transition-mid`}>
+                        {item.id}
+                      </div>
+                      <div className="absolute z-0 top-0 left-0 right-0 w-full h-screen flex justify-center">
+                        <div className={`transition-mid ml-1 w-1 h-full border-l ${item.id < 4 ? "border-plum-9" : "border-slate-2"}`}/>
+                      </div>
+
+                    </div>
+                    <div className="flex flex-col w-full space-y-1">
+                      <h4 className="text-2xl text-plum-12 font-medium leading-tight">{item.title}</h4>
+                      <p className="text-slate-11">{item.description}</p>
+                    </div>
+                  </motion.div>
+                </div>
+                <div className="pl-10 block lg:hidden w-full">
+                  <div className={`shadow-2xl shadow-plum-7 px-12 pt-12 flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
+                    <motion.div 
+                      onViewportEnter={(e)=>{
+                        e.target.classList.add('translate-y-0');
+                        e.target.classList.remove('translate-y-24');
+                      }} 
+                      onViewportLeave={(e)=>{
+                        e.target.classList.remove('translate-y-0');
+                        e.target.classList.add('translate-y-24');
+                      }} 
+                      className={`transition-transform duration-300 ease-out w-full rounded-t-2xl overflow-hidden shadow-2xl shadow-plum-12`}>
+                      {item.image}
+                    </motion.div>
                   </div>
-                  <div className="flex flex-col w-full space-y-1">
-                    <h4 className="text-2xl text-plum-12 font-medium leading-tight">{item.title}</h4>
-                    <p className="text-slate-11">{item.description}</p>
-                  </div>
-                </motion.div>
+                </div>
               </div>
             )})}
           </div>
           <motion.div 
+            className="hidden lg:block sticky top-0 w-3/5 h-full py-24"
             onViewportEnter={()=>{setShowImage(true)}} 
             onViewportLeave={()=>{setShowImage(false)}} 
-            className={`sticky top-0 w-3/5 h-full py-24`}
           >
             <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transform-gpu transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
               {sectionHow.map((item)=>{return(

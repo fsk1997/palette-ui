@@ -143,7 +143,7 @@ const Layout = ({
         <header ref={sectionHero} className="container">
           <div className={`bg-hero relative py-28 ${bigCardClassName}`}>
             <div className="bg-ring-wrapper">
-              {[...Array(6)].map((e, i) => {
+              {[...Array(5)].map((e, i) => {
                 return <div className="bg-ring"></div>;
               })}
             </div>
