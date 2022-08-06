@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import slugify from "react-slugify";
-
+import { motion } from "framer-motion"
 export const Section = ({ children, className, container, id }) => {
   return (
     <section
@@ -18,11 +18,18 @@ Section.defaultProps = {
 };
 
 export const SectionHeading = ({ headingText, headingDescription, headingDescriptionClassName }) => {
+  
+  const [revealLine, setRevealLine] = useState(false)
+
   return (
-    <div className="flex flex-col space-y-1">
+    <motion.div 
+      onViewportEnter={()=>{setRevealLine(true)}} 
+      onViewportLeave={()=>{setRevealLine(false)}} 
+      className="flex flex-col space-y-1"
+    >
       <div className="flex flex-row items-center space-x-2">
-        <hr className="w-6 border-t-2 border-plum-11" />
-        <h2 className="uppercase tracking-wider font-semibold text-plum-11">
+        <hr className={`${revealLine ? "w-6" : "w-0"} transition-[width] duration-150 ease-out border-t-2 border-plum-11`} />
+        <h2 className={`${revealLine ? "tracking-wider" : "tracking-snug"} transition-all delay-75 duration-200 ease-out uppercase font-semibold text-plum-11`}>
           {headingText}
         </h2>
       </div>
@@ -31,6 +38,6 @@ export const SectionHeading = ({ headingText, headingDescription, headingDescrip
           {headingDescription}
         </div>
       }
-    </div>
+    </motion.div>
   );
 };

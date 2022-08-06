@@ -19,6 +19,7 @@ import darkModeState from "../hooks/darkModeState";
 import { StaticImage } from "gatsby-plugin-image";
 import { Section, SectionHeading } from "./Section";
 import { Blur } from "./Utils";
+import { motion, useInView } from "framer-motion";
 
 const Layout = ({
   children,
@@ -32,6 +33,7 @@ const Layout = ({
   const bigCardClassName = "overflow-hidden shadow-2xl shadow-plum-6 rounded-3xl border border-slate-2"
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
   const [compactNav, setCompactNav] = useState(false);
+  const [revealNewsletter, setRevealNewsletter] = useState(false)
 
   const sectionHero = useRef(null);
 
@@ -138,7 +140,7 @@ const Layout = ({
 
             <div className="px-8 flex flex-col lg:flex-row items-center">
               <div className="mix-blend-luminosity w-full lg:w-1/2 relative z-[1] lg:-mt-14 mb-6 xl:mb-0">
-                <h1 className="flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[60%] font-medium lg:whitespace-nowrap transition-mid dark:brightness-150">
+                <h1 className="flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[60%] font-medium lg:whitespace-nowrap transition-mid">
                   <span className="inline-block -ml-[10rem] lg:ml-0">
                     {heroFirstLine}
                   </span>
@@ -169,14 +171,17 @@ const Layout = ({
         <div>{children}</div>
       </main>
 
-      <footer>
+      <motion.footer 
+        onViewportEnter={()=>{setRevealNewsletter(true)}}
+        onViewportLeave={()=>{setRevealNewsletter(false)}}
+        >
         <Section id={"Newsletter"} className="relative z-[1]">
-          <div className={`flex items-center lg:justify-end relative bg-plum-3 px-16 py-[144px] ${bigCardClassName}`}>
+          <div className={`${revealNewsletter ? "translate-y-0" : "translate-y-[10vh]"} transition-transform delay-75 duration-500 ease-out flex items-center lg:justify-end relative bg-plum-3 px-16 py-[144px] ${bigCardClassName}`}>
             <div className="absolute z-0 top-0 left-8 md:left-16 h-full w-full mix-blend-luminosity opacity-[15%] dark:opacity-100">
               <div className="h-full w-full relative text-5xl flex flex-col text-slate-8 font-medium">
                 {[...Array(2)].map((e, i) => {
                   return (
-                    <div className="newsletter-textgroup flex flex-col space-y-6 py-[0.58rem]">
+                    <div className="newsletter-textgroup flex flex-col space-y-6 py-[0.6rem]">
                       <p>Major Release</p>
                       <p>Project Enhancements</p>
                       <p>Community Featuring</p>
@@ -233,7 +238,7 @@ const Layout = ({
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 };

@@ -10,10 +10,11 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import "swiper/css";
-import { InlineEmoji } from "../components/Utils";
+import { Blur, InlineEmoji } from "../components/Utils";
 
 const IndexPage = () => {
   const [image, setImage] = useState("image1");
+  const [showImage, setShowImage] = useState(false);
 
   const sectionHowImageClassName="w-full h-full object-cover"
   const sectionHow = [
@@ -172,7 +173,7 @@ const IndexPage = () => {
               <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
                 <motion.div
                   className="flex flex-row space-x-4 h-auto"
-                  onViewportEnter={() => setImage(item.id)}
+                  onViewportEnter={() => {setImage(item.id)}}
                 >
                   <div className="font-semibold text-sm h-8 w-8 rounded-full bg-slate-2 border border-plum-9 text-plum-9 flex items-center justify-center leading-tight">
                     {item.id}
@@ -185,11 +186,18 @@ const IndexPage = () => {
               </div>
             )})}
           </div>
-          <div className="sticky top-0 w-3/5 h-full py-24">
-            <div className="flex items-end h-full bg-gradient-to-t pt-12 pl-12 from-plum-11 to-plum-12 rounded-3xl overflow-hidden how-image-wrapper-shadow">
+          <motion.div 
+            onViewportEnter={()=>{setShowImage(true)}} 
+            onViewportLeave={()=>{setShowImage(false)}} 
+            className={`sticky top-0 w-3/5 h-full py-24`}
+          >
+            <Blur 
+              className={`${showImage ? "opacity-100" : "opacity-0"} transition-[opacity] duration-300 ease-in absolute z-[-1] top-0 left-0`} colorClassName="bg-plum-3"
+            />
+            <div className={`${showImage ? "translate-x-0 shadow-2xl shadow-plum-7 pt-12 pl-12" : "translate-x-[10vw]"} transform-gpu transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
               {sectionHow.map((item)=>{return(
                 image === item.id  ? (
-                  <div className="w-full rounded-tl-2xl overflow-hidden how-image-shadow">
+                  <div className="w-full rounded-tl-2xl overflow-hidden shadow-2xl shadow-plum-12">
                    {item.image}
                   </div>
                 ) : (
@@ -197,7 +205,7 @@ const IndexPage = () => {
                 )
               )})}
             </div>
-          </div>
+          </motion.div>
         </div>
       </Section>
      
