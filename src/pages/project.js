@@ -24,15 +24,12 @@ import { Popover } from "@headlessui/react";
 
 const Project = () => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
-    const [hideSidebar, setHideSidebar] = useState(false)
+  const [hideSidebar, setHideSidebar] = useState(false)
 
   const navIconConfig = {
     size: 20,
-    // weight: "light",
     className: "fill-plum-12"
   };
-
-  let [referenceElement, setReferenceElement] = useState();
 
   return (
     <main
@@ -44,9 +41,7 @@ const Project = () => {
       {/* <div className=""> */}
       <section className={`${hideSidebar ? "-translate-x-[300px]" : ""} transition-mid w-[300px] fixed z-[1] h-screen bg-slate-2 border-r border-slate-4 p-4 flex flex-col justify-between`}>
         <div className="flex flex-col space-y-5">
-          <header className="">
-            <LogoLink />
-          </header>
+          <LogoLink className={"logo-slide-in"}/>
           <hr className="border-slate-4" />
           <nav className="flex flex-col space-y-5">
             <Link to="/" title="target" className="font-medium text-slate-10">
@@ -100,7 +95,7 @@ const Project = () => {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button ref={setReferenceElement}>
+                <Popover.Button>
                   <Tippy content="Project Info">
                     <button className="btn btn-plum btn-dark">
                       <Info size={24} weight="regular" />

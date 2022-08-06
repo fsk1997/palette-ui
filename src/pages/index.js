@@ -10,10 +10,11 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import "swiper/css";
+import { InlineEmoji } from "../components/Utils";
 
 const IndexPage = () => {
   const [image, setImage] = useState("image1");
-  
+
   const sectionHowImageClassName="w-full h-full object-cover"
   const sectionHow = [
     {
@@ -57,7 +58,7 @@ const IndexPage = () => {
       <Section id={"About"} className="pt-24 pb-16">
         <SectionHeading
           headingText={"About"}
-          headingDescription={[`Palette UI is an `, <span className="text-plum-11">experimental UI component library</span>,` referencing unique design patterns on existing user interface. Build your next web application with our boilerplate React code and customise the CSS to your own need.`]}
+          headingDescription={[`Palette UI is an `, <span className="text-plum-11">experimental UI component library </span>,<InlineEmoji ariaLabel="books">📚</InlineEmoji>,` referencing unique design patterns on existing user interface. Build your next web application with our `, <span className="text-plum-11">boilerplate React code </span>, <InlineEmoji ariaLabel="atom">⚛️</InlineEmoji>,` and customise the CSS to your own need.`]}
           headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 "}
         />
       </Section>
@@ -98,11 +99,10 @@ const IndexPage = () => {
               <SwiperSlide>
                 <div className="group cursor-pointer transition-mid flex flex-col space-y-6">
                   <div
-                    className="transform-gpu transition-mid relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105"
-                    style={{ paddingTop: "52.5%" }}
+                    className="transform-gpu transition-mid relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105 pt-[52.5%]"
                   >
                     <StaticImage
-                      className="top-0 left-0 bottom-0 right-0 w-full h-full"
+                      className={`top-0 left-0 bottom-0 right-0 w-full h-full`}
                       src="../images/project-card-placeholder.png"
                       alt="img"
                       style={{position:"absolute"}}

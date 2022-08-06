@@ -6,4 +6,10 @@ export const Blur = ({className, sizeClassName, colorClassName}) => {
     )
 } 
 
+export const InlineEmoji = ({children, ariaLabel}) => {
+    return (
+        <span role="img" aria-label={ariaLabel}>{children}</span>
+    )
+}
+
 // absolute z-0 top-12 left-0 

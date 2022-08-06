@@ -30,41 +30,63 @@ html {
     &.dark {
         .header-logo{
             .logo-light-light{
-                display: block;
+                @apply block opacity-100;
             }
             .logo-light-dark{
-                display: none;
+                @apply hidden opacity-0;
             }
         }
         .footer-navlinks-section {
             .bg-gradient-light{
-                display: none;
+                @apply hidden opacity-0;
             }
             .bg-gradient-dark{
-                display: block;
+                @apply block opacity-100;
             }
         }
     }
     &.light {
         .header-logo{
             .logo-light-light{
-                display: none;
+                @apply hidden opacity-0;
             }
             .logo-light-dark{
-                display: block;
+                @apply block opacity-100;
             }
         }
         .footer-navlinks-section {
             .bg-gradient-light{
-                display: block;
+                @apply block opacity-100;
             }
             .bg-gradient-dark{
-                display: none;
+                @apply hidden opacity-0;
             }
         }
     }
 }
 
+.logo-slide-in{
+    animation: logo-slide-in 0.1s ease-in;
+}
+@keyframes "logo-slide-in" {
+    0% {
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+.logo-slide-out{
+    animation: logo-slide-out 0.1s ease-in;
+}
+@keyframes "logo-slide-out" {
+    0% {
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
 
 /* Hero Section */
 .bg-hero{
