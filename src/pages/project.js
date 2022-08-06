@@ -39,7 +39,7 @@ const Project = () => {
       } newBody bg-slate-1 text-slate-12 min-h-screen`}
     >
       <Seo />
-      {/* <div className=""> */}
+      
       <section
         className={`${
           hideSidebar ? "-translate-x-[300px]" : ""
@@ -86,6 +86,7 @@ const Project = () => {
           </a>
         </footer>
       </section>
+
       <section
         className={`${
           hideSidebar ? "ml-0" : "ml-[300px]"

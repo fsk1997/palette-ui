@@ -169,6 +169,10 @@ const IndexPage = () => {
         <div className="flex flex-row space-x-8 relative">
           <div className="relative w-2/5 h-full">
             <div className="sticky top-0 w-full h-36 bg-gradient-to-b from-slate-2 via-slate-2 to-transparent"></div>
+            {/* <div className={`${showImage ? "opacity-100" : "opacity-0"} transition-[opacity] duration-300 ease-in z-[-1] sticky top-0 left-0`}>
+                <Blur colorClassName="bg-plum-3"
+                />
+            </div> */}
             {sectionHow.map((item)=>{return(
               <div key={item.id} className="p-4 lg:p-8 flex items-center h-screen max-h-[42rem]">
                 <motion.div
@@ -191,14 +195,11 @@ const IndexPage = () => {
             onViewportLeave={()=>{setShowImage(false)}} 
             className={`sticky top-0 w-3/5 h-full py-24`}
           >
-            <Blur 
-              className={`${showImage ? "opacity-100" : "opacity-0"} transition-[opacity] duration-300 ease-in absolute z-[-1] top-0 left-0`} colorClassName="bg-plum-3"
-            />
-            <div className={`${showImage ? "translate-x-0 shadow-2xl shadow-plum-7 pt-12 pl-12" : "translate-x-[10vw]"} transform-gpu transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
+            <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transform-gpu transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
               {sectionHow.map((item)=>{return(
                 image === item.id  ? (
                   <div className="w-full rounded-tl-2xl overflow-hidden shadow-2xl shadow-plum-12">
-                   {item.image}
+                    {item.image}
                   </div>
                 ) : (
                   null
@@ -208,7 +209,7 @@ const IndexPage = () => {
           </motion.div>
         </div>
       </Section>
-     
+
     </HomeLayout>
   );
 };

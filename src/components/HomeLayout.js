@@ -27,7 +27,8 @@ const Layout = ({
   heroSecondLine,
   heroThirdLine,
   heroDescription,
-  heroButtonElement
+  heroButtonElement,
+  newsletterSection
 }) => {
 
   const bigCardClassName = "overflow-hidden shadow-2xl shadow-plum-6 rounded-3xl border border-slate-2"
@@ -97,12 +98,22 @@ const Layout = ({
         darkMode ? "dark" : "light"
       } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
     >
+      {compactNav && 
+        <div className="flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden">
+          <Link to="/project" className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
+        </div> 
+      }
       <div
         className={`${compactNav && "opacity-60"} py-4 fixed top-0 left-0 right-0 z-[5] transition-mid`}
       >
         <nav className={`${compactNav ? "max-w-[100vw] px-4" : "container"} transition-mid flex item-center justify-between`}>
           <LogoLink className="logo-slide-out" type={compactNav ? "icon" : "full"} />
           <div className="flex items-center space-x-4">
+            {compactNav && 
+              <div className="hidden sm:block">
+                <Link to="/project" className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
+              </div> 
+            }
             <Tippy content={darkMode ? "Light Mode" : "Dark Mode"}>
               <button
                 className="outline-none bg-transparent"
@@ -175,44 +186,46 @@ const Layout = ({
         onViewportEnter={()=>{setRevealNewsletter(true)}}
         onViewportLeave={()=>{setRevealNewsletter(false)}}
         >
-        <Section id={"Newsletter"} className="relative z-[1]">
-          <div className={`${revealNewsletter ? "translate-y-0" : "translate-y-[10vh]"} transition-transform delay-75 duration-500 ease-out flex items-center lg:justify-end relative bg-plum-3 px-16 py-[144px] ${bigCardClassName}`}>
-            <div className="absolute z-0 top-0 left-8 md:left-16 h-full w-full mix-blend-luminosity opacity-[15%] dark:opacity-100">
-              <div className="h-full w-full relative text-5xl flex flex-col text-slate-8 font-medium">
-                {[...Array(2)].map((e, i) => {
-                  return (
-                    <div className="newsletter-textgroup flex flex-col space-y-6 py-[0.6rem]">
-                      <p>Major Release</p>
-                      <p>Project Enhancements</p>
-                      <p>Community Featuring</p>
-                      <p>Creative Use Cases</p>
-                      <p>Announcement</p>
-                      <p>New components</p>
-                    </div>
-                  );
-                })}
+        {newsletterSection && 
+          <Section id={"Newsletter"} className="relative z-[1]">
+            <div className={`${revealNewsletter ? "translate-y-0" : "translate-y-[10vh]"} transition-transform delay-75 duration-500 ease-out flex items-center lg:justify-end relative bg-plum-3 px-16 py-[144px] ${bigCardClassName}`}>
+              <div className="absolute z-0 top-0 left-8 md:left-16 h-full w-full mix-blend-luminosity opacity-[15%] dark:opacity-100">
+                <div className="h-full w-full relative text-5xl flex flex-col text-slate-8 font-medium">
+                  {[...Array(2)].map((e, i) => {
+                    return (
+                      <div className="newsletter-textgroup flex flex-col space-y-6 py-[0.6rem]">
+                        <p>Major Release</p>
+                        <p>Project Enhancements</p>
+                        <p>Community Featuring</p>
+                        <p>Creative Use Cases</p>
+                        <p>Announcement</p>
+                        <p>New components</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <Blur className="absolute z-0 top-12 left-0"/>
+              <Blur className="absolute z-0 -top-24 -right-24" sizeClassName="w-[40vw] h-[40vw]" colorClassName="opacity-40 bg-plum-2"/>
+              <div className="lg:w-2/5 xl:w-1/3 relative z-[1]">
+                <SectionHeading
+                  headingText={"Newsletter"}
+                  headingDescription={[`Get updates straight to your inbox.`]}
+                />
               </div>
             </div>
-            <Blur className="absolute z-0 top-12 left-0"/>
-            <Blur className="absolute z-0 -top-24 -right-24" sizeClassName="w-[40vw] h-[40vw]" colorClassName="opacity-40 bg-plum-2"/>
-            <div className="lg:w-2/5 xl:w-1/3 relative z-[1]">
-              <SectionHeading
-                headingText={"Newsletter"}
-                headingDescription={[`Get updates straight to your inbox.`]}
-              />
-            </div>
-          </div>
-        </Section>
-        
-        <div className="relative z-0 -mt-40 border-t border-slate-4">
+          </Section>
+        }
+
+        <div className={`${newsletterSection && '-mt-40'} relative z-0 border-t border-slate-4`}>
           <div className="absolute w-full h-full top-0 left-0 footer-navlinks-section">
-            <StaticImage src="../images/bg-gradient-light.png"  className="h-full bg-gradient-light" alt="background image"/>
-            <StaticImage src="../images/bg-gradient-dark.png"  className="h-full bg-gradient-dark" alt="background image"/>
+            <StaticImage draggable={false} src="../images/bg-gradient-light.png"  className="h-full bg-gradient-light" alt="background image"/>
+            <StaticImage draggable={false} src="../images/bg-gradient-dark.png"  className="h-full bg-gradient-dark" alt="background image"/>
           </div>
-          <div className="relative z-0 container pt-80 pb-24">
+          <div className={`relative z-0 container ${newsletterSection ? 'pt-80' : 'pt-40'} pb-24`}>
             <div className="relative mx-auto flex flex-col w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3">
               <div className="absolute -top-28 md:-top-24 left-0 right-0 mx-auto w-full h-full">
-                <StaticImage src="../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
+                <StaticImage draggable={false} src="../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
               </div>
 
               <p className="relative text-center text-slate-9 mb-2">
@@ -244,3 +257,8 @@ const Layout = ({
 };
 
 export default Layout;
+
+
+Layout.defaultProps = {
+  newsletterSection: true,
+};

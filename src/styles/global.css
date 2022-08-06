@@ -177,6 +177,9 @@ html {
             @apply bg-transparent text-plum-11;
         }
     }
+    &.btn-sm{
+        @apply px-4 py-2 space-x-1 text-sm;
+    }
 }
 
 .phone-toggle{
@@ -207,3 +210,7 @@ html {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+/* *{
+    @apply outline outline-red-400;
+} */
