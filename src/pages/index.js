@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Tippy from "@tippyjs/react";
-import HomeLayout from "../components/HomeLayout";
+import HomeLayout from "../components/Layouts/HomeLayout";
 import Seo from "../components/Seo";
 import { Section, SectionHeading } from "../components/Section";
 import { Swiper, SwiperSlide } from "swiper/react";

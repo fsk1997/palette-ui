@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeLayout from "../components/HomeLayout";
+import HomeLayout from "../components/Layouts/HomeLayout";
 import Seo from "../components/Seo";
 import {Link} from "gatsby"
 

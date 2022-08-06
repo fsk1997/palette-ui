@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { LogoLink } from "./Logo";
+import { LogoLink } from "../Logo";
 import { Link } from "gatsby";
 import {
   Sun,
@@ -15,10 +15,10 @@ import {
 } from "phosphor-react";
 import Tippy from "@tippyjs/react";
 import { useRecoilState } from "recoil";
-import darkModeState from "../hooks/darkModeState";
+import darkModeState from "../../hooks/darkModeState";
 import { StaticImage } from "gatsby-plugin-image";
-import { Section, SectionHeading } from "./Section";
-import { Blur } from "./Utils";
+import { Section, SectionHeading } from "../Section";
+import { Blur } from "../Utils";
 import { motion, useInView } from "framer-motion";
 
 const Layout = ({
