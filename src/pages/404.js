@@ -10,7 +10,7 @@ const NotFound = () => {
             heroSecondLine={"You're Looking For"} 
             heroThirdLine={"Is Not Found"} 
             heroDescription={"Learn about the amazing things we do for the Web."} 
-            heroButtonElement={<Link className="btn btn-plum" to="/" title="Visit Homepage">Visit Homepage</Link>}
+            heroButtonElement={<Link className="btn btn-plum" to="/projects" title="Visit Homepage">Visit Homepage</Link>}
             newsletterSection={false}
         >
             <Seo/>

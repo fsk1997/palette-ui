@@ -6,8 +6,9 @@ import { Section, SectionHeading } from "../components/Section";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowCircleRight } from "phosphor-react";
 import { motion, useInView } from "framer-motion";
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import slugify from "react-slugify";
 
 import "swiper/css";
 import { Blur, InlineEmoji } from "../components/Utils";
@@ -44,13 +45,28 @@ const IndexPage = () => {
     },
   ]
 
+  const projectQuery = useStaticQuery(graphql`
+    {
+      allProjectJson(limit: 8) {
+        edges {
+          node {
+            ...ProjectFragment
+          }
+        }
+      }
+    }
+  `)
+
+  const projects = projectQuery.allProjectJson.edges
+  // console.log(projects)
+
   return (
     <HomeLayout
       heroFirstLine={"Open Source,"} 
       heroSecondLine={"Plug-and-Play "} 
       heroThirdLine={"React UI Components"} 
       heroDescription={"Experimental React UI Components with Plain CSS"} 
-      heroButtonElement={<Link className="btn btn-plum" to="/project" title="Explore All Projects">Explore All Projects</Link>}
+      heroButtonElement={<Link className="btn btn-plum" to="/projects" title="Explore All Projects">Explore All Projects</Link>}
       // TODO: To dynamically point the link to latest project
       >
 
@@ -95,23 +111,22 @@ const IndexPage = () => {
             },
           }}
         >
-          {[...Array(8)].map((e, i) => {
+          {projects.map((item) => {
+            const project = item.node
             return (
               <SwiperSlide>
-                <div className="group cursor-pointer transition-mid flex flex-col space-y-6">
-                  <div
-                    className="transform-gpu transition-mid relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105 pt-[52.5%]"
-                  >
-                    <StaticImage
+                <Link key={project.id} to={`/project/${slugify(project.title)}`} className="group cursor-pointer transition-mid flex flex-col space-y-6">
+                  <div className="transform-gpu transition-mid relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105 pt-[52.5%]">
+                    <GatsbyImage
                       className={`top-0 left-0 bottom-0 right-0 w-full h-full`}
-                      src="../images/project-card-placeholder.png"
-                      alt="img"
+                      image={project.cover_image.childImageSharp.gatsbyImageData}
+                      alt={project.title}
                       style={{position:"absolute"}}
                     />
                   </div>
                   <div className="flex flex-col space-y-3">
                     <h6 className="font-medium text-plum-12 text-2xl">
-                      Draggable Dialogue
+                      {project.title}
                     </h6>
                     <div
                       className="transform-gpu transition-all duration-75 -translate-y-[3.25rem] group-hover:translate-y-0 flex flex-row space-x-3"
@@ -119,19 +134,13 @@ const IndexPage = () => {
                         transitionTimingFunction: "cubic-bezier(.75,0,.51,.99)",
                       }}
                     >
-                      <p
-                        className="w-full text-slte-10 transition-[opacity] duration-50 group-hover:opacity-100 opacity-0 translate-y-[3.25rem] group-hover:translate-y-0 "
-                        style={{
-                          transitionTimingFunction:
-                            "cubic-bezier(.75,0,.51,.99)",
-                        }}
+                      <p className="line-clamp-2 w-full text-slte-10 transition-[opacity] duration-50 group-hover:opacity-100 opacity-0 translate-y-[3.25rem] group-hover:translate-y-0 "
+                        style={{transitionTimingFunction:"cubic-bezier(.75,0,.51,.99)"}}
                       >
-                        A minimal recreation of Figma's notorious comment
-                        component.
+                        {project.description}
                       </p>
                       <ArrowCircleRight
-                        size={52}
-                        weight="thin"
+                        size={52} weight="thin"
                         className="transform-gpu transition-all group-hover:-translate-x-0 -translate-x-3"
                         style={{
                           transitionTimingFunction:
@@ -141,14 +150,14 @@ const IndexPage = () => {
                     </div>
                     <div className="transition-mid group-hover:translate-y-0 -translate-y-14 flex flex-row items-center space-x-3 text-xs uppercase tracking-wide">
                       <div className="font-semibold bg-plum-12 text-plum-1 px-2 py-1 rounded">
-                        button
+                        {project.type}
                       </div>
                       <span className="text-slate-12 opacity-50">
-                        alpha v1.0.2
+                        {project.status} {project.version}
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             );
           })}

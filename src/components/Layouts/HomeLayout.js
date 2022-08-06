@@ -100,7 +100,7 @@ const Layout = ({
     >
       {compactNav && 
         <div className="flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden">
-          <Link to="/project" className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
+          <Link to="/projects" className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
         </div> 
       }
       <div
@@ -111,7 +111,7 @@ const Layout = ({
           <div className="flex items-center space-x-4">
             {compactNav && 
               <div className="hidden sm:block">
-                <Link to="/project" className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
+                <Link to="/projects" className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
               </div> 
             }
             <Tippy content={darkMode ? "Light Mode" : "Dark Mode"}>
@@ -164,7 +164,7 @@ const Layout = ({
                 </h1>
               </div>
               <div className="w-full lg:w-1/2 relative z-0">
-                <StaticImage src="../images/hero-image.png" className="w-full" />
+                <StaticImage src="../../images/hero-image.png" className="w-full" />
               </div>
             </div>
             <div className="ml-8  relative z-[1] lg:-mt-32">
@@ -219,13 +219,13 @@ const Layout = ({
 
         <div className={`${newsletterSection && '-mt-40'} relative z-0 border-t border-slate-4`}>
           <div className="absolute w-full h-full top-0 left-0 footer-navlinks-section">
-            <StaticImage draggable={false} src="../images/bg-gradient-light.png"  className="h-full bg-gradient-light" alt="background image"/>
-            <StaticImage draggable={false} src="../images/bg-gradient-dark.png"  className="h-full bg-gradient-dark" alt="background image"/>
+            <StaticImage draggable={false} src="../../images/bg-gradient-light.png"  className="h-full bg-gradient-light" alt="background image"/>
+            <StaticImage draggable={false} src="../../images/bg-gradient-dark.png"  className="h-full bg-gradient-dark" alt="background image"/>
           </div>
           <div className={`relative z-0 container ${newsletterSection ? 'pt-80' : 'pt-40'} pb-24`}>
             <div className="relative mx-auto flex flex-col w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3">
               <div className="absolute -top-28 md:-top-24 left-0 right-0 mx-auto w-full h-full">
-                <StaticImage draggable={false} src="../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
+                <StaticImage draggable={false} src="../../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
               </div>
 
               <p className="relative text-center text-slate-9 mb-2">

@@ -12,9 +12,6 @@ module.exports = {
           magenta: "#EC61EC",
         },
       },
-      // fontFamily: {
-      //   sans: ["Switzer", "serif"],
-      // },
       screens: {
         sm: "576px",
         md: "768px",

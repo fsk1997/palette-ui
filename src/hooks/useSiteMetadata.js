@@ -5,12 +5,13 @@ export const useSiteMetadata = () => {
     query HeaderQuery {
       site {
         siteMetadata {
-          description
-          image
-          siteUrl
           title
-          twitterUsername
+          siteUrl
+          oneline
+          description
           url
+          image
+          twitterUsername
         }
       }
     }
