@@ -31,7 +31,7 @@ const Navbar = ({wrapperClassName}) => {
     >
       <div className="flex flex-col space-y-5">
         <LogoLink
-          className={`${location.pathname === "/projects" && "logo-slide-in"}`}
+          // className={`${location.pathname === `/project/${slugify(projects[0].node.title)}` && "logo-slide-in"}`}
         />
         <hr className="border-slate-4 transition-mid" />
         <nav className="flex flex-col space-y-4">

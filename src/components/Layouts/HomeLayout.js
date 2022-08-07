@@ -94,11 +94,11 @@ const Layout = ({
         darkMode ? "dark" : "light"
       } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
     >
-      {compactNav && 
-        <div className="flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden">
-          <Link to={`/project/${slugify(projects[0].node.title)}`} className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
-        </div> 
-      }
+
+      <div className={`${compactNav ? "translate-y-0" : "translate-y-24"} transition-mid flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden`}>
+        <Link to={`/project/${slugify(projects[0].node.title)}`} className={`btn btn-plum ${compactNav ? "btn-dark shadow-lg shadow-plum-7 scale-100" : "scale-0"} origin-bottom transition-all delay-150 duration-500 ease-out`} title="Explore Projects">Explore Projects</Link>
+      </div> 
+
       <div
         className={`${compactNav && "opacity-60"} py-4 fixed top-0 left-0 right-0 z-[5] transition-mid`}
       >
