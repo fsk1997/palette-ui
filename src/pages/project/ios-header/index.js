@@ -46,7 +46,15 @@ const IosHeader = () => {
   }, [null]);
 
   return (
-    <ProjectLayout>
+    <ProjectLayout
+      projectTitle={project.title}
+      projectStatus={project.status}
+      projectVersion={project.version}
+      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+      projectDescription={project.description}
+      projectDependencies={project.dependencies}
+      projectGithubUrl={project.github_url}
+    >
       <Seo 
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}

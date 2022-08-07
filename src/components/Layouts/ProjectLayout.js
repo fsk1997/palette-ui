@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import darkModeState from "../../hooks/darkModeState";
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage, GatsbyImage } from "gatsby-plugin-image";
 import { useRecoilState } from "recoil";
 import {
   Sun,
@@ -12,18 +12,25 @@ import {
 import Tippy from "@tippyjs/react";
 import { LogoLink } from "../Logo";
 import { Popover } from "@headlessui/react";
-import Navbar from "./Navbar"
+import Navbar from "./Navbar";
 import { useLocation } from "@reach/router";
 
-
-const Project = ({ children }) => {
-
+const Project = ({
+  children,
+  projectTitle,
+  projectStatus,
+  projectVersion,
+  projectCoverImage,
+  projectDescription,
+  projectDependencies,
+  projectGithubUrl
+}) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   const [hideSidebar, setHideSidebar] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
 
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <main
@@ -36,7 +43,7 @@ const Project = ({ children }) => {
           hideSidebar ? "-translate-x-[300px]" : ""
         } transition-mid w-[300px] fixed z-10 h-screen border-r border-slate-4`}
       >
-        <Navbar wrapperClassName={'h-full'}/>
+        <Navbar wrapperClassName={"h-full"} />
       </section>
 
       <section
@@ -46,14 +53,14 @@ const Project = ({ children }) => {
       >
         {location.pathname !== "/projects" && (
           <>
-            <div className="fixed z-10 top-4 right-4 flex items-center space-x-4">
+            <div className="fixed z-10 top-4 right-4 flex items-center space-x-2">
               <div className="hidden sm:block">
                 <Tippy content="Enlarge">
                   <button
                     onClick={() => setHideSidebar(!hideSidebar)}
-                    className="btn btn-plum btn-dark"
+                    className="btn btn-plum btn-dark btn-sm"
                   >
-                    <ArrowsOutSimple size={24} weight="regular" />
+                    <ArrowsOutSimple size={16} weight="bold" />
                   </button>
                 </Tippy>
               </div>
@@ -63,54 +70,73 @@ const Project = ({ children }) => {
                   <>
                     <Popover.Button>
                       <Tippy content="Project Info">
-                        <button className="btn btn-plum btn-dark">
-                          <Info size={24} weight="regular" />
+                        <button className="btn btn-plum btn-dark btn-sm">
+                          <Info size={16} weight="bold" />
                         </button>
                       </Tippy>
                     </Popover.Button>
 
-                    <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 top-14 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-3 border border-slate-2">
+                    <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 top-10 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-3 border border-slate-2">
                       <div className="flex flex-col px-5 py-4">
                         <h1 className="font-medium text-lg text-slate-12 mb-2">
-                          Project Title
+                          {projectTitle}
                         </h1>
                         <div className="flex items-center space-x-2 mb-4">
-                          <div className="bg-yellow-9 h-2 w-2 rounded-full"></div>
+                          <div className={`
+                            ${projectStatus === "alpha" ? "bg-red-400" : ""}
+                            ${projectStatus === "beta" ? "bg-yellow-9" : ""}
+                            ${projectStatus === "production" ? "bg-green-400" : ""}
+                            h-2 w-2 rounded-full`}/>
                           <p className="uppercase tracking-wider text-xs text-slate-10">
-                            alpha v0.03
+                            {projectStatus} {projectVersion}
                           </p>
                         </div>
 
-                        <StaticImage
-                          src="../../images/project-card-placeholder.png"
-                          alt=""
+                        <GatsbyImage
+                          image={projectCoverImage}
+                          alt={projectTitle}
+                          draggable={false}
                           className="rounded-xl mb-4"
                         />
 
                         <p className="text-sm text-slate-11 mb-4">
-                          A minimal recreation of Figma's notorious comment
-                          component.
+                          {projectDescription}
                         </p>
 
                         <div className="flex items-center space-x-2">
                           <p className="font-medium text-sm text-slate-11">
-                            Depedencies:
+                            Dependencies:
                           </p>
-                          <a
-                            href="https://www.google.com"
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <span className="inline-flex font-semibold text-slate-12 bg-slate-3 hover:bg-slate-4 transition-mid  rounded px-2 py-1 text-xs">
-                              Framer
-                            </span>
-                          </a>
+                          {projectDependencies &&
+                            projectDependencies.map(item => {
+                              return (
+                                <a
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  <span className="inline-flex items-center justify-center space-x-1 font-semibold text-slate-12 bg-slate-3 hover:bg-slate-4 transition-mid  rounded px-2 py-1 text-xs">
+                                    {item.icon_url !== "" && (
+                                      <img
+                                        loading="lazy"
+                                        alt={`${item.name} Logo`}
+                                        src={item.icon_url}
+                                        width={8}
+                                        height={8}
+                                        className="h-3 w-3 object-fit"
+                                      />
+                                    )}
+                                    <span>{item.name}</span>
+                                  </span>
+                                </a>
+                              );
+                            })}
                         </div>
                       </div>
 
                       <div className="border-t border-slate-4 bg-slate-2 px-5 py-4 w-full">
                         <a
-                          href="https://www.google.com"
+                          href={projectGithubUrl}
                           target="_blank"
                           rel="noreferrer"
                           className="btn btn-plum flex space-x-2 justify-center items-center w-full"

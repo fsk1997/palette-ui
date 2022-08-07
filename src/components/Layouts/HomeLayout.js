@@ -20,6 +20,8 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Section, SectionHeading } from "../Section";
 import { Blur } from "../Utils";
 import { motion, useInView } from "framer-motion";
+import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada";
+import slugify from "react-slugify"
 
 const Layout = ({
   children,
@@ -35,6 +37,8 @@ const Layout = ({
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
   const [compactNav, setCompactNav] = useState(false);
   const [revealNewsletter, setRevealNewsletter] = useState(false)
+
+  const projects = useAllProjectsMetadata()
 
   const sectionHero = useRef(null);
 
@@ -100,7 +104,7 @@ const Layout = ({
     >
       {compactNav && 
         <div className="flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden">
-          <Link to="/projects" className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
+          <Link to={`/project/${slugify(projects[0].node.title)}`} className="btn btn-plum btn-dark btn-sm shadow-lg shadow-plum-7" title="Explore Projects">Explore Projects</Link>
         </div> 
       }
       <div
@@ -111,7 +115,7 @@ const Layout = ({
           <div className="flex items-center space-x-4">
             {compactNav && 
               <div className="hidden sm:block">
-                <Link to="/projects" className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
+                <Link to={`/project/${slugify(projects[0].node.title)}`} className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
               </div> 
             }
             <Tippy content={darkMode ? "Light Mode" : "Dark Mode"}>

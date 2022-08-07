@@ -1,20 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import darkModeState from "../../hooks/darkModeState";
-import { StaticImage } from "gatsby-plugin-image";
 import { useRecoilState } from "recoil";
 import {
   Sun,
   GithubLogo,
-  ArrowsOutSimple,
-  Info,
-  ArrowSquareOut
 } from "phosphor-react";
 import Tippy from "@tippyjs/react";
 import { LogoLink } from "../Logo";
-import { Popover } from "@headlessui/react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
 import slugify from "react-slugify";
 import { useLocation } from "@reach/router";
+import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada"
 
 const Navbar = ({wrapperClassName}) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
@@ -26,19 +22,7 @@ const Navbar = ({wrapperClassName}) => {
 
   const location = useLocation();
 
-  const projectQuery = useStaticQuery(graphql`
-    {
-      allProjectJson(sort: { order: DESC, fields: created_at }) {
-        edges {
-          node {
-            ...ProjectFragment
-          }
-        }
-      }
-    }
-  `);
-
-  const projects = projectQuery.allProjectJson.edges;
+  const projects = useAllProjectsMetadata()
 
   return (
     <nav

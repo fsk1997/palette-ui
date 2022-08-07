@@ -9,13 +9,16 @@ import { motion, useInView } from "framer-motion";
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import slugify from "react-slugify";
-
+import useAllProjectsMetadata from "../hooks/useAllProjectsMetada"
 import "swiper/css";
 import { Blur, InlineEmoji } from "../components/Utils";
 
 const IndexPage = () => {
   const [image, setImage] = useState("image1");
   const [showImage, setShowImage] = useState(false);
+
+  const projects = useAllProjectsMetadata()
+  // console.log(projects.slice(0,3).map((item)=>{return(item)}))
 
   const sectionHowImageClassName="w-full h-full object-cover"
   const sectionHow = [
@@ -45,28 +48,13 @@ const IndexPage = () => {
     },
   ]
 
-  const projectQuery = useStaticQuery(graphql`
-    {
-      allProjectJson(limit: 8) {
-        edges {
-          node {
-            ...ProjectFragment
-          }
-        }
-      }
-    }
-  `)
-
-  const projects = projectQuery.allProjectJson.edges
-  // console.log(projects)
-
   return (
     <HomeLayout
       heroFirstLine={"Open Source,"} 
       heroSecondLine={"Plug-and-Play "} 
       heroThirdLine={"React UI Components"} 
       heroDescription={"Experimental React UI Components with Plain CSS"} 
-      heroButtonElement={<Link className="btn btn-plum" to="/projects" title="Explore All Projects">Explore All Projects</Link>}
+      heroButtonElement={<Link className="btn btn-plum" to={`/project/${slugify(projects[0].node.title)}`} title="Explore All Projects">Explore All Projects</Link>}
       // TODO: To dynamically point the link to latest project
       >
 
@@ -111,7 +99,7 @@ const IndexPage = () => {
             },
           }}
         >
-          {projects.map((item) => {
+          {projects.slice(0,4).map((item) => {
             const project = item.node
             return (
               <SwiperSlide>
@@ -166,15 +154,13 @@ const IndexPage = () => {
       
 
       <Section id={"How To use"} className="py-24">
-        <Section className="pb-12">
-          <SectionHeading
-            headingText={"How To use"}
-            headingDescription={[
-              `Palette UI is customisable and extendable. Start integrating components with these few steps.`,
-            ]}
-            headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 "}
-          />
-        </Section>
+        <SectionHeading
+          headingText={"How To use"}
+          headingDescription={[
+            `Palette UI is customisable and extendable. Start integrating components with these few steps.`,
+          ]}
+          headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 pb-12"}
+        />
         <div className="flex flex-row space-x-8 relative">
           <div className="relative w-full lg:w-2/5 h-full">
             <div className="hidden lg:block sticky top-0 z-[2] w-full h-36 bg-gradient-to-b from-slate-2 via-slate-2 to-transparent"></div>
@@ -183,7 +169,7 @@ const IndexPage = () => {
                 />
             </div> */}
             {sectionHow.map((item)=>{return(
-              <div className="px-4 lg:px-0 flex flex-col space-y-6 pb-16 lg:pb-0">
+              <div className="flex flex-col space-y-6 pb-16 lg:pb-0">
                 <div key={item.id} className="lg:p-8 flex items-center lg:h-screen max-h-[42rem]">
                   <motion.div
                     className="flex flex-row space-x-4 h-auto"
