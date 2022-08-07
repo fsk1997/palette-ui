@@ -1,6 +1,5 @@
 [
   {
-    "order": "7",
     "title": "Draggable Dialogue",
     "slug": "draggable-dialogue",
     "description": "Minimal recreation of Figma's comment component.",
@@ -13,84 +12,78 @@
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "18th June 2022",
-    "last_updated": "19th June 2022",
+    "created_at": "2022-06-19",
+    "last_updated": "2022-06-19",
     "status": "beta",
     "version": "v0.3",
-    "mode": "desktop"
+    "mode": ["desktop"]
   },
   {
-    "order": "6",
     "title": "Animated Gradient SVG Button",
     "slug": "animated-gradient-svg-button",
     "description": "Animate SVG button with fading gradient.Beautiful and subtle micro-interaction inspired by dating app TanTan's bottom tab navigator's button icon.",
     "type": "button",
     "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "15th June 2022",
-    "last_updated": "15th June 2022",
+    "created_at": "2022-06-15",
+    "last_updated": "2022-06-15",
     "status": "production",
     "version": "v1.0",
-    "mode": "desktop"
+    "mode": ["desktop"]
   },
   {
-    "order": "5",
     "title": "Dialog Height Transition",
     "slug": "dialog-height-transition",
     "description": "Change dialog height based on content. Inspired by About This Mac tabbed dialogue.",
     "type": "dialog",
     "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "28th May 2022",
-    "last_updated": "28th May 2022",
+    "created_at": "2022-05-28",
+    "last_updated": "2022-05-28",
     "status": "alpha",
     "version": "v0.1",
-    "mode": "desktop"
+    "mode": ["desktop"]
   },
   {
-    "order": "5",
     "title": "Sticky Header Links",
     "slug": "sticky-header-links",
     "description": "Make a portion of hero section sticky when scrolled.",
     "type": "layout",
     "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "21st May 2022",
-    "last_updated": "21st May 2022",
+    "created_at": "2022-05-21",
+    "last_updated": "2022-05-21",
     "status": "production",
     "version": "v1.0",
-    "mode": "desktop"
+    "mode": ["desktop", "mobile"]
   },
   {
-    "order": "4",
     "title": "Graduated Frosty Overlay",
     "slug": "graduated-frosty-overlay",
     "description": "Graduated frosty overlay on images. Inspired by AppleTV app.",
     "type": "image",
     "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "13th May 2022",
-    "last_updated": "13th May 2022",
+    "created_at": "2022-05-13",
+    "last_updated": "2022-05-13",
     "status": "production",
     "version": "v1.0",
-    "mode": "desktop"
+    "mode": ["desktop"]
   },
   {
-    "order": "3",
     "title": "Loaded Image Transition",
     "slug": "loaded-image-transition",
     "description": "Transition from plain background colour to image using image tag onload event.",
     "type": "image",
     "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "1st May 2022",
-    "last_updated": "1st May 2022",
+    "created_at": "2022-05-01",
+    "last_updated": "2022-05-01",
     "status": "production",
     "version": "v1.0",
-    "mode": "desktop"
+    "mode": ["desktop"]
   },
   {
-    "order": "2",
     "title": "Bottom Tab Navigator",
     "slug": "bottom-tab-navigator",
     "description": "A simple tab bar on the bottom of the screen that lets you switch between different routes.",
@@ -103,14 +96,13 @@
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "7th April 2022",
-    "last_updated": "7th April 2022",
+    "created_at": "2022-04-07",
+    "last_updated": "2022-04-07",
     "status": "alpha",
     "version": "v0.1",
-    "mode": "mobile"
+    "mode": ["desktop"]
   },
   {
-    "order": "1",
     "title": "iOS Header",
     "slug": "ios-header",
     "description": "Large collapsible animated title just like native iOS apps, implemented using React Hooks and CSS.",
@@ -123,10 +115,10 @@
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
-    "created_at": "26th March 2022",
-    "last_updated": "26th March 2022",
+    "created_at": "2022-03-26",
+    "last_updated": "2022-03-26",
     "status": "beta",
     "version": "v0.1",
-    "mode": "mobile"
+    "mode": ["desktop"]
   }
 ]

@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import darkModeState from "../../hooks/darkModeState";
-import { StaticImage, GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useRecoilState } from "recoil";
 import {
-  Sun,
-  GithubLogo,
   ArrowsOutSimple,
   Info,
-  ArrowSquareOut
+  ArrowSquareOut,
+  DeviceMobileSpeaker,
+  Desktop
 } from "phosphor-react";
 import Tippy from "@tippyjs/react";
-import { LogoLink } from "../Logo";
 import { Popover } from "@headlessui/react";
 import Navbar from "./Navbar";
 import { useLocation } from "@reach/router";
@@ -24,11 +23,16 @@ const Project = ({
   projectCoverImage,
   projectDescription,
   projectDependencies,
+  projectMode,
 }) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   const [hideSidebar, setHideSidebar] = useState(false);
-  const [showPhone, setShowPhone] = useState(false);
+
+  const [viewMode, changeViewMode] = useState("desktop")
+
+  const iconConfig = { size:16, weight: "bold" }
+  const buttonClassName = "btn btn-plum btn-dark btn-sm"
 
   const location = useLocation();
 
@@ -36,8 +40,9 @@ const Project = ({
     <main
       className={`${
         darkMode ? "dark" : "light"
-      } newBody bg-slate-1 text-slate-12 min-h-screen`}
+      } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
     >
+      
       <section
         className={`${
           hideSidebar ? "-translate-x-[300px]" : ""
@@ -58,27 +63,50 @@ const Project = ({
                 <Tippy content="Enlarge">
                   <button
                     onClick={() => setHideSidebar(!hideSidebar)}
-                    className="btn btn-plum btn-dark btn-sm"
+                    className={buttonClassName}
                   >
-                    <ArrowsOutSimple size={16} weight="bold" />
+                    <ArrowsOutSimple {...iconConfig} />
                   </button>
                 </Tippy>
               </div>
+
+              {projectMode.includes("mobile") ? ( 
+                <div className="hidden sm:block">
+                  {viewMode === "desktop" && 
+                    (
+                    <Tippy content="Toggle Device">
+                      <button onClick={() => {changeViewMode("mobile"); console.log(viewMode)}} className={buttonClassName}>
+                        <DeviceMobileSpeaker {...iconConfig} />
+                      </button>
+                    </Tippy>
+                    )
+                  }
+                  {viewMode === "mobile" && 
+                    (
+                    <Tippy content="Toggle Device">
+                      <button onClick={() => {changeViewMode("desktop"); console.log(viewMode)}} className={buttonClassName}>
+                        <Desktop {...iconConfig} />
+                      </button>
+                    </Tippy>
+                    )
+                  }
+                </div>
+              ) : null}
 
               <Popover className="relative">
                 {({ open }) => (
                   <>
                     <Popover.Button>
                       <Tippy content="Project Info">
-                        <button className="btn btn-plum btn-dark btn-sm">
-                          <Info size={16} weight="bold" />
+                        <button className={buttonClassName}>
+                          <Info {...iconConfig} />
                         </button>
                       </Tippy>
                     </Popover.Button>
 
-                    <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 top-10 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-3 border border-slate-2">
+                    <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 top-10 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-3 border border-slate-2 overflow-hidden">
                       <div className="flex flex-col px-5 py-4">
-                        <h1 className="font-medium text-lg text-slate-12 mb-2">
+                        <h1 className="font-medium text-lg text-slate-12 mb-1">
                           {projectTitle}
                         </h1>
                         <div className="flex items-center space-x-2 mb-4">
@@ -105,7 +133,7 @@ const Project = ({
                           className="rounded-xl mb-4"
                         />
 
-                        <p className="text-sm text-slate-11 mb-4">
+                        <p className="text-sm text-slate-11">
                           {projectDescription}
                         </p>
 
@@ -159,42 +187,13 @@ const Project = ({
                 )}
               </Popover>
             </div>
-
-            <div className="fixed z-10 bottom-4 right-4 flex items-center space-x-4">
-              <div class="phone-toggle flex items-center justify-center w-full mb-12">
-                <label
-                  for="phoneToggle"
-                  class="flex items-center cursor-pointer"
-                >
-                  {/* <!-- toggle --> */}
-                  <div class="relative">
-                    {/* <!-- input --> */}
-                    <input
-                      onClick={() => setShowPhone(!showPhone)}
-                      id="phoneToggle"
-                      type="checkbox"
-                      class="sr-only"
-                    />
-                    {/* <!-- line --> */}
-                    <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
-                    {/* <!-- dot --> */}
-                    <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
-                  </div>
-                  {/* <!-- label --> */}
-                  <div class="ml-3 text-gray-700 font-medium">Toggle Me!</div>
-                </label>
-              </div>
-            </div>
           </>
         )}
-        {showPhone ? null : (
-          <div className="show-interface h-full w-full">{children}</div>
-        )}
 
-        {showPhone && (
-          <div
-            className={`absolute top-0 left-0 h-full w-full z-0 flex items-center justify-center show-interface`}
-          >
+        {viewMode === "desktop" && <div className="show-interface h-full w-full">{children}</div>}
+
+        {viewMode === "mobile" && (
+          <div className="absolute top-0 left-0 h-full w-full z-0 flex items-center justify-center show-interface">
             <div className="overflow-hidden w-[276px] h-[597px] rounded-2xl relative border border-plum-5 shadow-2xl shadow-plum-7 hover:shadow-plum-6 scale-[102%] hover:scale-100 transition-mid overflow-scroll scrollbar-none">
               <div className="absolute top-0 left-0 right-0 z-10 h-4 w-3/4 rounded-b-xl mx-auto border-l border-r border-b border-plum-4 bg-plum-1" />
               {children}

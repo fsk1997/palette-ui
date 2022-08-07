@@ -11,6 +11,7 @@ import { Link } from "gatsby";
 import slugify from "react-slugify";
 import { useLocation } from "@reach/router";
 import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada"
+import { ModeAndGithub } from "../Utils"
 
 const Navbar = ({wrapperClassName}) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
@@ -26,20 +27,21 @@ const Navbar = ({wrapperClassName}) => {
 
   return (
     <nav
-      className={`${wrapperClassName && wrapperClassName} bg-slate-2 p-4 flex flex-col justify-between`}
+      className={`${wrapperClassName && wrapperClassName} bg-slate-3 p-4 flex flex-col justify-between`}
     >
       <div className="flex flex-col space-y-5">
         <LogoLink
           className={`${location.pathname === "/projects" && "logo-slide-in"}`}
         />
         <hr className="border-slate-4 transition-mid" />
-        <nav className="flex flex-col space-y-5">
+        <nav className="flex flex-col space-y-4">
+          <h6 className="uppercase text-xs text-slate-8 font-medium tracking-wider">projects</h6>
           {projects.map(item => {
             const project = item.node;
             return (
               <Link
                 to={`/project/${slugify(project.title)}`}
-                className="font-medium text-slate-10"
+                className="font-medium text-slate-10 hover:text-plum-12 transition-mid"
               >
                 {project.title}
               </Link>
@@ -47,24 +49,8 @@ const Navbar = ({wrapperClassName}) => {
           })}
         </nav>
       </div>
-      <footer className="flex items-center gap-4">
-        <Tippy content="Dark Mode">
-          <button
-            className="outline-none bg-transparent"
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            <Sun {...navIconConfig} />
-          </button>
-        </Tippy>
-        <a
-          href="https://github.com/fsk1997/palette-ui"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Tippy content="Github Repository">
-            <GithubLogo {...navIconConfig} />
-          </Tippy>
-        </a>
+      <footer className="flex items-center space-x-4">
+        <ModeAndGithub/>
       </footer>
     </nav>
   );

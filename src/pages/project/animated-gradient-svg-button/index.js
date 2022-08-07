@@ -31,6 +31,7 @@ const AnimatedGradientIcon = () => {
       projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
       projectDescription={project.description}
       projectDependencies={project.dependencies}
+      projectMode={project.mode}
     >
       <Seo 
         customTitle={`${project.title} | ${siteMetadata.title}`}

@@ -2,11 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { LogoLink } from "../Logo";
 import { Link } from "gatsby";
 import {
-  Sun,
-  Moon,
-  Coffee,
   SmileySticker,
-  Sparkle,
   InstagramLogo,
   LinkedinLogo,
   GithubLogo,
@@ -14,14 +10,14 @@ import {
   Envelope
 } from "phosphor-react";
 import Tippy from "@tippyjs/react";
-import { useRecoilState } from "recoil";
-import darkModeState from "../../hooks/darkModeState";
 import { StaticImage } from "gatsby-plugin-image";
 import { Section, SectionHeading } from "../Section";
-import { Blur } from "../Utils";
-import { motion, useInView } from "framer-motion";
+import { Blur, ModeAndGithub } from "../Utils";
+import { motion } from "framer-motion";
 import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada";
 import slugify from "react-slugify"
+import darkModeState from "../../hooks/darkModeState";
+import { useRecoilState } from "recoil";
 
 const Layout = ({
   children,
@@ -33,8 +29,10 @@ const Layout = ({
   newsletterSection
 }) => {
 
-  const bigCardClassName = "overflow-hidden shadow-2xl shadow-plum-6 rounded-3xl border border-slate-2"
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+
+  const bigCardClassName = "overflow-hidden shadow-2xl shadow-plum-6 rounded-3xl border border-slate-2"
+
   const [compactNav, setCompactNav] = useState(false);
   const [revealNewsletter, setRevealNewsletter] = useState(false)
 
@@ -50,12 +48,6 @@ const Layout = ({
         }   
     });
   }, []);
-
-  const navIconConfig = {
-    size: 20,
-    weight: "fill",
-    className: "text-plum-12"
-  };
 
   const footerNav = [
     {
@@ -118,34 +110,14 @@ const Layout = ({
                 <Link to={`/project/${slugify(projects[0].node.title)}`} className="btn btn-plum btn-outline btn-sm" title="Explore Projects">Explore Projects</Link>
               </div> 
             }
-            <Tippy content={darkMode ? "Light Mode" : "Dark Mode"}>
-              <button
-                className="outline-none bg-transparent"
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                {darkMode ? (
-                  <Sun {...navIconConfig} />
-                ) : (
-                  <Moon {...navIconConfig} />
-                )}
-              </button>
-            </Tippy>
-            <Tippy content="Github Repository">
-              <a
-                href="https://github.com/fsk1997/palette-ui"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <GithubLogo {...navIconConfig} />
-              </a>
-            </Tippy>
+            <ModeAndGithub/>
           </div>
         </nav>
       </div>
 
       <main className="pt-24">
         <header ref={sectionHero} className="container">
-          <div className={`bg-hero relative py-28 ${bigCardClassName}`}>
+          <div className={`bg-hero relative py-14 sm:py-28 ${bigCardClassName}`}>
             <div className="bg-ring-wrapper">
               {[...Array(5)].map((e, i) => {
                 return <div className="bg-ring"></div>;
@@ -156,22 +128,22 @@ const Layout = ({
             <div className="px-8 flex flex-col lg:flex-row items-center">
               <div className="mix-blend-luminosity w-full lg:w-1/2 relative z-[1] lg:-mt-14 mb-6 xl:mb-0">
                 <h1 className="flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[60%] font-medium lg:whitespace-nowrap transition-mid">
-                  <span className="inline-block -ml-[10rem] lg:ml-0">
+                  <span className="inline-block -ml-[5rem] sm:-ml-[10rem] lg:ml-0">
                     {heroFirstLine}
                   </span>
                   <br />
-                  <span className="inline-block ml-[3rem] sm:ml-[9.5rem]">
+                  <span className="inline-block ml-[2.5rem] sm:ml-[9.5rem]">
                     {heroSecondLine}
                   </span>
                   <br />
-                  <span className="inline-block ml-12">{heroThirdLine}</span>
+                  <span className="inline-block sm:ml-12">{heroThirdLine}</span>
                 </h1>
               </div>
               <div className="w-full lg:w-1/2 relative z-0">
                 <StaticImage src="../../images/hero-image.png" className="w-full" />
               </div>
             </div>
-            <div className="ml-8  relative z-[1] lg:-mt-32">
+            <div className="lg:ml-8 relative z-[1] lg:-mt-32">
               <div className="flex flex-col items-center lg:items-start lg:w-1/2">
                 <p className="lg:text-lg text-slate-11 mt-5 mb-4">
                   {heroDescription}

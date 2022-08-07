@@ -99,7 +99,7 @@ const IndexPage = () => {
             },
           }}
         >
-          {projects.slice(0,4).map((item) => {
+          {projects.slice(0,7).map((item) => {
             const project = item.node
             return (
               <SwiperSlide>

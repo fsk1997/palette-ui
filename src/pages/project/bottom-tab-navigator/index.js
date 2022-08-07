@@ -54,6 +54,7 @@ const BottomTabNavigator = () => {
       projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
       projectDescription={project.description}
       projectDependencies={project.dependencies}
+      projectMode={project.mode}
     >
       <Seo 
         customTitle={`${project.title} | ${siteMetadata.title}`}
@@ -76,7 +77,7 @@ const BottomTabNavigator = () => {
               <Link to="/">text 1</Link>
             </div>
             <div>
-              <Link to="/">text longer text</Link>
+              <Link to="/">text 2</Link>
             </div>
             <div>
               <Link to="/">text 3</Link>
