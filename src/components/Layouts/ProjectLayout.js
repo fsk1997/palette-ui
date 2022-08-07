@@ -51,10 +51,7 @@ const Project = ({
         <Navbar wrapperClassName={"h-full"} />
       </section>
 
-      <section
-        className={`${
-          hideSidebar ? "ml-0" : "ml-[300px] p-4"
-        } transition-mid min-h-screen relative h-full`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
+      <section className={`${hideSidebar ? "ml-0" : "ml-[300px]"} transition-mid h-full min-h-screen relative`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
       >
         {location.pathname !== "/projects" && (
           <>
@@ -194,7 +191,7 @@ const Project = ({
 
         {viewMode === "mobile" && (
           <div className="absolute top-0 left-0 h-full w-full z-0 flex items-center justify-center show-interface">
-            <div className="overflow-hidden w-[276px] h-[597px] rounded-2xl relative border border-plum-5 shadow-2xl shadow-plum-7 hover:shadow-plum-6 scale-[102%] hover:scale-100 transition-mid overflow-scroll scrollbar-none">
+            <div className="w-[276px] h-[597px] rounded-2xl relative border border-plum-5 shadow-2xl shadow-plum-7 hover:shadow-plum-6 scale-[102%] hover:scale-100 transition-mid overflow-scroll scrollbar-none">
               <div className="absolute top-0 left-0 right-0 z-10 h-4 w-3/4 rounded-b-xl mx-auto border-l border-r border-b border-plum-4 bg-plum-1" />
               {children}
             </div>
