@@ -7,7 +7,6 @@ export const projectFragment = graphql`
     title
     status
     slug
-    github_url
     id
     description
     last_updated

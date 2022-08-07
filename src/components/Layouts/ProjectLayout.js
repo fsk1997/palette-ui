@@ -14,6 +14,7 @@ import { LogoLink } from "../Logo";
 import { Popover } from "@headlessui/react";
 import Navbar from "./Navbar";
 import { useLocation } from "@reach/router";
+import slugify from "react-slugify";
 
 const Project = ({
   children,
@@ -23,7 +24,6 @@ const Project = ({
   projectCoverImage,
   projectDescription,
   projectDependencies,
-  projectGithubUrl
 }) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
@@ -82,11 +82,17 @@ const Project = ({
                           {projectTitle}
                         </h1>
                         <div className="flex items-center space-x-2 mb-4">
-                          <div className={`
+                          <div
+                            className={`
                             ${projectStatus === "alpha" ? "bg-red-400" : ""}
                             ${projectStatus === "beta" ? "bg-yellow-9" : ""}
-                            ${projectStatus === "production" ? "bg-green-400" : ""}
-                            h-2 w-2 rounded-full`}/>
+                            ${
+                              projectStatus === "production"
+                                ? "bg-green-400"
+                                : ""
+                            }
+                            h-2 w-2 rounded-full`}
+                          />
                           <p className="uppercase tracking-wider text-xs text-slate-10">
                             {projectStatus} {projectVersion}
                           </p>
@@ -103,12 +109,12 @@ const Project = ({
                           {projectDescription}
                         </p>
 
-                        <div className="flex items-center space-x-2">
-                          <p className="font-medium text-sm text-slate-11">
-                            Dependencies:
-                          </p>
-                          {projectDependencies &&
-                            projectDependencies.map(item => {
+                        {projectDependencies.length > 0 && (
+                          <div className="flex items-center space-x-2">
+                            <p className="font-medium text-sm text-slate-11">
+                              Dependencies:
+                            </p>
+                            {projectDependencies.map(item => {
                               return (
                                 <a
                                   href={item.link}
@@ -131,12 +137,15 @@ const Project = ({
                                 </a>
                               );
                             })}
-                        </div>
+                          </div>
+                        )}
                       </div>
 
                       <div className="border-t border-slate-4 bg-slate-2 px-5 py-4 w-full">
                         <a
-                          href={projectGithubUrl}
+                          href={`https://github.com/fsk1997/palette-ui/tree/master/src/pages/project/${slugify(
+                            projectTitle
+                          )}`}
                           target="_blank"
                           rel="noreferrer"
                           className="btn btn-plum flex space-x-2 justify-center items-center w-full"

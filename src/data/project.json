@@ -4,13 +4,12 @@
     "title": "Draggable Dialogue",
     "slug": "draggable-dialogue",
     "description": "Minimal recreation of Figma's comment component.",
-    "github_url": "https://www.google.com",
     "type": "button",
     "dependencies": [
       {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
+        "name": "React Draggable",
+        "link": "http://react-grid-layout.github.io/react-draggable/example/",
+        "icon_url": ""
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
@@ -25,15 +24,8 @@
     "title": "Animated Gradient SVG Button",
     "slug": "animated-gradient-svg-button",
     "description": "Animate SVG button with fading gradient.Beautiful and subtle micro-interaction inspired by dating app TanTan's bottom tab navigator's button icon.",
-    "github_url": "https://www.google.com",
     "type": "button",
-    "dependencies": [
-      {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
-      }
-    ],
+    "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
     "created_at": "15th June 2022",
     "last_updated": "15th June 2022",
@@ -46,15 +38,8 @@
     "title": "Dialog Height Transition",
     "slug": "dialog-height-transition",
     "description": "Change dialog height based on content. Inspired by About This Mac tabbed dialogue.",
-    "github_url": "https://www.google.com",
-    "type": "button",
-    "dependencies": [
-      {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
-      }
-    ],
+    "type": "dialog",
+    "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
     "created_at": "28th May 2022",
     "last_updated": "28th May 2022",
@@ -67,15 +52,8 @@
     "title": "Sticky Header Links",
     "slug": "sticky-header-links",
     "description": "Make a portion of hero section sticky when scrolled.",
-    "github_url": "https://www.google.com",
-    "type": "button",
-    "dependencies": [
-      {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
-      }
-    ],
+    "type": "layout",
+    "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
     "created_at": "21st May 2022",
     "last_updated": "21st May 2022",
@@ -88,15 +66,8 @@
     "title": "Graduated Frosty Overlay",
     "slug": "graduated-frosty-overlay",
     "description": "Graduated frosty overlay on images. Inspired by AppleTV app.",
-    "github_url": "https://www.google.com",
-    "type": "button",
-    "dependencies": [
-      {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
-      }
-    ],
+    "type": "image",
+    "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
     "created_at": "13th May 2022",
     "last_updated": "13th May 2022",
@@ -109,15 +80,8 @@
     "title": "Loaded Image Transition",
     "slug": "loaded-image-transition",
     "description": "Transition from plain background colour to image using image tag onload event.",
-    "github_url": "https://www.google.com",
-    "type": "button",
-    "dependencies": [
-      {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
-      }
-    ],
+    "type": "image",
+    "dependencies": [],
     "cover_image": "../images/project-card-placeholder.png",
     "created_at": "1st May 2022",
     "last_updated": "1st May 2022",
@@ -130,13 +94,12 @@
     "title": "Bottom Tab Navigator",
     "slug": "bottom-tab-navigator",
     "description": "A simple tab bar on the bottom of the screen that lets you switch between different routes.",
-    "github_url": "https://www.google.com",
-    "type": "button",
+    "type": "layout",
     "dependencies": [
       {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
+        "name": "Throttle by Underscore",
+        "link": "https://underscorejs.org/#throttle",
+        "icon_url": ""
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
@@ -151,13 +114,12 @@
     "title": "iOS Header",
     "slug": "ios-header",
     "description": "Large collapsible animated title just like native iOS apps, implemented using React Hooks and CSS.",
-    "github_url": "https://www.google.com",
-    "type": "button",
+    "type": "layout",
     "dependencies": [
       {
-        "name": "Framer",
-        "link": "https://www.google.com",
-        "icon_url": "https://cdn.iconscout.com/icon/free/png-256/framer-logo-3609961-3014601.png"
+        "name": "Throttle by Underscore",
+        "link": "https://underscorejs.org/#throttle",
+        "icon_url": ""
       }
     ],
     "cover_image": "../images/project-card-placeholder.png",
