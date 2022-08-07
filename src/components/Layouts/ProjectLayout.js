@@ -54,7 +54,7 @@ const Project = ({
       <section
         className={`${
           hideSidebar ? "ml-0" : "ml-[300px] p-4"
-        } transition-mid min-h-screen relative h-screen`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
+        } transition-mid min-h-screen relative h-full`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
       >
         {location.pathname !== "/projects" && (
           <>
