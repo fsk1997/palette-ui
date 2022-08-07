@@ -46,7 +46,7 @@ const Project = ({
       <section
         className={`${
           hideSidebar ? "-translate-x-[300px]" : ""
-        } transition-mid w-[300px] fixed z-10 h-screen border-r border-slate-4`}
+        } transition-mid w-[300px] fixed z-10 h-screen border-r border-slate-4 top-0 left-0`}
       >
         <Navbar wrapperClassName={"h-full"} />
       </section>
