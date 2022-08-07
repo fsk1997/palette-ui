@@ -135,7 +135,7 @@ const Project = ({
                         </p>
 
                         {projectDependencies.length > 0 && (
-                          <div className="flex items-center space-x-2">
+                          <div className="mt-2 flex items-center space-x-2">
                             <p className="font-medium text-sm text-slate-11">
                               Dependencies:
                             </p>
