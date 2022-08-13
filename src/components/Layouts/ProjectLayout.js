@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import darkModeState from "../../hooks/darkModeState";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { useRecoilState } from "recoil";
 import {
   ArrowsOutSimple,
   Info,
@@ -13,10 +11,9 @@ import {
 import Tippy from "@tippyjs/react";
 import { Popover } from "@headlessui/react";
 import Navbar from "./Navbar";
-import { useLocation } from "@reach/router";
 import slugify from "react-slugify";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import "react-spring-bottom-sheet/dist/style.css";
+import BodyWrapper from "./BodyWrapper";
 
 const Project = ({
   children,
@@ -28,7 +25,6 @@ const Project = ({
   projectDependencies,
   projectMode,
 }) => {
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   const [hideSidebar, setHideSidebar] = useState(false);
 
@@ -42,14 +38,9 @@ const Project = ({
   const iconConfig = { size: 16, weight: "bold" };
   const buttonClassName = "btn btn-plum btn-dark btn-sm";
 
-  const location = useLocation();
-
   return (
-    <main
-      className={`${
-        darkMode ? "dark" : "light"
-      } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
-    >
+    <>
+      <BodyWrapper/>
       <section
         className={`${hideBelowSMClass} ${
           hideSidebar ? "-translate-x-[300px]" : ""
@@ -164,22 +155,19 @@ const Project = ({
         </div>
 
         {viewMode === "desktop" && (
-          <div className="show-interface h-full w-full">{children}</div>
+          <main className="show-interface h-full w-full">{children}</main>
         )}
 
         {viewMode === "mobile" && (
-          <div className="absolute top-0 left-0 h-full w-full z-0 flex items-center justify-center show-interface">
+          <main className="absolute top-0 left-0 h-full w-full z-0 flex items-center justify-center show-interface">
             <div className="w-[276px] h-[597px] rounded-2xl relative border border-plum-5 shadow-2xl shadow-plum-7 hover:shadow-plum-6 scale-[102%] hover:scale-100 transition-mid overflow-scroll scrollbar-none">
               <div className="absolute top-0 left-0 right-0 z-10 h-4 w-3/4 rounded-b-xl mx-auto border-l border-r border-b border-plum-4 bg-plum-1" />
               {children}
             </div>
-          </div>
+          </main>
         )}
       </section>
 
-      <div className="block sm:hidden">
-
-      </div>
       <BottomSheet
         open={openNavBottomSheet}
         onDismiss={() => setOpenNavBottomSheet(false)}
@@ -200,7 +188,7 @@ const Project = ({
           projectDependencies={projectDependencies}
         />
       </BottomSheet>
-    </main>
+    </>
   );
 };
 

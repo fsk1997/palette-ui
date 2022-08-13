@@ -257,3 +257,15 @@ Typography
 .h-mini-title{
     @apply uppercase text-xs font-medium tracking-wider;
 }
+
+
+/* bottom sheet overrides */
+div[data-rsbs-overlay]{
+    @apply bg-slate-1;
+}
+div[data-rsbs-header]{
+    /* @apply bg-slate-5; */
+    &::before{
+        @apply bg-slate-8;
+    }
+}

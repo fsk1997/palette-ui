@@ -1,11 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-import darkModeState from "../../hooks/darkModeState";
-import { useRecoilState } from "recoil";
-import {
-  Sun,
-  GithubLogo,
-} from "phosphor-react";
-import Tippy from "@tippyjs/react";
+import React from "react";
 import { LogoLink } from "../Logo";
 import { Link } from "gatsby";
 import slugify from "react-slugify";
@@ -14,15 +7,8 @@ import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada"
 import { ModeAndGithub } from "../Utils"
 
 const Navbar = ({wrapperClassName}) => {
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
-
-  const navIconConfig = {
-    size: 20,
-    className: "fill-plum-12"
-  };
 
   const location = useLocation();
-
   const projects = useAllProjectsMetadata()
 
   return (
@@ -41,7 +27,7 @@ const Navbar = ({wrapperClassName}) => {
                 key={item.slug}
                 to={`/project/${slugify(project.title)}`} 
                 className={`
-                  text-sm font-medium hover:text-plum-12 transition-mid 
+                  font-medium hover:text-plum-12 transition-mid 
                   ${`/project/${slugify(project.title)}` === location.pathname ? "text-plum-12" : "text-slate-10"}`}>
                 {project.title}
               </Link>

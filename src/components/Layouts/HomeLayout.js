@@ -16,8 +16,7 @@ import { Blur, ModeAndGithub } from "../Utils";
 import { motion } from "framer-motion";
 import useAllProjectsMetadata from "../../hooks/useAllProjectsMetada";
 import slugify from "react-slugify"
-import darkModeState from "../../hooks/darkModeState";
-import { useRecoilState } from "recoil";
+import BodyWrapper from "./BodyWrapper";
 
 const Layout = ({
   children,
@@ -28,8 +27,6 @@ const Layout = ({
   heroButtonElement,
   newsletterSection
 }) => {
-
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   const bigCardClassName = "overflow-hidden shadow-2xl shadow-plum-6 rounded-3xl border border-slate-2"
 
@@ -91,12 +88,8 @@ const Layout = ({
   ];
 
   return (
-    <div
-      className={`${
-        darkMode ? "dark" : "light"
-      } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
-    >
-
+    <>
+      <BodyWrapper/>
       <div className={`${compactNav ? "translate-y-0" : "translate-y-24"} transition-mid flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden`}>
         <Link to={`/project/${slugify(projects[0].node.title)}`} className={`btn btn-plum ${compactNav ? "btn-dark shadow-lg shadow-plum-6 scale-100" : "scale-0"} origin-bottom transition-fast ease-power-1`} title="Explore Projects">Explore Projects</Link>
       </div> 
@@ -234,7 +227,7 @@ const Layout = ({
           </div>
         </div>
       </motion.footer>
-    </div>
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+import "react-spring-bottom-sheet/dist/style.css";
 import "./src/styles/fonts.css";
 import "./src/styles/global.css";
 import "windy-radix-palette/base.css";
