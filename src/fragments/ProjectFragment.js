@@ -18,6 +18,7 @@ export const projectFragment = graphql`
     }
     version
     cover_image {
+      publicURL
       childImageSharp {
         gatsbyImageData
       }

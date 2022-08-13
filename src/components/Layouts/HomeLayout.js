@@ -40,11 +40,13 @@ const Layout = ({
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
-      {sectionHero.current ?
-        window.scrollY >= sectionHero.current.clientHeight ? setCompactNav(true) :
+      if(sectionHero.current) {
+        if(window.scrollY >= sectionHero.current.clientHeight){
+          setCompactNav(true)
+        } else {
           setCompactNav(false)
-          : console.log('')
-        }   
+        }
+      }
     });
   }, []);
 
