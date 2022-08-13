@@ -43,6 +43,7 @@ const StickyHeaderLinks = () => {
             src="https://voguegirl.jp/wp-content/uploads/2022/05/adidas-7-1.jpg"
             width="1200"
             height="800"
+            alt="a person wearing adidas socks"
           />
           <div className={styles.headerContent}>
             <h1 className={styles.container}>

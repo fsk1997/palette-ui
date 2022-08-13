@@ -4,9 +4,17 @@
 
 
 @layer utilities {
+    .transition-fast{
+        @apply  transition-all duration-75 ease-in-out;
+    }
     .transition-mid{
-        @apply  transition-all duration-200;
-        transition-timing-function: cubic-bezier(.75,0,.51,.99);
+        @apply  transition-all duration-200 ease-in-out;
+    }
+    .transition-slow{
+        @apply  transition-all duration-500 ease-in-out;
+    }
+    .ease-power-1{
+        transition-timing-function: cubic-bezier(0.325, 0.005, 0.185, 1.000) !important;
     }
 }
 
@@ -212,9 +220,40 @@ html {
     @apply outline outline-red-400;
 } */
 
-.line-clamp-2{
+.c-line-clamp{
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
-    overflow:hidden;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height:2.1rem;
+}
+
+
+
+/* *{
+Typography
+} */
+.h1, .h2, .h3, .h4, .h5, .h6{
+    @apply text-plum-12;
+}
+.h1{
+    @apply text-3xl lg:text-4xl;
+}
+.h2{
+    @apply text-2xl lg:text-3xl;
+}
+.h3{
+    @apply text-xl lg:text-2xl;
+}
+.h4{
+    @apply text-lg lg:text-xl;
+}
+.h5{
+    @apply text-base lg:text-lg;
+}
+.h6{
+    @apply text-sm lg:text-base
+}
+.h-mini-title{
+    @apply uppercase text-xs font-medium tracking-wider;
 }

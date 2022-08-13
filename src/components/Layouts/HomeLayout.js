@@ -35,6 +35,7 @@ const Layout = ({
 
   const [compactNav, setCompactNav] = useState(false);
   const [revealNewsletter, setRevealNewsletter] = useState(false)
+  const [revealOutlineLogo, setRevealOutlineLogo] = useState(false)
 
   const projects = useAllProjectsMetadata()
 
@@ -44,7 +45,8 @@ const Layout = ({
     document.addEventListener("scroll", () => {
       {sectionHero.current ?
         window.scrollY >= sectionHero.current.clientHeight ? setCompactNav(true) :
-          setCompactNav(false): console.log('')
+          setCompactNav(false)
+          : console.log('')
         }   
     });
   }, []);
@@ -96,7 +98,7 @@ const Layout = ({
     >
 
       <div className={`${compactNav ? "translate-y-0" : "translate-y-24"} transition-mid flex sm:hidden py-4 fixed z-[5] bottom-0 left-0 right-0 w-full items-center justify-center overflow-x-hidden`}>
-        <Link to={`/project/${slugify(projects[0].node.title)}`} className={`btn btn-plum ${compactNav ? "btn-dark shadow-lg shadow-plum-7 scale-100" : "scale-0"} origin-bottom transition-all delay-150 duration-500 ease-out`} title="Explore Projects">Explore Projects</Link>
+        <Link to={`/project/${slugify(projects[0].node.title)}`} className={`btn btn-plum ${compactNav ? "btn-dark shadow-lg shadow-plum-6 scale-100" : "scale-0"} origin-bottom transition-fast ease-power-1`} title="Explore Projects">Explore Projects</Link>
       </div> 
 
       <div
@@ -145,7 +147,7 @@ const Layout = ({
             </div>
             <div className="lg:ml-8 relative z-[1] lg:-mt-32">
               <div className="flex flex-col items-center lg:items-start lg:w-1/2">
-                <p className="lg:text-lg text-slate-11 mt-5 mb-4">
+                <p className="lg:text-lg text-slate-11 mt-6 mb-4">
                   {heroDescription}
                 </p>
                 <div className="flex items-center justify-start space-x-3">
@@ -200,9 +202,12 @@ const Layout = ({
           </div>
           <div className={`relative z-0 container ${newsletterSection ? 'pt-80' : 'pt-40'} pb-24`}>
             <div className="relative mx-auto flex flex-col w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3">
-              <div className="absolute -top-28 md:-top-24 left-0 right-0 mx-auto w-full h-full">
-                <StaticImage draggable={false} src="../../images/p-outline.png" className="dark:brightness-150" alt="background image"/>
-              </div>
+              <motion.div
+                onViewportEnter={()=>{setRevealOutlineLogo(true)}} 
+                onViewportLeave={()=>{setRevealOutlineLogo(false)}}  
+                className="absolute -top-28 md:-top-24 left-0 right-0 mx-auto w-full h-full">
+                <StaticImage draggable={false} src="../../images/p-outline.png" className={`${revealOutlineLogo ? "blur-none scale-100 opacity-100 translate-y-0" : "opacity-0 scale-90 translate-y-6 blur-lg"} origin-bottom transition-slow dark:brightness-150`} alt="background"/>
+              </motion.div>
 
               <p className="relative text-center text-slate-9 mb-2">
                 Designed and developed by{" "}
@@ -216,6 +221,7 @@ const Layout = ({
                         href={item.url}
                         target="_blank"
                         className="text-slate-11 hover:text-slate-12"
+                        rel="noreferrer"
                       >
                         {item.icon}
                       </a>

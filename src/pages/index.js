@@ -1,20 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import Tippy from "@tippyjs/react";
+import React, { useState } from "react";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import Seo from "../components/Seo";
 import { Section, SectionHeading } from "../components/Section";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowCircleRight } from "phosphor-react";
-import { motion, useInView } from "framer-motion";
+import { motion} from "framer-motion";
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import slugify from "react-slugify";
 import useAllProjectsMetadata from "../hooks/useAllProjectsMetada"
 import "swiper/css";
-import { Blur, InlineEmoji } from "../components/Utils";
+import {InlineEmoji } from "../components/Utils";
 
 const IndexPage = () => {
-  const [image, setImage] = useState("image1");
+  const [image, setImage] = useState(1);
   const [showImage, setShowImage] = useState(false);
 
   const projects = useAllProjectsMetadata()
@@ -26,25 +25,25 @@ const IndexPage = () => {
       id:1,
       title:"Check dependencies on each project",
       description:"Some projects might require dependencies for better code and performance optimisation. Be sure to check them at the bottom of each project page.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
     },
     {
       id:2,
       title:"Visit the repository folder on Github",
       description:"On each project’s repository, you will find a index.js file and index.module.css.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
     },
     {
       id:3,
       title:"Copy and paste the code",
       description:"After installing the necessary dependencies, copy the React code and its corresponding stylesheet to your own project. Extend or further optimise the code if needed.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
     },
     {
       id:4,
       title:"Modify your CSS",
       description:"PaletteUI borrows the idea of HeadlessUI. Every project are written in plain CSS so you can adapt it to any preferred CSS frameworks or design system. ",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
     },
   ]
 
@@ -55,7 +54,7 @@ const IndexPage = () => {
       heroThirdLine={"React UI Components"} 
       heroDescription={"Experimental React UI Components with Plain CSS"} 
       heroButtonElement={<Link className="btn btn-plum" to={`/project/${slugify(projects[0].node.title)}`} title="Explore All Projects">Explore All Projects</Link>}
-      // TODO: To dynamically point the link to latest project
+      newsletterSection={false}
       >
 
       <Seo />
@@ -103,8 +102,8 @@ const IndexPage = () => {
             const project = item.node
             return (
               <SwiperSlide>
-                <Link key={project.id} to={`/project/${slugify(project.title)}`} className="group cursor-pointer transition-mid flex flex-col space-y-6">
-                  <div className="transform-gpu transition-mid relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105 pt-[52.5%]">
+                <Link key={project.id} to={`/project/${slugify(project.title)}`} className="group cursor-pointer flex flex-col space-y-6">
+                  <div className="transition-slow relative overflow-hidden w-full rounded-xl shadow-xl group-hover:shadow-lg shadow-plum-6 group-hover:shadow-plum-5 brightness-100 group-hover:brightness-105 pt-[52.5%]">
                     <GatsbyImage
                       className={`top-0 left-0 bottom-0 right-0 w-full h-full`}
                       image={project.cover_image.childImageSharp.gatsbyImageData}
@@ -113,30 +112,17 @@ const IndexPage = () => {
                     />
                   </div>
                   <div className="flex flex-col space-y-3">
-                    <h6 className="font-medium text-plum-12 text-2xl">
+                    <h5 className="font-medium text-plum-12 h5 leading-4 lg:leading-5 w-5/6">
                       {project.title}
-                    </h6>
+                    </h5>
                     <div
-                      className="transform-gpu transition-all duration-75 -translate-y-[3.25rem] group-hover:translate-y-0 flex flex-row space-x-3"
-                      style={{
-                        transitionTimingFunction: "cubic-bezier(.75,0,.51,.99)",
-                      }}
-                    >
-                      <p className="line-clamp-2 w-full text-slte-10 transition-[opacity] duration-50 group-hover:opacity-100 opacity-0 translate-y-[3.25rem] group-hover:translate-y-0 "
-                        style={{transitionTimingFunction:"cubic-bezier(.75,0,.51,.99)"}}
-                      >
+                      className="transition-fast ease-power-1 lg:-translate-y-12 lg:group-hover:translate-y-0 flex flex-row space-x-3">
+                      <p className="c-line-clamp w-full text-slate-11 text-sm  leading-tight transition-fast ease-power-1 lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-12 lg:group-hover:translate-y-0">
                         {project.description}
                       </p>
-                      <ArrowCircleRight
-                        size={52} weight="thin"
-                        className="transform-gpu transition-all group-hover:-translate-x-0 -translate-x-3"
-                        style={{
-                          transitionTimingFunction:
-                            "cubic-bezier(.75,0,.51,.99)",
-                        }}
-                      />
+                      <ArrowCircleRight size={48} weight="thin" />
                     </div>
-                    <div className="transition-mid group-hover:translate-y-0 -translate-y-14 flex flex-row items-center space-x-3 text-xs uppercase tracking-wide">
+                    <div className="transition-mid lg:group-hover:-translate-y-3 -translate-y-2 lg:-translate-y-14 flex flex-row items-center space-x-3 text-xs uppercase tracking-wide">
                       <div className="font-semibold bg-plum-12 text-plum-1 px-2 py-1 rounded">
                         {project.type}
                       </div>
@@ -185,8 +171,8 @@ const IndexPage = () => {
 
                     </div>
                     <div className="flex flex-col w-full space-y-1">
-                      <h4 className="text-2xl text-plum-12 font-medium leading-tight">{item.title}</h4>
-                      <p className="text-slate-11">{item.description}</p>
+                      <h4 className="text-xl text-plum-12 font-medium leading-6 my-1">{item.title}</h4>
+                      <p className="text-sm text-slate-11">{item.description}</p>
                     </div>
                   </motion.div>
                 </div>
@@ -214,10 +200,11 @@ const IndexPage = () => {
             onViewportEnter={()=>{setShowImage(true)}} 
             onViewportLeave={()=>{setShowImage(false)}} 
           >
-            <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transform-gpu transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
-              {sectionHow.map((item)=>{return(
+            <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
+              {sectionHow.map((item)=>{
+                return(
                 image === item.id  ? (
-                  <div className="w-full rounded-tl-2xl overflow-hidden shadow-2xl shadow-plum-12">
+                  <div className={`w-full rounded-tl-2xl overflow-hidden shadow-2xl shadow-plum-12 ${image === item.id ? "blur-none" : "blur-lg"} transition-fast ease-power-1`}>
                     {item.image}
                   </div>
                 ) : (

@@ -30,26 +30,26 @@ const Navbar = ({wrapperClassName}) => {
       className={`${wrapperClassName && wrapperClassName} bg-slate-3 p-4 flex flex-col justify-between`}
     >
       <div className="flex flex-col space-y-5">
-        <LogoLink
-          // className={`${location.pathname === `/project/${slugify(projects[0].node.title)}` && "logo-slide-in"}`}
-        />
+        <LogoLink/>
         <hr className="border-slate-4 transition-mid" />
         <nav className="flex flex-col space-y-4">
-          <h6 className="uppercase text-xs text-slate-8 font-medium tracking-wider">projects</h6>
+          <h6 className="text-slate-8 h-mini-title">projects</h6>
           {projects.map(item => {
             const project = item.node;
             return (
-              <Link
-                to={`/project/${slugify(project.title)}`}
-                className="font-medium text-slate-10 hover:text-plum-12 transition-mid"
-              >
+              <Link 
+                key={item.slug}
+                to={`/project/${slugify(project.title)}`} 
+                className={`
+                  text-sm font-medium hover:text-plum-12 transition-mid 
+                  ${`/project/${slugify(project.title)}` === location.pathname ? "text-plum-12" : "text-slate-10"}`}>
                 {project.title}
               </Link>
             );
           })}
         </nav>
       </div>
-      <footer className="flex items-center space-x-4">
+      <footer className="mt-16 flex items-center space-x-4">
         <ModeAndGithub/>
       </footer>
     </nav>

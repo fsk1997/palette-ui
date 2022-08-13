@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import slugify from "react-slugify";
 import { motion } from "framer-motion"
+
 export const Section = ({ children, className, container, id }) => {
   return (
     <section
@@ -28,13 +29,13 @@ export const SectionHeading = ({ headingText, headingDescription, headingDescrip
       className="flex flex-col space-y-1"
     >
       <div className="flex flex-row items-center space-x-2">
-        <hr className={`${revealLine ? "w-6" : "w-0"} transition-[width] duration-150 ease-out border-t-2 border-plum-11`} />
-        <h2 className={`${revealLine ? "tracking-wider" : "tracking-snug"} transition-all delay-75 duration-200 ease-out uppercase font-semibold text-plum-11`}>
+        <hr className={`${revealLine ? "w-6" : "w-0"} transition-mid border-t-2 border-plum-11`} />
+        <h2 className={`${revealLine ? "tracking-wider" : "tracking-snug"} transition-fast uppercase font-semibold text-plum-11`}>
           {headingText}
         </h2>
       </div>
       {headingDescription && 
-        <div className={`${headingDescriptionClassName} text-2xl lg:text-3xl font-medium leading-9 lg:leading-10`}>
+        <div className={`${headingDescriptionClassName} h2 font-medium leading-9 lg:leading-10`}>
           {headingDescription}
         </div>
       }
