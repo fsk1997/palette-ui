@@ -27,7 +27,7 @@ const Navbar = ({wrapperClassName}) => {
 
   return (
     <nav
-      className={`${wrapperClassName && wrapperClassName} bg-slate-3 p-4 flex flex-col justify-between`}
+      className={`${wrapperClassName && wrapperClassName} p-4 flex flex-col justify-between`}
     >
       <div className="flex flex-col space-y-5">
         <LogoLink/>

@@ -36,9 +36,8 @@ const Project = ({
 
   const hideBelowSMClass = "hidden sm:block";
 
+  const [openProjectBottomSheet, setOpenProjectBottomSheet] = useState(false);
   const [openNavBottomSheet, setOpenNavBottomSheet] = useState(false);
-  const [openProjectInfoBottomSheet, setOpenProjectInfoBottomSheet] =
-    useState(false);
 
   const iconConfig = { size: 16, weight: "bold" };
   const buttonClassName = "btn btn-plum btn-dark btn-sm";
@@ -51,35 +50,12 @@ const Project = ({
         darkMode ? "dark" : "light"
       } newBody bg-slate-2 text-slate-12 relative min-h-screen`}
     >
-      {
-        <div className="block sm:hidden">
-          <BottomSheet 
-            open={openNavBottomSheet} 
-            onDismiss={()=>setOpenNavBottomSheet(false)}
-          >
-            <Navbar wrapperClassName={""} />
-          </BottomSheet>
-          <BottomSheet 
-            open={openProjectInfoBottomSheet}
-            onDismiss={()=>setOpenNavBottomSheet(false)}
-            >
-            <ProjectInfo
-              projectTitle={projectTitle}
-              projectStatus={projectStatus}
-              projectVersion={projectVersion}
-              projectCoverImage={projectCoverImage}
-              projectDescription={projectDescription}
-              projectDependencies={projectDependencies}
-            />
-          </BottomSheet>
-        </div>
-      }
       <section
         className={`${hideBelowSMClass} ${
           hideSidebar ? "-translate-x-[300px]" : ""
         } transition-mid w-[300px] fixed z-10 h-screen border-r border-slate-4 top-0 left-0 `}
       >
-        <Navbar wrapperClassName={"h-full"} />
+        <Navbar wrapperClassName={"bg-slate-3 h-full"} />
       </section>
 
       <section
@@ -88,7 +64,6 @@ const Project = ({
         } transition-mid h-full min-h-screen relative`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
       >
         <div className="fixed z-10 top-4 right-4 flex items-center space-x-2">
-          
           {/* Desktop Enlarge Button */}
           <div className={hideBelowSMClass}>
             <Tippy content="Enlarge">
@@ -138,8 +113,7 @@ const Project = ({
             <Tippy content="Project Info">
               <button
                 onClick={() => {
-                  setOpenProjectInfoBottomSheet(!openProjectInfoBottomSheet);
-                  setOpenNavBottomSheet(false);
+                  setOpenProjectBottomSheet(true);
                 }}
                 className={buttonClassName}
               >
@@ -153,8 +127,7 @@ const Project = ({
             <Tippy content="Menu">
               <button
                 onClick={() => {
-                  setOpenNavBottomSheet(!openNavBottomSheet);
-                  setOpenProjectInfoBottomSheet(false);
+                  setOpenNavBottomSheet(true);
                 }}
                 className={buttonClassName}
               >
@@ -203,6 +176,30 @@ const Project = ({
           </div>
         )}
       </section>
+
+      <div className="block sm:hidden">
+
+      </div>
+      <BottomSheet
+        open={openNavBottomSheet}
+        onDismiss={() => setOpenNavBottomSheet(false)}
+      >
+        <Navbar wrapperClassName={""} />
+      </BottomSheet>
+      
+       <BottomSheet
+        open={openProjectBottomSheet}
+        onDismiss={() => setOpenProjectBottomSheet(false)}
+      >
+        <ProjectInfo
+          projectTitle={projectTitle}
+          projectStatus={projectStatus}
+          projectVersion={projectVersion}
+          projectCoverImage={projectCoverImage}
+          projectDescription={projectDescription}
+          projectDependencies={projectDependencies}
+        />
+      </BottomSheet>
     </main>
   );
 };
