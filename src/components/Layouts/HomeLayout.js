@@ -182,9 +182,11 @@ const Layout = ({
               <Blur className="absolute z-0 -top-24 -right-24" sizeClassName="w-[40vw] h-[40vw]" colorClassName="opacity-40 bg-plum-2"/>
               <div className="lg:w-2/5 xl:w-1/3 relative z-[1]">
                 <SectionHeading
+                  className="mb-3"
                   headingText={"Newsletter"}
                   headingDescription={[`Get updates straight to your inbox.`]}
                 />
+                <div className="w-auto text-plum-11 font-medium">Coming Soon</div>
               </div>
             </div>
           </Section>

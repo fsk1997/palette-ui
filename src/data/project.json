@@ -11,7 +11,7 @@
         "icon_url": ""
       }
     ],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/draggable-dialogue.jpg",
     "created_at": "2022-06-19",
     "last_updated": "2022-06-19",
     "status": "beta",
@@ -21,10 +21,10 @@
   {
     "title": "Animated Gradient SVG Button",
     "slug": "animated-gradient-svg-button",
-    "description": "Animate SVG button with fading gradient.Beautiful and subtle micro-interaction inspired by dating app TanTan's bottom tab navigator's button icon.",
+    "description": "Animate SVG button with fading gradient. Beautiful and subtle micro-interaction inspired by dating app TanTan's bottom tab navigator's button icon.",
     "type": "button",
     "dependencies": [],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/animated-gradient-svg-button.jpg",
     "created_at": "2022-06-15",
     "last_updated": "2022-06-15",
     "status": "production",
@@ -37,7 +37,7 @@
     "description": "Change dialog height based on content. Inspired by About This Mac tabbed dialogue.",
     "type": "dialog",
     "dependencies": [],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/dialog-height-transition.jpg",
     "created_at": "2022-05-28",
     "last_updated": "2022-05-28",
     "status": "alpha",
@@ -50,7 +50,7 @@
     "description": "Make a portion of hero section sticky when scrolled.",
     "type": "layout",
     "dependencies": [],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-05-21",
     "last_updated": "2022-05-21",
     "status": "production",
@@ -63,7 +63,7 @@
     "description": "Graduated frosty overlay on images. Inspired by AppleTV app.",
     "type": "image",
     "dependencies": [],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-05-13",
     "last_updated": "2022-05-13",
     "status": "production",
@@ -76,7 +76,7 @@
     "description": "Transition from plain background colour to image using image tag onload event.",
     "type": "image",
     "dependencies": [],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-05-01",
     "last_updated": "2022-05-01",
     "status": "production",
@@ -95,7 +95,7 @@
         "icon_url": ""
       }
     ],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-04-07",
     "last_updated": "2022-04-07",
     "status": "alpha",
@@ -114,7 +114,7 @@
         "icon_url": ""
       }
     ],
-    "cover_image": "../images/project-card-placeholder.png",
+    "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-03-26",
     "last_updated": "2022-03-26",
     "status": "beta",

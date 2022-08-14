@@ -25,25 +25,25 @@ const IndexPage = () => {
       id:1,
       title:"Check dependencies on each project",
       description:"Some projects might require dependencies for better code and performance optimisation. Be sure to check them at the bottom of each project page.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/1.png"/> ,
     },
     {
       id:2,
       title:"Visit the repository folder on Github",
       description:"On each project’s repository, you will find a index.js file and index.module.css.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/2.png"/> ,
     },
     {
       id:3,
       title:"Copy and paste the code",
       description:"After installing the necessary dependencies, copy the React code and its corresponding stylesheet to your own project. Extend or further optimise the code if needed.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/3.png"/> ,
     },
     {
       id:4,
       title:"Modify your CSS",
       description:"PaletteUI borrows the idea of HeadlessUI. Every project are written in plain CSS so you can adapt it to any preferred CSS frameworks or design system. ",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step-1.png"/> ,
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/4.png"/> ,
     },
   ]
 
@@ -117,12 +117,12 @@ const IndexPage = () => {
                     </h5>
                     <div
                       className="transition-fast ease-power-1 lg:-translate-y-12 lg:group-hover:translate-y-0 flex flex-row space-x-3">
-                      <p className="c-line-clamp w-full text-slate-11 text-sm  leading-tight transition-fast ease-power-1 lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-12 lg:group-hover:translate-y-0">
+                      <p className="c-line-clamp w-full text-slate-11 text-sm transition-fast ease-power-1 lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-12 lg:group-hover:translate-y-0">
                         {project.description}
                       </p>
                       <ArrowCircleRight size={48} weight="thin" />
                     </div>
-                    <div className="transition-mid lg:group-hover:-translate-y-3 -translate-y-2 lg:-translate-y-14 flex flex-row items-center space-x-3 text-xs uppercase tracking-wide">
+                    <div className="transition-mid lg:group-hover:-translate-y-2 -translate-y-2 lg:-translate-y-14 flex flex-row items-center space-x-3 text-xs uppercase tracking-wide">
                       <div className="font-semibold bg-plum-12 text-plum-1 px-2 py-1 rounded">
                         {project.type}
                       </div>
@@ -177,7 +177,7 @@ const IndexPage = () => {
                   </motion.div>
                 </div>
                 <div className="pl-10 block lg:hidden w-full">
-                  <div className={`shadow-2xl shadow-plum-7 px-12 pt-12 flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
+                  <div className={`shadow-2xl shadow-plum-7 px-8 pt-8 md:px-12 md:pt-12 flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
                     <motion.div 
                       onViewportEnter={(e)=>{
                         e.target.classList.add('translate-y-0');
@@ -196,11 +196,11 @@ const IndexPage = () => {
             )})}
           </div>
           <motion.div 
-            className="hidden lg:block sticky top-0 w-3/5 h-full py-24"
+            className="hidden lg:block sticky top-0 w-3/5 transition-mid h-full py-24"
             onViewportEnter={()=>{setShowImage(true)}} 
             onViewportLeave={()=>{setShowImage(false)}} 
           >
-            <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transition-all duration-300 ease-out flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
+            <div className={`${showImage ? "scale-100 shadow-2xl shadow-plum-7" : "scale-[80%]"} origin-right pt-12 pl-12 transition-mid ease-power-1 flex items-end h-full bg-gradient-to-t from-plum-11 to-plum-12 rounded-3xl overflow-hidden relative`}>
               {sectionHow.map((item)=>{
                 return(
                 image === item.id  ? (

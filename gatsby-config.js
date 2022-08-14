@@ -27,9 +27,9 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`auto`, `avif`, `webp`],
+          formats: [`auto`, `webp`],
           placeholder: `blurred`,
-          quality: 50,
+          quality: 80,
           breakpoints: [576, 768, 922, 1140, 1400],
           backgroundColor: `transparent`,
           tracedSVGOptions: {},

@@ -18,7 +18,7 @@ Section.defaultProps = {
   container: true,
 };
 
-export const SectionHeading = ({ headingText, headingDescription, headingDescriptionClassName }) => {
+export const SectionHeading = ({ className, headingText, headingDescription, headingDescriptionClassName }) => {
   
   const [revealLine, setRevealLine] = useState(false)
 
@@ -26,7 +26,7 @@ export const SectionHeading = ({ headingText, headingDescription, headingDescrip
     <motion.div 
       onViewportEnter={()=>{setRevealLine(true)}} 
       onViewportLeave={()=>{setRevealLine(false)}} 
-      className="flex flex-col space-y-1"
+      className={`${className} flex flex-col space-y-1`}
     >
       <div className="flex flex-row items-center space-x-2">
         <hr className={`${revealLine ? "w-6" : "w-0"} transition-mid border-t-2 border-plum-11`} />

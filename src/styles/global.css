@@ -225,7 +225,7 @@ html {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    max-height:2.1rem;
+    max-height:2.5rem;
 }
 
 
