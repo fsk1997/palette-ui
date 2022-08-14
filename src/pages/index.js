@@ -25,25 +25,25 @@ const IndexPage = () => {
       id:1,
       title:"Check dependencies on each project",
       description:"Some projects might require dependencies for better code and performance optimisation. Be sure to check them at the bottom of each project page.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/1.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/1.png"/> ,
     },
     {
       id:2,
       title:"Visit the repository folder on Github",
       description:"On each project’s repository, you will find a index.js file and index.module.css.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/2.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/2.png"/> ,
     },
     {
       id:3,
       title:"Copy and paste the code",
       description:"After installing the necessary dependencies, copy the React code and its corresponding stylesheet to your own project. Extend or further optimise the code if needed.",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/3.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/3.png"/> ,
     },
     {
       id:4,
       title:"Modify your CSS",
       description:"PaletteUI borrows the idea of HeadlessUI. Every project are written in plain CSS so you can adapt it to any preferred CSS frameworks or design system. ",
-      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/4.png"/> ,
+      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/4.png"/> ,
     },
   ]
 
