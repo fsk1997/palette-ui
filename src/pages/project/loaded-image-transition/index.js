@@ -78,7 +78,8 @@ const LoadedImageTransition = () => {
       <Seo 
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}
-        customURL={`${siteMetadata.url}/${slugify(project.title)}`}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
       <div style={{ textAlign: "center" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>

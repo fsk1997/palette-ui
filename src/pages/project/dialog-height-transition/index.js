@@ -82,7 +82,8 @@ const DialogHeightTransition = () => {
       <Seo 
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}
-        customURL={`${siteMetadata.url}/${slugify(project.title)}`}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
       <div className={styles.page}>
         {showDialog ? (
