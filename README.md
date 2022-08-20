@@ -5,7 +5,7 @@
   </a>
 </p>
 
-PaletteUI is an experimental UI component library 📚 referencing unique design patterns on existing user interface. Build your next web application with our boilerplate React code ⚛️ and customise the CSS to your own need.
+[PaletteUI](https://paletteui.saykiat.com) is an experimental UI component library 📚 referencing unique design patterns on existing user interface. Build your next web application with our boilerplate React code ⚛️ and customise the CSS to your own need.
 
 ## 🚀 Quick start
 
