@@ -23,27 +23,27 @@ const IndexPage = () => {
   const sectionHow = [
     {
       id:1,
-      title:"Check dependencies on each project",
-      description:"Some projects might require dependencies for better code and performance optimisation. Be sure to check them at the bottom of each project page.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/1.png"/> ,
+      title:"Check dependency for each project",
+      description:"We use libraries and packages for better code readability and performance optimisation. You can find them at the info section on each project page.",
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/1.png"/> ,
     },
     {
       id:2,
       title:"Visit the repository folder on Github",
-      description:"On each project’s repository, you will find a index.js file and index.module.css.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/2.png"/> ,
+      description:"You will find a index.js file and index.module.css on each project.",
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/2.png"/> ,
     },
     {
       id:3,
       title:"Copy and paste the code",
-      description:"After installing the necessary dependencies, copy the React code and its corresponding stylesheet to your own project. Extend or further optimise the code if needed.",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/3.png"/> ,
+      description:"After installing the required dependencies, copy the React code and its stylesheet to your own project.",
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/3.png"/> ,
     },
     {
       id:4,
       title:"Modify your CSS",
-      description:"PaletteUI borrows the idea of HeadlessUI. Every project are written in plain CSS so you can adapt it to any preferred CSS frameworks or design system. ",
-      image: <StaticImage loading="eager" className={sectionHowImageClassName} src="../images/how-step/4.png"/> ,
+      description:"As every project is written in plain old CSS, you can adapt the existing styles to any preferred CSS frameworks. ",
+      image: <StaticImage className={sectionHowImageClassName} src="../images/how-step/4.png"/> ,
     },
   ]
 
@@ -62,7 +62,7 @@ const IndexPage = () => {
       <Section id={"About"} className="pt-24 pb-16">
         <SectionHeading
           headingText={"About"}
-          headingDescription={[`Palette UI is an `, <span className="text-plum-11">experimental UI component library </span>,<InlineEmoji ariaLabel="books">📚</InlineEmoji>,` referencing unique design patterns on existing user interface. Build your next web application with our `, <span className="text-plum-11">boilerplate React code </span>, <InlineEmoji ariaLabel="atom">⚛️</InlineEmoji>,` and customise the CSS to your own need.`]}
+          headingDescription={[`PaletteUI is an `, <span className="text-plum-11">experimental UI component library </span>,<InlineEmoji ariaLabel="books">📚</InlineEmoji>,` referencing unique design patterns on existing user interface. Build your next web application with our `, <span className="text-plum-11">boilerplate React code </span>, <InlineEmoji ariaLabel="atom">⚛️</InlineEmoji>,` and customise the CSS to your own need.`]}
           headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 "}
         />
       </Section>
@@ -143,7 +143,7 @@ const IndexPage = () => {
         <SectionHeading
           headingText={"How To use"}
           headingDescription={[
-            `Palette UI is customisable and extendable. Start integrating components with these few steps.`,
+            `PaletteUI is extremely customisable. Start integrating new components with these few steps.`,
           ]}
           headingDescriptionClassName={"lg:w-10/12 xl:w-7/12 pb-12"}
         />
