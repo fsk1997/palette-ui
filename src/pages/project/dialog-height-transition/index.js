@@ -7,19 +7,10 @@ import { useStaticQuery, graphql } from "gatsby";
 import useSiteMetadata from "../../../hooks/useSiteMetadata";
 import slugify from "react-slugify";
 import Seo from "../../../components/Seo";
-const DialogHeightTransition = () => {
-  const siteMetadata = useSiteMetadata();
 
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "dialog-height-transition" }) {
-        ...ProjectFragment
-      }
-    }
-  `);
 
-  const project = data.projectJson;
-
+const Project = () => {
+  
   const [showDialog, setShowDialog] = useState(false);
   const [switchContent, setSwitchContent] = useState(false);
   const dialogEl = useRef(0);
@@ -70,22 +61,7 @@ const DialogHeightTransition = () => {
   };
 
   return (
-    <ProjectLayout
-      projectTitle={project.title}
-      projectStatus={project.status}
-      projectVersion={project.version}
-      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
-      projectDescription={project.description}
-      projectDependencies={project.dependencies}
-      projectMode={project.mode}
-    >
-      <Seo 
-        customTitle={`${project.title} | ${siteMetadata.title}`}
-        customDescription={project.description}
-        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
-        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
-      />
-      <div className={styles.page}>
+    <div className={styles.page}>
         {showDialog ? (
           <div className={styles.dialog} ref={dialogEl}>
             <div
@@ -162,19 +138,6 @@ const DialogHeightTransition = () => {
                     </p>
                   </div>
                 )}
-                {/* <div>
-                <img
-                  style={{
-                    opacity: `${zeroOpacity ? "0%" : "100%"}`,
-                    transform: `${transform ? "scale(0%)" : "scale(100%)"}`
-                  }}
-                  src={
-                    switchContent
-                      ? `https://media2.malaymail.com/uploads/articles/2020/2020-01/jihyo_070120.jpg`
-                      : `https://64.media.tumblr.com/169440c74ac5b01cea71f225d535ebb8/dca73683daa8345f-72/s1280x1920/b45cfd8873719663d5e0225313948c4c7f21fcff.jpg`
-                  }
-                />
-              </div> */}
               </div>
             </div>
           </div>
@@ -182,8 +145,41 @@ const DialogHeightTransition = () => {
           <button onClick={prepForDialog}>Click for Jihyo!</button>
         )}
       </div>
+  )
+}
+
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "dialog-height-transition" }) {
+        ...ProjectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
+    <ProjectLayout
+      projectTitle={project.title}
+      projectStatus={project.status}
+      projectVersion={project.version}
+      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+      projectDescription={project.description}
+      projectDependencies={project.dependencies}
+      projectMode={project.mode}
+    >
+      <Seo 
+        customTitle={`${project.title} | ${siteMetadata.title}`}
+        customDescription={project.description}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
+      />
     </ProjectLayout>
   );
 };
 
-export default DialogHeightTransition;
+export default Page;

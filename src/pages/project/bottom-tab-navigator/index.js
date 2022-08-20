@@ -10,19 +10,7 @@ import useSiteMetadata from "../../../hooks/useSiteMetadata";
 import slugify from "react-slugify";
 import Seo from "../../../components/Seo";
 
-const BottomTabNavigator = () => {
-  const siteMetadata = useSiteMetadata();
-
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "bottom-tab-navigator" }) {
-        ...ProjectFragment
-      }
-    }
-  `);
-
-  const project = data.projectJson;
-
+const Project = () => {
   const [dismiss, setDismiss] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
@@ -47,6 +35,52 @@ const BottomTabNavigator = () => {
   }, [lastScrollTop]);
 
   return (
+    <div className={styles.page}>
+      <div className="page-content">
+        <h1>BottomTabNavigator (Still Buggy)</h1>
+        {[...Array(50)].map(index => (
+          <p key={index}>this is some content</p>
+        ))}
+      </div>
+      <div
+        className={`${styles.tabContainer} ${
+          dismiss ? styles.tabDismiss : null
+        }`}
+      >
+        <div>
+          <a href="#">text 1</a>
+        </div>
+        <div>
+          <a href="#">text 2</a>
+        </div>
+        <div>
+          <a href="#">text 3</a>
+        </div>
+        <div>
+          <a href="#">text 4</a>
+        </div>
+        <div>
+          <a href="#">text 5</a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "bottom-tab-navigator" }) {
+        ...ProjectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
     <ProjectLayout
       projectTitle={project.title}
       projectStatus={project.status}
@@ -56,43 +90,15 @@ const BottomTabNavigator = () => {
       projectDependencies={project.dependencies}
       projectMode={project.mode}
     >
-      <Seo 
+      <Seo
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}
         customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
         customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
-        <div className={styles.page}>
-          <div className="page-content">
-            <h1>BottomTabNavigator (Still Buggy)</h1>
-            {[...Array(50)].map((index) => (
-              <p key={index}>this is some content</p>
-            ))}
-          </div>
-          <div
-            className={`${styles.tabContainer} ${
-              dismiss ? styles.tabDismiss : null
-            }`}
-          >
-            <div>
-              <Link to="/">text 1</Link>
-            </div>
-            <div>
-              <Link to="/">text 2</Link>
-            </div>
-            <div>
-              <Link to="/">text 3</Link>
-            </div>
-            <div>
-              <Link to="/">text 4</Link>
-            </div>
-            <div>
-              <Link to="/">text 5</Link>
-            </div>
-          </div>
-        </div>
+      <Project />
     </ProjectLayout>
   );
 };
 
-export default BottomTabNavigator;
+export default Page;

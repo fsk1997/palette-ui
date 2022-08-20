@@ -9,19 +9,10 @@ import useSiteMetadata from "../../../hooks/useSiteMetadata";
 import slugify from "react-slugify";
 import Seo from "../../../components/Seo";
 
-const IosHeader = () => {
-  const siteMetadata = useSiteMetadata();
 
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "ios-header" }) {
-        ...ProjectFragment
-      }
-    }
-  `);
 
-  const project = data.projectJson;
-
+const Project = () => {
+  
   const [smallerHeaderFont, setSmallerHeaderFont] = useState(1);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
@@ -45,23 +36,9 @@ const IosHeader = () => {
     );
   }, [null]);
 
+
   return (
-    <ProjectLayout
-      projectTitle={project.title}
-      projectStatus={project.status}
-      projectVersion={project.version}
-      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
-      projectDescription={project.description}
-      projectDependencies={project.dependencies}
-      projectMode={project.mode}
-    >
-      <Seo 
-        customTitle={`${project.title} | ${siteMetadata.title}`}
-        customDescription={project.description}
-        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
-        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
-      />
-      <div style={{overflow:"hidden"}}>
+    <div style={{overflow:"hidden"}}>
         <div className={styles.headers}>
           <header className={styles.HeaderLarge}>
             <h1
@@ -94,8 +71,41 @@ const IosHeader = () => {
           ))}
         </div>
       </div>
+  )
+}
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "ios-header" }) {
+        ...ProjectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
+    <ProjectLayout
+      projectTitle={project.title}
+      projectStatus={project.status}
+      projectVersion={project.version}
+      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+      projectDescription={project.description}
+      projectDependencies={project.dependencies}
+      projectMode={project.mode}
+    >
+      <Seo 
+        customTitle={`${project.title} | ${siteMetadata.title}`}
+        customDescription={project.description}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
+      />
+      <Project/>
     </ProjectLayout>
   );
 };
 
-export default IosHeader;
+export default Page;

@@ -52,36 +52,9 @@ const RefreshButton = () => {
   );
 };
 
-const LoadedImageTransition = () => {
-  const siteMetadata = useSiteMetadata();
-  
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "loaded-image-transition" }) {
-        ...ProjectFragment
-      }
-    }
-  `);
-
-  const project = data.projectJson;
-
+const Project = () => {
   return (
-    <ProjectLayout
-      projectTitle={project.title}
-      projectStatus={project.status}
-      projectVersion={project.version}
-      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
-      projectDescription={project.description}
-      projectDependencies={project.dependencies}
-      projectMode={project.mode}
-    >
-      <Seo 
-        customTitle={`${project.title} | ${siteMetadata.title}`}
-        customDescription={project.description}
-        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
-        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
-      />
-      <div style={{ textAlign: "center" }}>
+<div style={{ textAlign: "center" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <Image src="https://img.wattpad.com/431072c4a44a7abb6de79a529531155ab1d7d0d0/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f665573576d4f556a5052304f6a413d3d2d313038323433323535392e313638366165393833393632646336653630373035343438343935372e676966" />
           <RefreshButton />
@@ -120,8 +93,41 @@ const LoadedImageTransition = () => {
           </a>
         </p>
       </div>
+  )
+}
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+  
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "loaded-image-transition" }) {
+        ...ProjectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
+    <ProjectLayout
+      projectTitle={project.title}
+      projectStatus={project.status}
+      projectVersion={project.version}
+      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+      projectDescription={project.description}
+      projectDependencies={project.dependencies}
+      projectMode={project.mode}
+    >
+      <Seo 
+        customTitle={`${project.title} | ${siteMetadata.title}`}
+        customDescription={project.description}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
+      />
+      <Project/>
     </ProjectLayout>
   );
 };
 
-export default LoadedImageTransition;
+export default Page;

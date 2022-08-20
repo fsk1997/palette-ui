@@ -37,7 +37,7 @@ const Image = ({ imageLink, title }) => {
   );
 };
 
-const FadingBackdropBlur = () => {
+const Page = () => {
   const siteMetadata = useSiteMetadata();
 
   const data = useStaticQuery(graphql`
@@ -96,4 +96,4 @@ const FadingBackdropBlur = () => {
   );
 };
 
-export default FadingBackdropBlur;
+export default Page;

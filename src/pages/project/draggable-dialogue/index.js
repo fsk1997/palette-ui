@@ -9,39 +9,16 @@ import useSiteMetadata from "../../../hooks/useSiteMetadata";
 import slugify from "react-slugify";
 import Seo from "../../../components/Seo";
 
-const DraggableDialogue = () => {
-  const siteMetadata = useSiteMetadata();
 
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "draggable-dialogue" }) {
-        ...ProjectFragment
-      }
-    }
-  `);
 
-  const project = data.projectJson;
+
+const Project = () => {
+
   const draggableRef = useRef(null)
-
   const [expand, setExpand] = useState(false);
-
+  
   return (
-    <ProjectLayout
-        projectTitle={project.title}
-        projectStatus={project.status}
-        projectVersion={project.version}
-        projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
-        projectDescription={project.description}
-        projectDependencies={project.dependencies}
-        projectMode={project.mode}
-      >
-      <Seo 
-        customTitle={`${project.title} | ${siteMetadata.title}`}
-        customDescription={project.description}
-        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
-        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
-      />
-      <div className={styles.page}>
+    <div className={styles.page}>
         <Draggable ref={draggableRef}>
           <div
             onPointerDown={expand ? ()=>null : () => {setExpand(true)}}
@@ -76,8 +53,43 @@ const DraggableDialogue = () => {
           </div>
         </Draggable>
       </div>
+  )
+}
+
+
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "draggable-dialogue" }) {
+        ...ProjectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
+    <ProjectLayout
+        projectTitle={project.title}
+        projectStatus={project.status}
+        projectVersion={project.version}
+        projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+        projectDescription={project.description}
+        projectDependencies={project.dependencies}
+        projectMode={project.mode}
+      >
+      <Seo 
+        customTitle={`${project.title} | ${siteMetadata.title}`}
+        customDescription={project.description}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
+      />
+      <Project/>
     </ProjectLayout>
   );
 };
 
-export default DraggableDialogue;
+export default Page;
