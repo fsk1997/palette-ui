@@ -178,6 +178,7 @@ const Page = () => {
         customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
         customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
+      <Project/>
     </ProjectLayout>
   );
 };
