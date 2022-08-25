@@ -2,7 +2,7 @@
   {
     "title": "Fluid Font Size",
     "slug": "fluid-font-size",
-    "description": "Make short text fit on a single-line space",
+    "description": "Make 3-5 characters fit on a single-line space using CSS clamp() function.",
     "type": "Typography",
     "dependencies": [
     ],
