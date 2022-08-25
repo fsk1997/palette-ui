@@ -20,13 +20,3 @@
     text-align: center;
     font-weight: 800;
 }
-
-.threeNumbers{
-    font-size: clamp(3rem, 15vw + 3rem, 18rem);
-}
-.fourNumbers{
-    font-size: clamp(3rem, 14vw + 2rem, 18rem);
-}
-.fiveNumbers{
-    font-size: clamp(3rem, 13vw + 1rem, 18rem);
-}

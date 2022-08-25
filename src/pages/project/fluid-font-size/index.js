@@ -18,14 +18,11 @@ const Project = () => {
     <div className={styles.page}>
       <div className={styles.textContainer}>
         {numberArrays.map((number) => {
+          const numberLength = slugify(number.id).length
           return (
             <p
               key={number.id}
-              className={`
-                ${slugify(number.id).length === 3 && styles.threeNumbers}
-                ${slugify(number.id).length === 4 && styles.fourNumbers}
-                ${slugify(number.id).length === 5 && styles.fiveNumbers}
-            `}
+              style={{fontSize: `clamp(2rem, 15vw - ${numberLength}vw + calc(6rem - ${numberLength}rem), 18rem)`}}
             >
               {number.id}
             </p>
