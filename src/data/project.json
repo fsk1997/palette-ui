@@ -1,5 +1,19 @@
 [
   {
+    "title": "Fluid Font Size",
+    "slug": "fluid-font-size",
+    "description": "Make short text fit on a single-line space",
+    "type": "Typography",
+    "dependencies": [
+    ],
+    "cover_image": "../images/project-card/placeholder.jpg",
+    "created_at": "2022-08-25",
+    "last_updated": "2022-08-25",
+    "status": "beta",
+    "version": "v0.1",
+    "mode": ["desktop"]
+  },
+  {
     "title": "Draggable Dialogue",
     "slug": "draggable-dialogue",
     "description": "Minimal recreation of Figma's comment component.",
