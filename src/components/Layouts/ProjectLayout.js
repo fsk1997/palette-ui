@@ -200,6 +200,19 @@ const ProjectInfo = ({
   projectDescription,
   projectDependencies,
 }) => {
+
+  const projectStatusColourClassName = (projectStatus) => {
+    if (projectStatus === "alpha") {
+      return "bg-red-400"
+    }
+    if (projectStatus === "beta") {
+      return "bg-yellow-9"
+    }
+    if (projectStatus === "production") {
+      return "bg-green-400"
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col px-5 py-4">
@@ -207,16 +220,11 @@ const ProjectInfo = ({
           {projectTitle}
         </h1>
         <div className="flex items-center space-x-2 mb-4">
-          <div
-            className={`
-                          ${projectStatus === "alpha" ? "bg-red-400" : ""}
-                          ${projectStatus === "beta" ? "bg-yellow-9" : ""}
-                          ${
-                            projectStatus === "production" ? "bg-green-400" : ""
-                          }
-                          h-2 w-2 rounded-full`}
-          />
-          <p className="uppercase tracking-wider text-xs text-slate-10">
+          <div className="relative flex items-center justify-center h-2 w-2">
+            <div className={`${projectStatusColourClassName(projectStatus)} animate-ping absolute inline-flex h-full w-full rounded-full opacity-75`}></div>
+            <div className={`${projectStatusColourClassName(projectStatus)} h-2 w-2 rounded-full`}/>
+          </div>
+          <p className="uppercase tracking-wider mt-1 text-xs text-slate-10">
             {projectStatus} {projectVersion}
           </p>
         </div>
