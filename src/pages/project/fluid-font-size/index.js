@@ -16,6 +16,7 @@ const Project = () => {
   
   return (
     <div className={styles.page}>
+      <p>Try resizing the browser</p>
       <div className={styles.textContainer}>
         {numberArrays.map((number) => {
           const numberLength = slugify(number.id).length
@@ -30,7 +31,6 @@ const Project = () => {
         })}
 
       </div>
-        <p>Try resizing the browser :-)</p>
     </div>
   );
 };
