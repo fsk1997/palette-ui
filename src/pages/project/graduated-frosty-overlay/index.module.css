@@ -11,6 +11,12 @@
     background-color: black; /*important so there is no "white line" in the middle*/
 }
 
+@media (min-width: 768px){
+    .wrapper{
+        width: 50%;
+    }
+}
+
 .wrapper img {
     width: 100%;
     height: auto;
