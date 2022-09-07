@@ -56,14 +56,7 @@ const Project = () => {
           </defs>
         </svg>
       </button>
-      <p style={{ marginTop: "-0.125rem" }}>Click Me</p>
-      <p style={{ fontSize: "0.8rem" }}>
-        Inspired by{" "}
-        <a href="https://tantanapp.com/en" target="_blank" rel="noreferer">
-          TanTan's
-        </a>{" "}
-        Bottom Navigator Icon
-      </p>
+      <p style={{ marginTop: "0.125rem" }}>Click Me</p>
     </div>
   );
 };
