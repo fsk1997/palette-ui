@@ -14,7 +14,7 @@ const Image = ({ imageLink, title }) => {
       <div className={styles.maskOne}>
         <img
           src={imageLink}
-          alt="Random Image from Online"
+          alt={title}
           width={"1000"}
           height={"800"}
         />
@@ -22,7 +22,7 @@ const Image = ({ imageLink, title }) => {
       <div className={styles.maskTwo}>
         <img
           src={imageLink}
-          alt="Random Image from Online"
+          alt={title}
           width={"1000"}
           height={"800"}
         />
@@ -37,35 +37,13 @@ const Image = ({ imageLink, title }) => {
   );
 };
 
-const Page = () => {
-  const siteMetadata = useSiteMetadata();
-
-  const data = useStaticQuery(graphql`
-    {
-      projectJson(slug: { eq: "graduated-frosty-overlay" }) {
-        ...projectFragment
-      }
-    }
-  `);
-
-   const project = data.projectJson;
-
+const Project = () => {
   return (
-    <ProjectLayout
-        projectTitle={project.title}
-        projectStatus={project.status}
-        projectVersion={project.version}
-        projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
-        projectDescription={project.description}
-        projectDependencies={project.dependencies}
-        projectMode={project.mode}
-      >
-      <Seo 
-        customTitle={`${project.title} | ${siteMetadata.title}`}
-        customDescription={project.description}
-        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
-        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
-      />
+    <div className={styles.page}>
+      <p>
+        Different browser handles blur different. <br/>Be sure to check out on other
+        browsers too!
+      </p>
       <Image
         imageLink={"https://c.tenor.com/UqzojRtY8eAAAAAd/aot-mikasa.gif"}
         title={"ミカサ・アッカーマン Mikasa Akkāman 💖"}
@@ -86,12 +64,40 @@ const Page = () => {
         imageLink={"https://c.tenor.com/YoZqAb8YA0kAAAAC/apple-tim-cook.gif"}
         title={"Tim Cook (ティム・クック)"}
       />
-      <p style={{ textAlign: "center" }}>
-        <b>
-          Different browser handles blur different. Be sure to check out on
-          other browsers too!
-        </b>
-      </p>
+    </div>
+  );
+};
+
+const Page = () => {
+  const siteMetadata = useSiteMetadata();
+
+  const data = useStaticQuery(graphql`
+    {
+      projectJson(slug: { eq: "graduated-frosty-overlay" }) {
+        ...projectFragment
+      }
+    }
+  `);
+
+  const project = data.projectJson;
+
+  return (
+    <ProjectLayout
+      projectTitle={project.title}
+      projectStatus={project.status}
+      projectVersion={project.version}
+      projectCoverImage={project.cover_image.childImageSharp.gatsbyImageData}
+      projectDescription={project.description}
+      projectDependencies={project.dependencies}
+      projectMode={project.mode}
+    >
+      <Seo
+        customTitle={`${project.title} | ${siteMetadata.title}`}
+        customDescription={project.description}
+        customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
+        customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
+      />
+      <Project />
     </ProjectLayout>
   );
 };

@@ -1,15 +1,14 @@
+.page{
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
 .wrapper{
     margin: 1rem auto;
     position: relative;
     overflow: hidden;
     border-radius: 0.25rem;
     background-color: black; /*important so there is no "white line" in the middle*/
-}
-
-@media (min-width: 768px){
-    .wrapper{
-        width: 50%;
-    }
 }
 
 .wrapper img {
@@ -46,12 +45,14 @@
 
 .content {
     position: absolute;
-    bottom: 0;
+    bottom: 0.5rem;
     left: 0;
     width: 100%;
+    font-weight: 600;
 }
 
 .content h3{
     color:white;
     text-shadow: 2px 2px #000000;
+    text-align: left;
 }
