@@ -24,7 +24,7 @@ const Project = () => {
     setTranform(true);
     setTimeout(function () {
       setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 150);
+    }, 300);
   };
   const truey = () => {
     setSwitchContent(true);
@@ -32,13 +32,13 @@ const Project = () => {
     setTranform(true);
     setTimeout(function () {
       setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 150);
+    }, 300);
   };
 
   useEffect(() => {
     setTimeout(function () {
       setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 150);
+    }, 300);
   }, []);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Project = () => {
     setShowDialog(true);
     setTimeout(function () {
       setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 150);
+    }, 300);
   };
 
   const transitionStyle = {
@@ -73,8 +73,8 @@ const Project = () => {
             <div className={styles.dialogInner}>
               <div className={styles.dialogNav}>
                 <div className={styles.toggles}>
-                  <button onClick={falsey}>Square Photo</button>
-                  <button onClick={truey}>Rectangle Photo</button>
+                  <button className={styles.button} onClick={falsey}>Tab 1</button>
+                  <button className={styles.button} onClick={truey}>Tab 2</button>
                 </div>
                 <button onClick={() => setShowDialog(false)}>
                   <svg
@@ -142,7 +142,7 @@ const Project = () => {
             </div>
           </div>
         ) : (
-          <button onClick={prepForDialog}>Click for Jihyo!</button>
+          <button className={styles.button} onClick={prepForDialog}>Click for Jihyo!</button>
         )}
       </div>
   )
