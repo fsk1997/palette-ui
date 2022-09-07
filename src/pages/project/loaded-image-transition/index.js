@@ -44,7 +44,7 @@ const Image = ({ src }) => {
 const RefreshButton = () => {
   return (
     <button
-      style={{ marginTop: "1rem", marginBottom: "1rem" }}
+      className={styles.button}
       onClick={() => window.location.reload()}
     >
       🤜 Refresh for Dahyun 🤛

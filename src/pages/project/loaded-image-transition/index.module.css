@@ -28,3 +28,20 @@
     transform: scale(100%) translateY(0rem);
     filter: blur(0rem)
 }
+
+.button {
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: black;
+    margin: 2rem 0rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .button {
+        background-color: white;
+    }
+}
