@@ -1,6 +1,13 @@
+.page{
+  background-color: var(--slate2);
+}
+
+
+
 .h1{
   will-change: transform;
   transition: transform .1s ease-out;
+  font-weight: 600;
 }
 
 .headers{
@@ -21,9 +28,8 @@
 
 
 .HeaderSmall{
-  background-color: rgba(255,255,255, 0.9);
+  background-color: var(--slate2);
   backdrop-filter: blur(0.1rem);
-  border-bottom: 1.2px solid;
   padding: 1rem;
   font-size: 0.5rem;
   text-align: left;  
@@ -36,6 +42,9 @@
   scroll-snap-align: start;
 }
 
+.HeaderSmallHasBorderBottom{
+  border-bottom: 1.2px solid var(--slate4);
+}
 
 .content{
   padding:0rem 1rem;

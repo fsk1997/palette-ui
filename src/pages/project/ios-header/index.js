@@ -38,7 +38,7 @@ const Project = () => {
 
 
   return (
-    <div style={{background:"white"}}>
+    <div className={styles.page}>
         <div className={styles.headers}>
           <header className={styles.HeaderLarge}>
             <h1
@@ -54,12 +54,12 @@ const Project = () => {
             </h1>
           </header>
           <header
-            className={styles.HeaderSmall}
-            style={{
-              borderBottomColor: `rgba(230,230,230,${
-                -smallerHeaderFont + 0.5
-              })`, 
-            }}
+            className={`${styles.HeaderSmall} ${smallerHeaderFont < 1 && styles.HeaderSmallHasBorderBottom}`}
+            // style={{
+            //   borderBottomColor: `rgba(230,230,230,${
+            //     -smallerHeaderFont
+            //   })`, 
+            // }}
           >
             <h1 style={{ opacity: -smallerHeaderFont + 0.8, fontSize: "1rem" }}>
               Continue scroll me!
