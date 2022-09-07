@@ -38,7 +38,7 @@ const Project = () => {
 
 
   return (
-    <div style={{overflow:"hidden"}}>
+    <div style={{background:"white"}}>
         <div className={styles.headers}>
           <header className={styles.HeaderLarge}>
             <h1
@@ -47,6 +47,7 @@ const Project = () => {
                 transform: `scale(${smallerHeaderFont})`,
                 opacity: smallerHeaderFont,
                 transformOrigin: "top left",
+                marginLeft: "1rem"
               }}
             >
               Scroll me!
@@ -60,12 +61,12 @@ const Project = () => {
               })`, 
             }}
           >
-            <h1 style={{ opacity: -smallerHeaderFont + 0.8 }}>
+            <h1 style={{ opacity: -smallerHeaderFont + 0.8, fontSize: "1rem" }}>
               Continue scroll me!
             </h1>
           </header>
         </div>
-        <div className="content">
+        <div className={styles.content}>
           {[...Array(50)].map((index) => (
             <p key={index}>this is some content</p>
           ))}
@@ -80,7 +81,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "ios-header" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);
