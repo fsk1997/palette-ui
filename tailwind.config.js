@@ -5,6 +5,9 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
     "./src/styles/**/*.{js,jsx,ts,tsx.css}",
   ],
+  safelist: [
+    "./src/pages/project/*.{js,jsx,ts,tsx}"
+  ],
   theme: {
     extend: {
       colors: {

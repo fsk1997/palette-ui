@@ -74,7 +74,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "animated-gradient-svg-button" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

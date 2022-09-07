@@ -155,7 +155,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "dialog-height-transition" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

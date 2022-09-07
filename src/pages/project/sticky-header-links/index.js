@@ -98,7 +98,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "sticky-header-links" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

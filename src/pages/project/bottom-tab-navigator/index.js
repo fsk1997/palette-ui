@@ -73,7 +73,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "bottom-tab-navigator" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

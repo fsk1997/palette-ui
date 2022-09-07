@@ -43,7 +43,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "graduated-frosty-overlay" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

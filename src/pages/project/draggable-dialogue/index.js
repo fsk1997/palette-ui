@@ -64,7 +64,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "draggable-dialogue" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

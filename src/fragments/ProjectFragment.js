@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 
 export const projectFragment = graphql`
-  fragment ProjectFragment on ProjectJson {
+  fragment projectFragment on ProjectJson {
     created_at
     title
     status
@@ -10,6 +10,7 @@ export const projectFragment = graphql`
     description
     last_updated
     type
+    published
     mode
     dependencies {
       name

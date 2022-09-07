@@ -102,7 +102,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "loaded-image-transition" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);

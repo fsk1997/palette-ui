@@ -41,7 +41,7 @@ const Page = () => {
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "fluid-font-size" }) {
-        ...ProjectFragment
+        ...projectFragment
       }
     }
   `);
