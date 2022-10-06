@@ -1,5 +1,40 @@
 [
   {
+    "title": "Shared Card Element Transition",
+    "slug": "shared-card-element-transition",
+    "description": "Inspired by iOS App Store's Featured Card",
+    "type": "Transition",
+    "dependencies": [
+    ],
+    "cover_image": "../images/project-card/placeholder.jpg",
+    "created_at": "2022-09-13",
+    "last_updated": "2022-09-13",
+    "published": true,
+    "status": "beta",
+    "version": "v0.0.1",
+    "mode": ["mobile"]
+  },
+  {
+    "title": "Draggable Dialogue",
+    "slug": "draggable-dialogue",
+    "description": "Minimal recreation of Figma's comment component.",
+    "type": "button",
+    "dependencies": [
+      {
+        "name": "React Draggable",
+        "link": "http://react-grid-layout.github.io/react-draggable/example/",
+        "icon_url": ""
+      }
+    ],
+    "cover_image": "../images/project-card/draggable-dialogue.jpg",
+    "created_at": "2022-06-19",
+    "last_updated": "2022-06-19",
+    "published": false,
+    "status": "beta",
+    "version": "v0.4",
+    "mode": ["desktop"]
+  },
+  {
     "title": "Fluid Font Size",
     "slug": "fluid-font-size",
     "description": "Make 3-5 characters fit on a single-line space using CSS clamp() function.",
