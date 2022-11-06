@@ -1,32 +1,79 @@
 .page {
     position: relative;
-    /* background: red; */
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 1rem;
-}
-.pageNoPadding{
-    padding: 0rem;
+    max-width: 568px;
+    margin: 0 auto;
 }
 
+.videoWrapper{
+    position: sticky;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    z-index: 5;
+    top:0px;
+    margin-bottom: 2rem;
+}
+.videoWrapper > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.buttonGroup{
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-bottom: 20vh; /*Need to add this more space below. If this is not added, when closing the last card, the viewport will scroll up, causing the card to be hidden*/ 
+}
+
+/* Each Button */
 .buttonWrapper {
     position: relative;
-    aspect-ratio: 4/3;
+    width: 100%;
     overflow: hidden;
     border-radius: 0.5rem;
     transition: all;
     transition-duration: .3s;
     z-index: 1;
-    margin-bottom:1rem;
+    aspect-ratio: 1;
 }
 
+
+/* image / video section */
+.buttonWrapper > img, .buttonWrapper > video {
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    top:0; 
+    left:0;
+    transition: all;
+    transition-duration: .3s;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.buttonWrapper > img {
+    position: relative;
+}
+.buttonWrapper > video{
+    position: absolute;
+    opacity:0%
+}
+.expandButtonWrapper.buttonWrapper > video{
+    opacity:100%
+}
+
+
+/* Button Open state */
 .expandButtonWrapper{
     position:fixed;
-    top:0rem;
+    top:0px;
+    left:0px;
+    right: 0px;
     width: 100vw;
     height: 100vh;
     background-color: var(--slate2);
@@ -37,12 +84,8 @@
     z-index: 5;
 }
 
-.buttonWrapper img{
-    aspect-ratio: 4/3;
-    object-fit: cover;   
-}
 
-.openButton{
+.openHotspot{
     position:absolute;
     top:0;
     left:0;
@@ -52,13 +95,20 @@
     cursor: pointer;
 }
 
+/* Close Button */
 .closeButton{
-    position:absolute;
-    background-color: red;
-    top:0;
-    left:0;
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-    cursor: pointer;
+    position:fixed;
+    left:1rem;
+    top:1rem;
+    z-index: 5;
+    display: none;
+    filter:drop-shadow(0px 8px 24px rgba(149, 157, 165, 1));
+}
+.expandButtonWrapper .closeButton{
+    display: block;
+}
+
+.body{
+    margin-bottom:10vh;
+    padding: 1rem;   
 }
