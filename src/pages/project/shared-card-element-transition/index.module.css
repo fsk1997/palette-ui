@@ -85,7 +85,7 @@
 /* Close Button */
 .closeButton{
     position:fixed;
-    left:1rem;
+    right:1rem;
     top:1rem;
     z-index: 5;
     display: none;

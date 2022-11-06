@@ -80,7 +80,7 @@ const Project = ({
           hideSidebar ? "ml-0" : "sm:ml-[300px]"
         } transition-mid h-full min-h-screen relative`} //Dont put overflow hidden on this page, it will cause layout issue especially for projects with sticky element
       >
-        <div className="fixed z-10 top-4 right-4 flex items-center space-x-2">
+        <div className="fixed z-10 bottom-4 right-4 flex items-center space-x-2">
           {/* Desktop Enlarge Button */}
           <div className={hideBelowSMClass}>
             <Tippy content="Enlarge">
@@ -130,6 +130,7 @@ const Project = ({
             <Tippy content="Project Info">
               <button
                 onClick={() => {
+                  setOpenNavBottomSheet(false);
                   setOpenProjectBottomSheet(true);
                 }}
                 className={buttonClassName}
@@ -144,6 +145,7 @@ const Project = ({
             <Tippy content="Menu">
               <button
                 onClick={() => {
+                  setOpenProjectBottomSheet(false);
                   setOpenNavBottomSheet(true);
                 }}
                 className={buttonClassName}
@@ -165,7 +167,7 @@ const Project = ({
                   </Tippy>
                 </Popover.Button>
 
-                <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 top-10 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-3 border border-slate-2 overflow-hidden">
+                <Popover.Panel className="absolute z-10 flex flex-col bg-slate-1 bottom-10 right-0 w-[325px] max-w-screen rounded-xl shadow-xl shadow-slate-300/30 border border-slate-2 overflow-hidden">
                   <ProjectInfo
                     projectTitle={projectTitle}
                     projectStatus={projectStatus}
@@ -196,14 +198,20 @@ const Project = ({
 
       <BottomSheet
         open={openNavBottomSheet}
-        onDismiss={() => setOpenNavBottomSheet(false)}
+        onDismiss={() => {
+          setOpenNavBottomSheet(false)
+          setOpenProjectBottomSheet(false)
+        }}
       >
         <Navbar wrapperClassName={""} />
       </BottomSheet>
       
        <BottomSheet
         open={openProjectBottomSheet}
-        onDismiss={() => setOpenProjectBottomSheet(false)}
+        onDismiss={() => {
+          setOpenProjectBottomSheet(false)
+          setOpenNavBottomSheet(false)
+        }}
       >
         <ProjectInfo
           projectTitle={projectTitle}
