@@ -38,9 +38,35 @@ const Project = ({
   const iconConfig = { size: 16, weight: "bold" };
   const buttonClassName = "btn btn-plum btn-dark btn-sm";
 
+  const [curtainTransition, setCurtainTransition] = useState('block scale-100 opacity-100')
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setCurtainTransition('block scale-110 opacity-0')
+      console.log('Curtain is fading...')
+    }, 800);
+    setTimeout(() => {
+      setCurtainTransition('hidden')
+      console.log('Curtain has ended...')
+    }, 1000);
+    
+  },[])
+
+
   return (
     <>
       <BodyWrapper/>
+
+      <div className={`fixed top-0 left-0 w-screen h-screen bg-slate-2 sm:hidden z-10 transition-slow ease-power-1 ${curtainTransition}`}>
+        <div className="container pb-8 h-full flex flex-col items-center justify-center text-center space-y-2">
+          <p className="tracking-wide text-slate-11">You're viewing</p>
+          <h1 className="font-medium text-4xl text-slate-12 ">
+            {projectTitle}
+          </h1>
+          <p className="tracking-wide text-slate-11 pt-2 text-slate-11">Change project via menu</p>
+        </div>
+      </div>
+      
       <section
         className={`${hideBelowSMClass} ${
           hideSidebar ? "-translate-x-[300px]" : ""
