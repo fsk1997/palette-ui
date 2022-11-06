@@ -10,10 +10,10 @@
     "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-11-07",
     "last_updated": "2022-11-07",
-    "published": false,
+    "published": true,
     "status": "beta",
     "version": "v0.1",
-    "mode": ["desktop"]
+    "mode": ["desktop", "mobile"]
   },
   {
     "title": "Shared Card Element Transition",

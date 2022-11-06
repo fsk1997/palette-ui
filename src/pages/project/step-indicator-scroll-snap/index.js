@@ -10,15 +10,28 @@ import Seo from "../../../components/Seo";
 
 const Project = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-
-      </div>
-  )
-}
+    <div className={styles.page}>
+      {[...Array(4)].map(index => {
+        return (
+          <div className={styles.section}>
+            <div className={styles.step}>N</div>
+            <div className={styles.content}>
+              {[...Array(23)].map(index => {
+                return (
+                <p>Area {index}</p>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const Page = () => {
   const siteMetadata = useSiteMetadata();
-  
+
   const data = useStaticQuery(graphql`
     {
       projectJson(slug: { eq: "step-indicator-scroll-snap" }) {
@@ -39,13 +52,13 @@ const Page = () => {
       projectDependencies={project.dependencies}
       projectMode={project.mode}
     >
-      <Seo 
+      <Seo
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}
         customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
         customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
-      <Project/>
+      <Project />
     </ProjectLayout>
   );
 };
