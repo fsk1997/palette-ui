@@ -1,5 +1,4 @@
 [
-  
   {
     "title": "Step Indicator Scroll Snap",
     "slug": "step-indicator-scroll-snap",
@@ -21,14 +20,19 @@
     "description": "Inspired by iOS App Store's Featured Card",
     "type": "Transition",
     "dependencies": [
+      {
+        "name": "Framer",
+        "link": "https://www.framer.com/docs/layout-animations/",
+        "icon_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5wo7g_vbMcX0_A23nc02seWM-gTwwdkOrdwbGRdGbaTWc2kuRucW--x_lkMofvPdFC4Q&usqp=CAU"
+      }
     ],
     "cover_image": "../images/project-card/placeholder.jpg",
-    "created_at": "2022-09-13",
-    "last_updated": "2022-09-13",
+    "created_at": "2022-11-06",
+    "last_updated": "2022-11-06",
     "published": true,
     "status": "beta",
-    "version": "v0.0.1",
-    "mode": ["mobile"]
+    "version": "v0.1",
+    "mode": ["desktop"]
   },
   {
     "title": "Draggable Dialogue",
