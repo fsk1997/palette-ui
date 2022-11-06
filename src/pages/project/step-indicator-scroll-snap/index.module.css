@@ -1,0 +1,47 @@
+.image {
+    transition: all 0.3s ease-in-out;
+}
+
+.shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+
+.notLoaded {
+    transform: scale(120%) translateY(0.5rem);
+    filter: blur(5rem)
+}
+
+.loaded {
+    transform: scale(100%) translateY(0rem);
+    filter: blur(0rem)
+}
+
+.button {
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: black;
+    margin: 2rem 0rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .button {
+        background-color: white;
+    }
+}
