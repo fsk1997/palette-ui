@@ -98,7 +98,7 @@ const Project = () => {
               </button>
               
               <img src={card.imageURL} width={300} height={500} />
-              <video width="320" height="240" autoPlay muted>
+              <video width="320" height="240" autoPlay playsInline muted loop>
                 <source src={card.videoURL} type="video/mp4" />
               </video>
 
