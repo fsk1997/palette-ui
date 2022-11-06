@@ -1,4 +1,20 @@
 [
+  
+  {
+    "title": "Step Indicator Scroll Snap",
+    "slug": "step-indicator-scroll-snap",
+    "description": "",
+    "type": "Interaction",
+    "dependencies": [
+    ],
+    "cover_image": "../images/project-card/placeholder.jpg",
+    "created_at": "2022-11-07",
+    "last_updated": "2022-11-07",
+    "published": false,
+    "status": "beta",
+    "version": "v0.1",
+    "mode": ["desktop"]
+  },
   {
     "title": "Fluid Font Size",
     "slug": "fluid-font-size",
