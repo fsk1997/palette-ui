@@ -12,7 +12,9 @@ import Seo from "../../../components/Seo";
 
 const spring = {
   type: "tween",
-  duration: 0.15
+  duration: 0.15,
+  bounce: 0,
+  // ease: "anticipate",
 };
 
 const Project = () => {
@@ -24,31 +26,26 @@ const Project = () => {
     {
       title: "Minji (민지)",
       imageURL: "https://i.imgur.com/BFAmv4Z.jpeg",
-      videoURL: "https://i.imgur.com/3FEYPU6.mp4",
       body: <p></p>
     },
     {
       title: "Hanni (하니)",
       imageURL: "https://i.imgur.com/HVkvKrt.jpeg",
-      videoURL: "https://i.imgur.com/ZqpJrji.mp4",
       body: <p></p>
     },
     {
       title: "Danielle (다니엘)",
       imageURL: "https://i.imgur.com/04EOJ4X.jpeg",
-      videoURL: "https://i.imgur.com/V6nBhSY.mp4",
       body: <p></p>
     },
     {
       title: "Haerin (해린)",
       imageURL: "https://i.imgur.com/bZzKy6R.jpeg",
-      videoURL: "https://i.imgur.com/ETqAeZ6.mp4",
       body: <p></p>
     },
     {
       title: "Hyein (혜인)",
       imageURL: "https://i.imgur.com/4wl10j7.jpeg",
-      videoURL: "https://i.imgur.com/77oSY8n.mp4",
       body: <p></p>
     }
   ];
@@ -97,10 +94,7 @@ const Project = () => {
                 </svg>
               </button>
               
-              <img src={card.imageURL} width={300} height={500} />
-              <video width="320" height="240" autoPlay playsInline muted loop>
-                <source src={card.videoURL} type="video/mp4" />
-              </video>
+              <img src={card.imageURL} width={300} height={500} alt={card.title}/>
 
               <div className={styles.body}>
                 <h2>{card.title}</h2>
