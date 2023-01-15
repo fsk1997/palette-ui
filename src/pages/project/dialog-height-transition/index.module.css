@@ -37,14 +37,16 @@
     overflow: hidden;
     max-height: 0;
     opacity: 0;
+    filter: blur(0.1rem);
     transform: scale(0.7) perspective(0) rotateX( 0.02deg );
-    transition: opacity 0.2s ease-out, max-height 0.2s ease-out, transform 0.2s ease-out;
+    transition: opacity 0.2s ease-out, max-height 0.2s ease-out, filter 0.2s ease-out, transform 0.2s ease-out;
 }
 .content.active{
     max-height: 80vh;
     opacity: 1;
+    filter: blur(0rem);
     transform: scale(1) perspective(0) rotateX( 0 );
-    transition: opacity 0.3s ease-out, max-height 0.5s ease-out, transform 0.3s ease-out;
+    transition: opacity 0.3s ease-out, max-height 0.5s ease-out, filter 0.2s ease-out, transform 0.3s ease-out;
 }
 
 .dialogInner {
@@ -71,14 +73,11 @@
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem;
     font-size: 0.9rem;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid;
     border-color: rgba(0, 0, 0, 0.2);
     color: black;
 }
-
-@media (prefers-color-scheme: dark) {
-    .button {
-        background-color: white;
-    }
+.button:hover{
+    background-color: rgba(255, 255, 255, 1);
 }

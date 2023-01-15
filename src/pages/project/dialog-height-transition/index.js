@@ -35,7 +35,7 @@ const Project = () => {
     {
       id: 1,
       name: "☃️",
-      children: <><img src="https://newjeans.kr/imgs/window/pc/icon-melody-card.gif" /></>,
+      children: <><img src="https://newjeans.kr/imgs/window/pc/icon-melody-card.gif" /><p>NewJeans (Korean: 뉴진스; RR: Nyujinseu) is a South Korean girl group formed by ADOR, a subsidiary of Hybe Corporation. The group is composed of five members: Minji, Hanni, Danielle, Haerin and Hyein.</p></>,
     },
     {
       id: 2,
