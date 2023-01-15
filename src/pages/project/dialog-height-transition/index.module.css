@@ -18,27 +18,29 @@
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    overflow: hidden;
+    overflow: scroll;
+    max-height: 80vh;
     outline: 1px rgba(255, 255, 255, 0.1) solid;
 }
 
 .content {
     animation-name: animateMaxHeight;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
     will-change: max-height;
     overflow: hidden;
 }
 
 @keyframes animateMaxHeight {
-    from {max-height: 0;}
-    to {max-height: 100vh;} 
+    from {max-height: 10vh; min-height: 0vh; opacity: 20%; transform: translateY(0.25rem);}
+    to {max-height: 90vh; min-height: 0vh; opacity: 100%; transform: translateY(0)} 
     /* setting to maximum. Any height will do but maximum is best for proper transition */
   }
 
 .content.loading{
     will-change: max-height;
-    max-height: 100vh;
+    max-height: 10vh;
+    min-height: 50vh;
 }
 
 .dialogInner {
