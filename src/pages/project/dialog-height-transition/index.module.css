@@ -5,29 +5,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .dialog {
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;;
     padding: 1rem;
-    position: relative;
+    position: absolute;
+    margin: auto;
     z-index: 10;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    outline: 1px rgba(255, 255, 255, 0.1) solid;
 }
 
-.dialogBackground {
-    z-index: 9;
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    /* height: 100%; */
-    top: 0px;
-    left: 0px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 0.5rem;
-    outline: 1px rgba(255, 255, 255, 0.1) solid;
-    background-color: white;
-    transition: height 0.3s ease-out;
+.content {
+    animation-name: animateMaxHeight;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    will-change: max-height;
+    overflow: hidden;
+}
+
+@keyframes animateMaxHeight {
+    from {max-height: 0;}
+    to {max-height: 100vh;} 
+    /* setting to maximum. Any height will do but maximum is best for proper transition */
+  }
+
+.content.loading{
+    will-change: max-height;
+    max-height: 100vh;
 }
 
 .dialogInner {
@@ -48,17 +59,6 @@
 
 .toggles button {
     margin-right: 0.5rem;
-}
-
-.content img {
-    width: 100%;
-    border-radius: 0.25rem;
-}
-
-.content>div {
-    transition: opacity 0.5s ease-out;
-    transform-origin: top left;
-    color: black;
 }
 
 .button {

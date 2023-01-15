@@ -10,141 +10,99 @@ import Seo from "../../../components/Seo";
 
 
 const Project = () => {
-  
-  const [showDialog, setShowDialog] = useState(false);
-  const [switchContent, setSwitchContent] = useState(false);
-  const dialogEl = useRef(0);
-  const [changeDialogHeight, setChangeDialogHeight] = useState("100%");
-  const [zeroOpacity, setZeroOpacity] = useState(false);
-  const [transform, setTranform] = useState(false);
 
-  const falsey = () => {
-    setSwitchContent(false);
-    setZeroOpacity(true);
-    setTranform(true);
-    setTimeout(function () {
-      setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 300);
-  };
-  const truey = () => {
-    setSwitchContent(true);
-    setZeroOpacity(true);
-    setTranform(true);
-    setTimeout(function () {
-      setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 300);
-  };
+  const [showDialog, setShowDialog] = useState(false)
+  const [tab, setTab] = useState(null)
 
-  useEffect(() => {
-    setTimeout(function () {
-      setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 300);
-  }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setZeroOpacity(false);
-      setTranform(false);
-    }, 300);
-  }, [zeroOpacity]);
+  const initiateDialog = () => {
+    setShowDialog(true)
+    setTab(1)
+  }
+  const closeDialog = () => {
+    setShowDialog(false)
+    setTab(null)
+  }
+  const fetchTab = (id) => {
+    setTab("loading")
+    setTimeout(() => setTab(id), 150);
+  }
 
-  const prepForDialog = () => {
-    setShowDialog(true);
-    setTimeout(function () {
-      setChangeDialogHeight(dialogEl.current.clientHeight);
-    }, 300);
-  };
 
-  const transitionStyle = {
-    opacity: `${zeroOpacity ? "0%" : "100%"}`,
-    transform: `${transform ? "scale(0%)" : "scale(100%)"}`,
-  };
+  const tabContent = [
+    {
+      id: 1,
+      children: <><img src="https://media2.malaymail.com/uploads/articles/2020/2020-01/jihyo_070120.jpg"/> <p>this is some content</p></>,
+    },
+    {
+      id: 2,
+      children: <><img src="https://i.pinimg.com/originals/3a/1b/6d/3a1b6da5adaf9371d8b7e56b30d4fef3.png"/><p>this is another content. This content is longer than the first one to demonstrate some transition</p></>,
+    },
+  ]
 
   return (
     <div className={styles.page}>
-        {showDialog ? (
-          <div className={styles.dialog} ref={dialogEl}>
-            <div
-              className={styles.dialogBackground}
-              style={{
-                height: changeDialogHeight ? changeDialogHeight : "100%",
-              }}
-            ></div>
-            <div className={styles.dialogInner}>
-              <div className={styles.dialogNav}>
-                <div className={styles.toggles}>
-                  <button className={styles.button} onClick={falsey}>Tab 1</button>
-                  <button className={styles.button} onClick={truey}>Tab 2</button>
-                </div>
-                <button onClick={() => setShowDialog(false)}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="#000000"
-                    viewBox="0 0 256 256"
-                  >
-                    <rect width="256" height="256" fill="none"></rect>
-                    <line
-                      x1="200"
-                      y1="56"
-                      x2="56"
-                      y2="200"
-                      fill="none"
-                      stroke="#000000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="24"
-                    ></line>
-                    <line
-                      x1="200"
-                      y1="200"
-                      x2="56"
-                      y2="56"
-                      fill="none"
-                      stroke="#000000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="24"
-                    ></line>
-                  </svg>
-                </button>
+      <button className={styles.button} onClick={() => initiateDialog()}>Click for Jihyo!</button>
+      {showDialog &&
+        <div className={styles.dialog}>
+          <div
+            className={styles.dialogBackground}
+            style={null}
+          ></div>
+          <div className={styles.dialogInner}>
+            <div className={styles.dialogNav}>
+              <div className={styles.toggles}>
+                {tabContent.map((item) => {
+                  return (
+                    <button key={item.id} className={styles.button} onClick={() => fetchTab(item.id)}>Tab {item.id}</button>
+                  )
+                })}
               </div>
-              <div className={styles.content}>
-                {switchContent ? (
-                  <div style={transitionStyle}>
-                    <img
-                      src="https://media2.malaymail.com/uploads/articles/2020/2020-01/jihyo_070120.jpg"
-                      alt="Jihyo from Twice"
-                    />
-                    <p>
-                      JYP Entertainment had scouted Jihyo after she participated
-                      in a contest on Junior Naver and placed second. She then
-                      joined JYP Entertainment as a trainee at the age of eight
-                      and trained for ten years before her debut.
-                    </p>
-                  </div>
-                ) : (
-                  <div style={transitionStyle}>
-                    <img
-                      src="https://64.media.tumblr.com/169440c74ac5b01cea71f225d535ebb8/dca73683daa8345f-72/s1280x1920/b45cfd8873719663d5e0225313948c4c7f21fcff.jpg"
-                      alt="Jihyo from Twice"
-                    />
-                    <p>
-                      Park Ji-hyo (Korean: 박지효; born Park Ji-soo on February
-                      1, 1997), known mononymously as Jihyo, is a South Korean
-                      singer. She is the leader and vocalist of the South Korean
-                      girl group Twice formed by JYP Entertainment.{" "}
-                    </p>
-                  </div>
-                )}
-              </div>
+              <button onClick={() => closeDialog()}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="#000000"
+                  viewBox="0 0 256 256"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <line
+                    x1="200"
+                    y1="56"
+                    x2="56"
+                    y2="200"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  ></line>
+                  <line
+                    x1="200"
+                    y1="200"
+                    x2="56"
+                    y2="56"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  ></line>
+                </svg>
+              </button>
+            </div>
+            <div className={tab === "loading" ? styles.loading : styles.content}>
+              {tabContent.map((item) => {
+                return (
+                  tab === item.id && item.children
+                )
+              })}
             </div>
           </div>
-        ) : (
-          <button className={styles.button} onClick={prepForDialog}>Click for Jihyo!</button>
-        )}
-      </div>
+        </div>
+      }
+    </div>
   )
 }
 
@@ -172,13 +130,13 @@ const Page = () => {
       projectDependencies={project.dependencies}
       projectMode={project.mode}
     >
-      <Seo 
+      <Seo
         customTitle={`${project.title} | ${siteMetadata.title}`}
         customDescription={project.description}
         customURL={`${siteMetadata.url}/project/${slugify(project.title)}`}
         customOgImage={`${siteMetadata.url}${project.cover_image.publicURL}`}
       />
-      <Project/>
+      <Project />
     </ProjectLayout>
   );
 };
