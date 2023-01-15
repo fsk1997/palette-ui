@@ -55,7 +55,7 @@ const Project = () => {
     {
       id: 5,
       name: "🧸",
-      children: <><iframe style={{ width: "100%" }} width="560" height="315" src="https://www.youtube.com/embed/sVTy_wmn5SU" title="YouTube video player" frameborder="0" allowfullscreen /></>,
+      children: <><iframe style={{ width: "100%" }} width="560" height="315" src={showDialog === true && "https://www.youtube.com/embed/sVTy_wmn5SU"} title="YouTube video player" frameborder="0" allowfullscreen /></>,
     },
   ]
 
