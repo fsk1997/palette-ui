@@ -11,20 +11,25 @@
     width: 100%;
     max-width: 20rem;
     padding: 1rem;
-    position: absolute;
-    margin: auto;
+    position: fixed;
+    top:25%;
     z-index: 5;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     max-height: 80vh;
-    outline: 1px rgba(255, 255, 255, 0.1) solid;
-    overflow-y: scroll;
+    outline: 1px rgba(255, 255, 255, 0.1) solid; 
     display: none;
 }
 
 .dialog.show{
     display: block;
+    animation: dialogEnters 0.2s ease-out;
+}
+
+@keyframes dialogEnters {
+    from {transform: translateY(3rem) scale(0.98);opacity: 0.5;}
+    to {transform: translateY(0rem) scale(1);opacity: 1;}
 }
 
 .content {
