@@ -24,31 +24,44 @@ const Project = () => {
     setTab(null)
   }
   const fetchTab = (id) => {
-    if (id !== tab){
-      setTab("loading")
-      setTimeout(() => setTab(id), 10);
+    if (id !== tab) {
+      setTab(id)
     }
   }
 
+  const dialogRef = useRef()
 
   const tabContent = [
     {
       id: 1,
-      children: <><img src="https://media2.malaymail.com/uploads/articles/2020/2020-01/jihyo_070120.jpg"/> <p>this is some content</p></>,
+      name:"☃️",
+      children: <><img src="https://newjeans.kr/imgs/window/pc/icon-melody-card.gif" /></>,
     },
     {
       id: 2,
-      children: <><img src="https://i.pinimg.com/originals/3a/1b/6d/3a1b6da5adaf9371d8b7e56b30d4fef3.png"/><p>this is another content. This content is longer than the first one to demonstrate some transition</p></>,
+      name:"🐱",
+      children: <><img src="https://newjeans.kr/imgs/window/new-folder-1/nj_ditto_16.jpg" /></>,
     },
     {
       id: 3,
-      children: <><iframe width="560" height="315" src="https://www.youtube.com/embed/sVTy_wmn5SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen /><p>From the return of miniskirts to low-rise jeans, everyone is cashing in on the Y2K and early ‘00s nostalgia wave — and K-pop is no exception. Enter NewJeans, the sparkling, brand new girl group by HYBE (the South Korean entertainment company behind BTS and Tomorrow x Together) and its independent label ADOR that’s paying homage to that glitzy bygone era. The new quintet — made up of members Minji, Danielle, Haerin, Hanni, and Hyein — made their soft launch on Friday with the release of the vibe-y, pop-R&B first single, “Attention,” a song that sounds like it was transmitted straight from the turn of the millennium. In the track’s flashy accompanying music video filmed in Spain, the members flawlessly execute early-aughts style choreography while wearing low-rise jeans, handkerchief tube tops, butterfly clips, wired headphones, and other stylish pieces you’d find scrolling on your TikTok FYP. They emanate effortless cool, and are already generating plenty of buzz online as fans resonate with their throwback sound and fashion style, as well as the group’s unique, K-pop standard-defying concept.</p></>,
+      name:"🍬",
+      children: <><img src="https://newjeans.kr/imgs/window/new-folder-1/nj_ditto_12.jpg" /></>,
+    },
+    {
+      id: 4,
+      name:"🧡",
+      children: <><img src="https://newjeans.kr/imgs/window/new-folder-1/nj_omg_2.jpg" /></>,
+    },
+    {
+      id: 5,
+      name:"🧸",
+      children: <><iframe style={{width:"100%"}} width="560" height="315" src="https://www.youtube.com/embed/sVTy_wmn5SU" title="YouTube video player" frameborder="0" allowfullscreen/></>,
     },
   ]
 
   return (
     <div className={styles.page}>
-      <button className={styles.button} onClick={() => initiateDialog()}>Click for Jihyo!</button>
+      <button className={styles.button} onClick={() => initiateDialog()}>New Jeans</button>
       {showDialog &&
         <div className={styles.dialog}>
           <div
@@ -60,7 +73,7 @@ const Project = () => {
               <div className={styles.toggles}>
                 {tabContent.map((item) => {
                   return (
-                    <button key={item.id} className={styles.button} onClick={() => fetchTab(item.id)}>Tab {item.id}</button>
+                    <button key={item.id} className={styles.button} onClick={() => fetchTab(item.id)}>{item.name}</button>
                   )
                 })}
               </div>
@@ -98,13 +111,13 @@ const Project = () => {
                 </svg>
               </button>
             </div>
-            <div className={tab === "loading" ? styles.loading : styles.content}>
-              {tabContent.map((item) => {
-                return (
-                  tab === item.id && item.children
-                )
-              })}
-            </div>
+            {tabContent.map((item) => {
+              return (
+                <div ref={dialogRef} className={(styles.content) + " " + (tab === item.id && styles.active)}>
+                  {item.children}
+                </div>
+              )
+            })}
           </div>
         </div>
       }

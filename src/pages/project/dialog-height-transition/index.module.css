@@ -1,5 +1,4 @@
 .page {
-    /* background-color:rgba(0,0,0,0.05); */
     height: 100%;
     min-height: 100vh;
     display: flex;
@@ -14,33 +13,28 @@
     padding: 1rem;
     position: absolute;
     margin: auto;
-    z-index: 10;
+    z-index: 5;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    overflow: scroll;
     max-height: 80vh;
     outline: 1px rgba(255, 255, 255, 0.1) solid;
+    overflow-y: scroll;
 }
 
 .content {
-    animation-name: animateMaxHeight;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
-    will-change: max-height;
+    will-change: max-height opacity transform;
     overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: scale(0.7) perspective(0) rotateX( 0.02deg );
+    transition: opacity 0.2s ease-out, max-height 0.2s ease-out, transform 0.2s ease-out;
 }
-
-@keyframes animateMaxHeight {
-    from {max-height: 10vh; min-height: 0vh; opacity: 20%; transform: translateY(0.25rem);}
-    to {max-height: 90vh; min-height: 0vh; opacity: 100%; transform: translateY(0)} 
-    /* setting to maximum. Any height will do but maximum is best for proper transition */
-  }
-
-.content.loading{
-    will-change: max-height;
-    max-height: 10vh;
-    min-height: 50vh;
+.content.active{
+    max-height: 80vh;
+    opacity: 1;
+    transform: scale(1) perspective(0) rotateX( 0 );
+    transition: opacity 0.3s ease-out, max-height 0.5s ease-out, transform 0.3s ease-out;
 }
 
 .dialogInner {
