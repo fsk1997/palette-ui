@@ -252,10 +252,30 @@ Typography
     @apply text-base lg:text-lg;
 }
 .h6{
-    @apply text-sm lg:text-base
+    @apply text-sm lg:text-base;
 }
 .h-mini-title{
     @apply uppercase text-xs font-medium tracking-wider;
+}
+
+
+.home-project-swiper{
+    @apply mb-24 lg:mb-16;
+
+    [class*="swiper-button-"]{
+       @apply mt-auto -bottom-20 lg:-bottom-10 bg-slate-1 shadow-xl rounded-full h-8 w-8 flex items-center hover:brightness-125 transition-slow;
+
+       &::after{
+           @apply text-sm text-plum-11 font-bold;
+       }
+    }
+
+    .swiper-button-next{
+        @apply left-0 -right-16 mx-auto md:ml-0 md:mr-auto md:left-16 md:right-0;
+    }
+    .swiper-button-prev{
+        @apply -left-16 right-0 mx-auto md:ml-0 md:mr-auto md:left-4 md:right-0;
+    }
 }
 
 

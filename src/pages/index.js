@@ -79,7 +79,7 @@ const IndexPage = () => {
         ></div>
         <Swiper
           style={{ overflow: "visible", paddingLeft: "1rem" }}
-          className="container"
+          className="container home-project-swiper"
           modules={[Navigation]}
           navigation
           spaceBetween={48}
