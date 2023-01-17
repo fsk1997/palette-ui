@@ -3,6 +3,7 @@ import HomeLayout from "../components/Layouts/HomeLayout";
 import Seo from "../components/Seo";
 import { Section, SectionHeading } from "../components/Section";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 import { ArrowCircleRight } from "phosphor-react";
 import { motion} from "framer-motion";
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
@@ -10,6 +11,7 @@ import { Link } from "gatsby"
 import slugify from "react-slugify";
 import useAllProjectsMetadata from "../hooks/useAllProjectsMetada"
 import "swiper/css";
+import 'swiper/css/navigation';
 import {InlineEmoji } from "../components/Utils";
 
 const IndexPage = () => {
@@ -77,7 +79,9 @@ const IndexPage = () => {
         ></div>
         <Swiper
           style={{ overflow: "visible", paddingLeft: "1rem" }}
-          className="container"
+          className="container home-project-swiper"
+          modules={[Navigation]}
+          navigation
           spaceBetween={48}
           slidesPerView={1.2}
           breakpoints={{

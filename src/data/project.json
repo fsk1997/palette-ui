@@ -64,7 +64,7 @@
     "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2022-08-25",
     "last_updated": "2022-08-25",
-    "published": true,
+    "published": false,
     "status": "beta",
     "version": "v0.2.1",
     "mode": ["desktop"]
@@ -111,7 +111,7 @@
     "dependencies": [],
     "cover_image": "../images/project-card/dialog-height-transition.jpg",
     "created_at": "2022-05-28",
-    "last_updated": "2022-05-28",
+    "last_updated": "2023-01-15",
     "published": true,
     "status": "production",
     "version": "v1.0",
