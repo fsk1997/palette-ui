@@ -1,0 +1,81 @@
+.page{
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.button{
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(150,150,150,0.15);
+    border: lightgray;
+    
+}
+
+.wrapper{
+    background-color: black;
+    width: 100%;
+    max-width: 20rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.wrapper::before{
+    content: "";
+    inset: 0;
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+
+}
+
+.wrapper.blank{
+    mask-image:  linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: left bottom;
+}
+
+.wrapper.animateIn{
+    mask-image:  linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: left bottom;
+    animation: animated 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+    mask-size: 100% 0%; /*Must have this initial value, otherwise the animation will only kick-in halfway, especially when there's animation delay*/
+}
+
+.wrapper > *{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper.animateIn > *{
+    animation: enlargeMedia 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s;
+}
+
+
+@keyframes animated {
+    0% {
+        mask-size: 100% 0%; 
+     }
+     100% {
+        mask-size: 100% 200%;
+       
+     }
+   }
+@keyframes enlargeMedia {
+    0% {
+        transform: scale(1);
+     }
+     100% {
+        transform: scale(0.8); /*Adjust this value for secondary animation*/
+       
+     }
+   }
