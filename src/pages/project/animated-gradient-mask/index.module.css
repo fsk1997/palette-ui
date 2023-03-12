@@ -1,81 +1,85 @@
+:root {
+    --transition-in: all 0.5s cubic-bezier(0, 0.55, 0.45, 1); 
+    /*Using transition property "all", but will be overriden with specific transition-property below to improve performance*/
+}
+
 .page{
     height: 100%;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    position: absolute;
+    /* margin: auto; */
 }
 
 .button{
-    margin-top: 2rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: rgba(150,150,150,0.15);
-    border: lightgray;
-    
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    font-weight: 800;
+    /* mix-blend-mode: plus-lighter; */
+    text-shadow: 0px 1px 10px rgba(255,255,255,0.5);
+    color: black;
 }
 
-.wrapper{
-    background-color: black;
+.button:hover{
+    filter: invert(1) brightness(120%);
+
+}
+
+.button::after{
+    content:"";
+    position: absolute;
+    inset: 0;
+    margin: 0;
     width: 100%;
-    max-width: 20rem;
+    height: 100%;
+    transform: scale(1.5);
+    border-radius: 0.5rem;
+    border: 1px rgba(0, 0, 0, 0.08) solid;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 2rem;
+}
+
+/*Wrapper itself*/
+.wrapper{
+    background-color: black; /*Optional*/
+    width: 100%;
     overflow: hidden;
     position: relative;
-    border-radius: 1rem;
-}
-
-.wrapper::before{
-    content: "";
-    inset: 0;
-    position: absolute;
-    background-color: transparent;
-    z-index: 1;
-
-}
-
-.wrapper.blank{
-    mask-image:  linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
     mask-repeat: no-repeat;
-    mask-position: left bottom;
+    mask-position: left bottom; /*Specify "bottom" so item will start reveal from bottom*/
+    mask-image:  linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%); /*Transparent mask from bottom to top. Anything underneath will be hidden*/
+    mask-size: 100% 0%; /*100% width, 0% height*/
+    transition-property: mask-image;
 }
 
-.wrapper.animateIn{
-    mask-image:  linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-    mask-repeat: no-repeat;
-    mask-position: left bottom;
-    animation: animated 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
-    mask-size: 100% 0%; /*Must have this initial value, otherwise the animation will only kick-in halfway, especially when there's animation delay*/
+.wrapper.show{
+    mask-image:  linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); /*Solid black from bottom to middle, then transparent from middle to top. Only items underneath solid black can be shown.*/
+    mask-size: 100% 200%; /*We have to stretch the mask longer vertically, so the first half of mask-image can reveal underneath item.*/
+    transition-property: mask-image;
+    transition: var(--transition-in);
 }
 
+/*Items inside wrapper*/
 .wrapper > *{
-    object-fit: cover;
+    object-fit: contain;
     height: 100%;
     width: 100%;
+    transform: scale(1);
+    transition-property: transform;
 }
 
-.wrapper.animateIn > *{
-    animation: enlargeMedia 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s;
+.wrapper.show > *{
+    transform: scale(0.9);
+    transition-property: transform;
+    transition: var(--transition-in);
+    transform-origin: top;
+    transition-delay: 0.1s;
 }
-
-
-@keyframes animated {
-    0% {
-        mask-size: 100% 0%; 
-     }
-     100% {
-        mask-size: 100% 200%;
-       
-     }
-   }
-@keyframes enlargeMedia {
-    0% {
-        transform: scale(1);
-     }
-     100% {
-        transform: scale(0.8); /*Adjust this value for secondary animation*/
-       
-     }
-   }

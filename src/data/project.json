@@ -1,18 +1,18 @@
 [
   {
-    "title": "Animated Gradient Mask",
-    "slug": "animated-gradient-mask",
+    "title": "Gradient Mask Transition",
+    "slug": "gradient-mask-transition",
     "description": "Inspired by the subtle masking animation used in iOS screen unlock.",
     "type": "Transition",
     "dependencies": [
     ],
     "cover_image": "../images/project-card/placeholder.jpg",
     "created_at": "2023-03-11",
-    "last_updated": "2023-03-11",
+    "last_updated": "2023-03-12",
     "published": true,
-    "status": "alpha",
+    "status": "beta",
     "version": "v0.1",
-    "mode": ["desktop"]
+    "mode": ["desktop", "mobile"]
   },
   {
     "title": "Step Indicator Scroll Snap",
