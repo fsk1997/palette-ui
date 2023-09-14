@@ -16,7 +16,7 @@ const Project = () => {
     <div className={styles.page}>
       <button className={styles.button} onClick={()=>setAnimate(!animate)}>{animate ? "Tap Again" : "Tap Me" }</button>
       <div className={styles.wrapper + " " + (animate && styles.show)} style={{aspectRatio: "9/21"}}>
-        <img src="https://kpopping.com/documents/d5/5/1844-image-20221029143647-2-gif-gif.jpeg?v=25590" alt="Rotating Newjeans fan stick"/>    
+        <img src="https://kpopping.com/documents/d5/5/1844-image-20221029143647-2-gif-gif.jpeg" alt="Rotating Newjeans fan stick"/>    
       </div>
     </div>
   );

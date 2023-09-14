@@ -14,7 +14,7 @@ const Project = () => {
     <div className={styles.page}>
       <header className={styles.header}>
         <img
-          src="https://voguegirl.jp/wp-content/uploads/2022/05/adidas-7-1.jpg"
+          src="https://64.media.tumblr.com/d7c5960dfb9478654a8dc6d754f20a2d/tumblr_o4inwdX8Ic1uzjle8o1_640.jpg"
           width="1200"
           height="800"
           alt="a person wearing adidas socks"

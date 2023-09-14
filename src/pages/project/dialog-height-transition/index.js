@@ -35,25 +35,30 @@ const Project = () => {
     {
       id: 1,
       name: "☃️",
-      children: <><img src="https://newjeans.kr/imgs/window/pc/icon-melody-card.gif" /></>,
+      children: <><img draggable={false} src="https://media.giphy.com/media/1L58UvEaPvPKdukqNO/giphy-downsized-large.gif" /></>,
     },
     {
       id: 2,
       name: "🐱",
-      children: <><img loading="lazy" src="https://newjeans.kr/imgs/window/new-folder-1/nj_ditto_16.jpg" /></>,
+      children: <><img draggable={false} loading="lazy" src="https://media.giphy.com/media/I7aVsKrTaKZ9d0U3pl/giphy.gif" /></>,
     },
     {
       id: 3,
       name: "🍬",
-      children: <><img loading="lazy" src="https://newjeans.kr/imgs/window/new-folder-1/nj_ditto_12.jpg" /></>,
+      children: <><img draggable={false} loading="lazy" src="https://media.giphy.com/media/hs8mz53Pu753U6mume/giphy-downsized-large.gif" /></>,
     },
     {
       id: 4,
       name: "🧡",
-      children: <><img loading="lazy" src="https://newjeans.kr/imgs/window/new-folder-1/nj_omg_2.jpg" /></>,
+      children: <><img draggable={false} loading="lazy" src="https://media.giphy.com/media/GwSBfLFoXh9wpjGV9I/giphy-downsized-large.gif" /></>,
     },
     {
       id: 5,
+      name: "👭",
+      children: <><img draggable={false} loading="lazy" src="https://media.giphy.com/media/x0OBnXGmpIGmAGhg64/giphy-downsized-large.gif" /></>,
+    },
+    {
+      id: 6,
       name: "🧸",
       children: <><iframe style={{ width: "100%" }} width="560" height="315" src={showDialog === true && "https://www.youtube.com/embed/sVTy_wmn5SU"} title="YouTube video player" frameborder="0" allowfullscreen /></>,
     },
