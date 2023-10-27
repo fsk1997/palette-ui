@@ -3,7 +3,7 @@ import HomeLayout from "../components/Layouts/HomeLayout";
 import Seo from "../components/Seo";
 import { Section, SectionHeading } from "../components/Section";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, A11y } from "swiper/modules"
 import { ArrowCircleRight } from "phosphor-react";
 import { motion} from "framer-motion";
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
@@ -80,7 +80,7 @@ const IndexPage = () => {
         <Swiper
           style={{ overflow: "visible", paddingLeft: "1rem" }}
           className="container home-project-swiper"
-          modules={[Navigation]}
+          modules={[Navigation, A11y]}
           navigation
           spaceBetween={48}
           slidesPerView={1.2}
