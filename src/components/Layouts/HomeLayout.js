@@ -124,15 +124,13 @@ const Layout = ({
 
             <div className="px-8 flex flex-col lg:flex-row items-center">
               <div className="mix-blend-luminosity w-full lg:w-1/2 relative z-[1] lg:-mt-14 mb-6 xl:mb-0">
-                <h1 className="flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] tracking-[-0.05rem] leading-[60%] font-medium lg:whitespace-nowrap transition-mid">
+                <h1 className="mb-4 flex flex-col items-center lg:items-start text-slate-8 text-[2rem] sm:text-[2.8rem] md:text-[3rem] xl:text-[3.8rem] leading-[110%] lg:leading-[115%] tracking-[-0.05rem] font-medium lg:whitespace-nowrap transition-mid">
                   <span className="inline-block -ml-[5rem] sm:-ml-[10rem] lg:ml-0">
                     {heroFirstLine}
                   </span>
-                  <br />
                   <span className="inline-block ml-[2.5rem] sm:ml-[9.5rem]">
                     {heroSecondLine}
                   </span>
-                  <br />
                   <span className="inline-block sm:ml-12">{heroThirdLine}</span>
                 </h1>
               </div>
