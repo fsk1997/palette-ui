@@ -1,6 +1,7 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+const adapter = require("gatsby-adapter-netlify")
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +13,9 @@ module.exports = {
     image: "/og-image1.jpg", // Path to the image placed in the 'static' folder, in the project's root directory.
     twitterUsername: "@SayKiat_____",
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+  }),
   plugins: [
     // {
     //   resolve: "gatsby-plugin-google-analytics",
