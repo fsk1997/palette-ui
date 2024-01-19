@@ -1,5 +1,20 @@
 [
   {
+    "title": "Inline Accordion",
+    "slug": "inline-accordion",
+    "description": "Expand text in paragraph.",
+    "type": "Interaction",
+    "dependencies": [
+    ],
+    "cover_image": "../images/project-card/placeholder.jpg",
+    "created_at": "2024-01-19",
+    "last_updated": "2023-03-12",
+    "published": true,
+    "status": "production",
+    "version": "v1.0",
+    "mode": ["desktop", "mobile"]
+  },
+  {
     "title": "Gradient Mask Transition",
     "slug": "gradient-mask-transition",
     "description": "Inspired by the subtle masking animation used in iOS screen unlock.",
