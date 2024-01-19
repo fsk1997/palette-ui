@@ -25,44 +25,31 @@ const IAButtons = ({
         animate("&>*", { opacity: [0, 1], x: [10, 0] }, { delay: stagger(0.1, { ease: "easeIn" }) })
     }, [isInView])
 
-    const buttonSpacing = "duration-50 ease-in relative py-0.5 md:py-0"
-
-    const buttonElFlow = "inline-flex flex-row flex-nowrap items-center gap-1"
-
-    const buttonBg = "before:content-[''] before:absolute before:inset-0 before:h-[95%] before:m-auto before:transition-all before:rounded-lg"
-
-    const buttonElNoWrap = "[&>*]:relative [&>*]:whitespace-nowrap"
-
-
     return (
-        <span class="relative inline">
-            <span class="inline opacity-60">{preText}</span>
+        <span className={styles.buttonWrapper}>
+            <span>{preText}</span>
         
-            <Disclosure as="span" className="iaButtonWrapper buttonClosed relative inline-flex flex-row flex-wrap items-center gap-1">
+            <Disclosure as="span" className={styles.buttonDisclosure}>
                 {({ open }) => (
                     <>
                         <Disclosure.Button className={`
-                            ${open ? "text-white" : "text-green-500"} 
-                            button-animateIn
-                            before:left-[-5%] before:w-[110%] before:origin-center before:scale-100 before:hover:scale-100
-                            ${buttonSpacing}
-                            ${buttonBg} 
-                            ${buttonElNoWrap}
-                            ${open ? "" : "before:transparent before:hover:bg-green-50"}`}
+                            ${styles.disclosureButton} 
+                            ${styles.disclosureElSpacing} 
+                            ${styles.disclosureElBg}
+                            ${styles.disclosureElNoWrap} 
+                            ${open ? styles.open : styles.closed} `}
                         >
-                            <span className={`relative z-[1] ${buttonElFlow}`}>
+                            <span className={styles.disclosureSpan}>
                                 {buttonElement}
                             </span>
                         </Disclosure.Button>
                         <Disclosure.Panel as="span" unmount={false} ref={scope} className={`
-                            my-auto px-1.5
-                            before:w-full 
-                            before:bg-green-500/20 before:border before:border-green-500/[5%]
-                            ${buttonSpacing}
-                            ${buttonBg} 
-                            ${buttonElNoWrap}`}
+                            ${styles.disclosurePanel}
+                            ${styles.disclosureElSpacing}
+                            ${styles.disclosureElBg} 
+                            ${styles.disclosureElNoWrap}`}
                         >
-                            <span className={`relative z-[1] ${buttonElFlow}`}>
+                            <span className={styles.disclosureSpan}>
                                 {expandedElement}
                             </span>
                         </Disclosure.Panel> 
@@ -70,23 +57,34 @@ const IAButtons = ({
                 )}
             </Disclosure>
             
-            <span class="inline opacity-60">{postText}</span>
+            <span>{postText}</span>
         </span>
     )
 }
 
+const IAParagraph = ({children}) => {
+    return (
+        <p className={styles.paragraph}>{children}</p>
+    )
+}
 
 const Project = () => {
   return (
     <div className={styles.page}>
-        <p class="leading-[156%] md:leading-[172%] tracking-wide mb-5">
+        <IAParagraph>
             <IAButtons     
                 preText="Historically, thermodynamics developed out of a desire to increase the efficiency of early steam engines, particularly through the work of "
                 buttonElement={<span>French physicist</span>}
                 expandedElement={<span>Sadi Carnot (1824)</span>}
                 postText=" who believed that engine efficiency was the key that could help France win the Napoleonic Wars."
             />
-        </p>
+            <IAButtons     
+                preText=" "
+                buttonElement={<span>Scots-Irish physicist </span>}
+                expandedElement={<span>Lord Kelvin</span>}
+                postText={` was the first to formulate a concise definition of thermodynamics in 1854 which stated, "Thermo-dynamics is the subject of the relation of heat to forces acting between contiguous parts of bodies, and the relation of heat to electrical agency." `}
+            />
+        </IAParagraph>
     </div>
   )
 }

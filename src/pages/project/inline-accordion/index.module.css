@@ -1,20 +1,84 @@
-.iaButtonWrapper.buttonOpen button{
-    @apply text-white before:bg-transparent;
-}
-.iaButtonWrapper.buttonClosed button{
-    @apply text-green-500 before:hover:bg-green-50;
-}
-.iaButtonWrapper.buttonClosed > span:nth-child(2){
-    @apply hidden;
-}
-.iaButtonWrapper.buttonOpen > span:nth-child(2){
-    @apply inline-flex;
-}
-.iaButtonWrapper.buttonClosed > span:nth-child(3){
-    @apply ml-0;
-}
-.iaButtonWrapper.buttonOpen > span:nth-child(3){
-    @apply -ml-2.5;
+
+.page{
+    padding: 2rem 1rem;
 }
 
+.buttonWrapper{
+    display: inline;
+}
 
+.buttonDisclosure{
+    position:relative;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+/* Shared styling between disclosure button and panel */
+.disclosureElSpacing{
+    position: relative; 
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem; 
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1); 
+}
+.disclosureElBg::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    height: 95%;
+    margin: auto;
+    transition: all ease-in cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 0.5rem;
+    z-index: -1;
+}
+.disclosureElNoWrap > *{
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Disclosure Button Styling */
+.disclosureButton {
+    position: relative;
+}
+.disclosureButton::before{
+    left: -5%;
+    width:110%;
+    transform-origin: center;
+    transform: scale(100%);
+}
+.disclosureButton.closed{
+    color: violet;
+}
+.disclosureButton.open{
+    opacity: 0.4;
+}
+
+/* Disclosure Panel Styling */
+.disclosurePanel {
+    margin: auto 0;
+    padding: 0 0.375rem;
+    color: white; 
+}
+.disclosurePanel::before {
+    width: 100%;
+    background: violet;
+}
+
+/* Ensure if there's multiple children under button or panel, all the items are spaced properly. 
+NOTE: However, if text is too long, it will overflow out of window. */
+.disclosureSpan {
+    position:relative;
+    z-index: 1;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.paragraph {
+    line-height: 172%;
+    margin-bottom: 1.25rem;
+}
